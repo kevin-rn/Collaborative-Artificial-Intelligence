@@ -1,0 +1,17 @@
+{
+	"SAOPSettings": {
+		"participants": [{
+			"party": {"partyref":"classpath:geniusweb.exampleparties.randomparty.RandomParty", "parameters":{}},
+			"profile": "file:src/test/resources/jobs/jobs1partial.json"
+		}, {
+			"party": {"partyref":"classpath:geniusweb.exampleparties.randomparty.RandomParty","parameters":{}},
+			"profile": "file:src/test/resources/jobs/jobs2.json"
+		}],
+		"deadline": {
+			"deadlinetime": {
+				"durationms": 100
+			}
+		}
+		
+	}
+}

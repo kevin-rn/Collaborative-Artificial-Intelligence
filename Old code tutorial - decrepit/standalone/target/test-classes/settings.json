@@ -1,0 +1,16 @@
+{
+	"SAOPSettings": {
+		"participants": [{
+			"party": {"partyref":"classpath:collabai.group19.Group19Party", "parameters":{}},
+			"profile": "file:src/test/resources/jobs/jobs1.json"
+		}, {
+			"party": {"partyref":"classpath:collabai.group19.Group19Party", "parameters":{}},
+			"profile": "file:src/test/resources/jobs/jobs2.json"
+		}],
+		"deadline": {
+			"deadlinetime": {
+				"durationms": 100
+			}
+		}
+	}
+}
