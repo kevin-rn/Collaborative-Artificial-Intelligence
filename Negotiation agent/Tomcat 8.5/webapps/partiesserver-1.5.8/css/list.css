@@ -1,0 +1,19 @@
+
+th {
+	padding: 15px;
+}
+
+partiesTable {
+	width: 100%;
+	padding: 20px;
+	border: 1px solid black;
+	border-collapse:collapse;
+	font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+table td, table th {
+	padding: 10px;
+}
+
+tr:nth-child(even) {background: #DDD}
+tr:nth-child(odd) {background: #FFF}

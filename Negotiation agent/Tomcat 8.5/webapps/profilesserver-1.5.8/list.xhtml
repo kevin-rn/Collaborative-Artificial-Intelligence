@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>Profiles and Domains list</title>
+<link rel="stylesheet" type="text/css" href="css/list.css" />
+
+</head>
+<body>
+	<div class="noscript">
+		<h2 style="color: #ff0000">Seems your browser doesn't support
+			Javascript! Websockets rely on Javascript being enabled. Please
+			enable Javascript and reload this page!</h2>
+	</div>
+	<div>
+		<table id="domainsTable" class="domainsTable">
+			<tr>
+				<th>Domain</th>
+				<th>Available Profiles</th>
+			</tr>
+			<tr>
+				<td>-</td>
+				<td>-</td>
+			</tr>
+		</table>
+
+	</div>
+</body>
+
+<!-- Script to get/update the list and put it into the table. -->
+<script type="application/javascript">
+	
+	<![CDATA[
+        "use strict";
+
+        var ws = null;
+
+        function connect() {
+        	// manually construct relative path.......
+            var target = 'ws://'+location.host+"/"+location.pathname.split("/")[1]+'/websocket/liststream'+window.location.search;
+            if ('WebSocket' in window) {
+                ws = new WebSocket(target);
+            } else if ('MozWebSocket' in window) {
+                ws = new MozWebSocket(target);
+            } else {
+                alert('WebSocket is not supported by this browser. Please use a newer browser');
+                return;
+            }
+            ws.onopen = function () {
+            	// whatever.
+            };
+            ws.onmessage = function (event) {
+            	update(JSON.parse(event.data));
+            };
+            ws.onclose = function (event) {
+                alert('Info: Server closed connection. Code: ' + event.code + (event.reason == "" ? "" : ", Reason: " + event.reason));
+            };
+        }
+
+        /*
+        @param domains a map of the form {"jobs":["jobs1","jobs2"]}
+        where the keys are the names of the available domains nd the values a list of the available profiles in that domain.
+        */
+        function update(domains) {
+        	//alert("update!");
+        	//log(JSON.stringify(domains))
+        	
+        	// Find a <table> element with id="myTable":
+			var table = document.getElementById("domainsTable");
+        	var oldtablerows=document.querySelectorAll("#domainsTable tr:not(:first-child)");
+            for (var i = 0; i < oldtablerows.length; i++) {
+            	oldtablerows[i].parentNode.removeChild(oldtablerows[i]);
+            }
+        	for (var domainname in domains) {
+        		var row = table.insertRow(-1);
+        		row.insertCell(0).innerHTML = domainname;
+        		row.insertCell(1).innerHTML = domains[domainname];
+        	}
+        	
+        }
+        
+        /*
+        This is called when the window DOM is loaded. window.onload runs BEFORE the window is loaded
+        and therefore is too early to remove the noscript message.
+        */
+       document.addEventListener("DOMContentLoaded", function() {
+             // Remove elements with "noscript" class - <noscript> is not allowed in XHTML
+             var noscripts = document.getElementsByClassName("noscript");
+             for (var i = 0; i < noscripts.length; i++) {
+                 noscripts[i].parentNode.removeChild(noscripts[i]);
+             }
+         	connect();
+
+         }, false);
+    ]]>
+
+</script>
+
+</html>

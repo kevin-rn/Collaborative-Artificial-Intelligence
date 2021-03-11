@@ -1,0 +1,1248 @@
+24-Feb-2021 10:46:50.533 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/8.5.63
+24-Feb-2021 10:46:50.536 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Jan 29 2021 11:21:49 UTC
+24-Feb-2021 10:46:50.537 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 8.5.63.0
+24-Feb-2021 10:46:50.537 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 10
+24-Feb-2021 10:46:50.537 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.0
+24-Feb-2021 10:46:50.538 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+24-Feb-2021 10:46:50.538 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jdk-12.0.2
+24-Feb-2021 10:46:50.538 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           12.0.2+10
+24-Feb-2021 10:46:50.538 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+24-Feb-2021 10:46:50.538 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Program Files\Apache Software Foundation\Tomcat 8.5
+24-Feb-2021 10:46:50.538 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\Program Files\Apache Software Foundation\Tomcat 8.5
+24-Feb-2021 10:46:50.539 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\Program Files\Apache Software Foundation\Tomcat 8.5
+24-Feb-2021 10:46:50.539 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Program Files\Apache Software Foundation\Tomcat 8.5
+24-Feb-2021 10:46:50.539 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Program Files\Apache Software Foundation\Tomcat 8.5\temp
+24-Feb-2021 10:46:50.539 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+24-Feb-2021 10:46:50.539 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Program Files\Apache Software Foundation\Tomcat 8.5\conf\logging.properties
+24-Feb-2021 10:46:50.539 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+24-Feb-2021 10:46:50.539 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+24-Feb-2021 10:46:50.540 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+24-Feb-2021 10:46:50.540 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: exit
+24-Feb-2021 10:46:50.540 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: abort
+24-Feb-2021 10:46:50.541 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Xms128m
+24-Feb-2021 10:46:50.541 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Xmx256m
+24-Feb-2021 10:46:50.541 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The Apache Tomcat Native library which allows using OpenSSL was not found on the java.library.path: [C:\Program Files\Apache Software Foundation\Tomcat 8.5\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Java\jdk-12.0.2\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Git LFS;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Users\kevin\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Python 3.8;C:\Users\kevin\AppData\Local\Programs\Python\Python38\python.exe;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Users\kevin\Anaconda3\Scripts;C:\Users\kevin\Anaconda3;C:\Users\kevin\Anaconda3\Library\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Git\cmd;C:\Users\kevin\AppData\Roaming\local\bin;C:\Users\kevin\AppData\Local\Microsoft\WindowsApps;C:\Users\kevin\AppData\Roaming\npm;C:\Program Files\heroku\bin;C:\Program Files\JetBrains\PyCharm 2019.1.3\bin;C:\Users\kevin\AppData\Local\Programs\Microsoft VS Code\bin;.]
+24-Feb-2021 10:46:50.584 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+24-Feb-2021 10:46:50.838 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+24-Feb-2021 10:46:50.847 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 668 ms
+24-Feb-2021 10:46:50.889 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+24-Feb-2021 10:46:50.889 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.63
+24-Feb-2021 10:46:50.924 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\partiesserver-1.5.8.war]
+24-Feb-2021 10:46:52.306 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+24-Feb-2021 10:46:52.553 WARNING [localhost-startStop-1] org.apache.catalina.util.SessionIdGeneratorBase.createSecureRandom Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [210] milliseconds.
+24-Feb-2021 10:46:52.573 INFO [localhost-startStop-1] tudelft.utilities.logging.ReportToLogger.log searching for partiesrepo upwards from C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\partiesserver-1.5.8\WEB-INF
+24-Feb-2021 10:46:52.575 INFO [localhost-startStop-1] tudelft.utilities.logging.ReportToLogger.log Directory did not contain repo:C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\partiesserver-1.5.8\WEB-INF
+24-Feb-2021 10:46:52.575 INFO [localhost-startStop-1] tudelft.utilities.logging.ReportToLogger.log Repository located at C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\partiesserver-1.5.8\partiesrepo
+24-Feb-2021 10:46:52.583 INFO [localhost-startStop-1] tudelft.utilities.logging.ReportToLogger.log change: <null,FileInfo[C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\partiesserver-1.5.8\partiesrepo,0]>
+24-Feb-2021 10:46:56.446 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\partiesserver-1.5.8.war] has finished in [5,522] ms
+24-Feb-2021 10:46:56.455 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\profilesserver-1.5.8.war]
+24-Feb-2021 10:46:57.335 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+24-Feb-2021 10:46:57.345 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\profilesserver-1.5.8.war] has finished in [890] ms
+24-Feb-2021 10:46:57.352 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\runserver-1.5.8.war]
+24-Feb-2021 10:46:58.361 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+24-Feb-2021 10:46:58.372 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\runserver-1.5.8.war] has finished in [1,019] ms
+24-Feb-2021 10:46:58.372 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\docs]
+24-Feb-2021 10:46:58.394 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\docs] has finished in [22] ms
+24-Feb-2021 10:46:58.394 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\examples]
+24-Feb-2021 10:46:59.039 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\examples] has finished in [645] ms
+24-Feb-2021 10:46:59.039 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\host-manager]
+24-Feb-2021 10:46:59.072 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\host-manager] has finished in [33] ms
+24-Feb-2021 10:46:59.073 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\manager]
+24-Feb-2021 10:46:59.102 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\manager] has finished in [29] ms
+24-Feb-2021 10:46:59.102 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\ROOT]
+24-Feb-2021 10:46:59.132 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\ROOT] has finished in [30] ms
+24-Feb-2021 10:46:59.136 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+24-Feb-2021 10:46:59.144 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 8296 ms
+24-Feb-2021 10:47:11.183 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log New connection ws://localhost:8080/profilesserver-1.5.8/websocket/liststream
+24-Feb-2021 10:47:11.446 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log change: <null,FileInfo[C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\profilesserver-1.5.8\domainsrepo,0]>
+24-Feb-2021 10:47:52.079 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log request to run Nego: SAOPSettings[PartyWithProfile[PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies],ProfileRef[ws://192.168.2.12:8080/profilesserver-1.5.8/websocket/get/party/party1]], PartyWithProfile[PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/conceder-1.5.8],ProfileRef[ws://192.168.2.12:8080/profilesserver-1.5.8/websocket/get/party/party2]]],DeadlineRounds[10,10000]]
+24-Feb-2021 10:47:52.097 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log SAOP connect [PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies], PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/conceder-1.5.8]]
+24-Feb-2021 10:47:52.097 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log attempting to connect [PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies], PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/conceder-1.5.8]]
+24-Feb-2021 10:47:52.100 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log Trying to start up party PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies]
+24-Feb-2021 10:47:52.113 INFO [http-nio-8080-exec-8] tudelft.utilities.logging.ReportToLogger.log request to run group19party-1.5.8-jar-with-dependencies
+24-Feb-2021 10:47:52.141 INFO [http-nio-8080-exec-8] tudelft.utilities.logging.ReportToLogger.log started group19party-1.5.8-jar-with-dependencies
+24-Feb-2021 10:47:52.170 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log startparty returned ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party1_192_168_2_12
+24-Feb-2021 10:47:52.175 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log Trying to make websocket connection to running party ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party1_192_168_2_12
+24-Feb-2021 10:47:52.197 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log Party is being connected: org.apache.tomcat.websocket.WsSession@9fa23ab
+24-Feb-2021 10:47:52.199 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log Created websocket connection at  ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party1_192_168_2_12
+24-Feb-2021 10:47:52.199 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log Trying to start up party PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/conceder-1.5.8]
+24-Feb-2021 10:47:52.202 INFO [http-nio-8080-exec-10] tudelft.utilities.logging.ReportToLogger.log request to run conceder-1.5.8
+24-Feb-2021 10:47:52.203 INFO [http-nio-8080-exec-10] tudelft.utilities.logging.ReportToLogger.log started conceder-1.5.8
+24-Feb-2021 10:47:52.210 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log startparty returned ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party2_192_168_2_12
+24-Feb-2021 10:47:52.211 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log Trying to make websocket connection to running party ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party2_192_168_2_12
+24-Feb-2021 10:47:52.221 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log Party is being connected: org.apache.tomcat.websocket.WsSession@72a7f3b7
+24-Feb-2021 10:47:52.222 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log Created websocket connection at  ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party2_192_168_2_12
+24-Feb-2021 10:47:52.223 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log succesfully connected [PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies], PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/conceder-1.5.8]]
+24-Feb-2021 10:47:52.234 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log SAOP deadline set to 2021/02/24 10:48:02
+24-Feb-2021 10:48:02.250 WARNING [Timer-0] tudelft.utilities.logging.ReportToLogger.log SAOP deadline reached. Terminating session.
+24-Feb-2021 10:48:02.253 INFO [Timer-0] tudelft.utilities.logging.ReportToLogger.log Party close called
+24-Feb-2021 10:48:02.255 INFO [Timer-0] tudelft.utilities.logging.ReportToLogger.log closing websocket PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies]:CloseReason: code [1000], reason []
+24-Feb-2021 10:48:02.256 WARNING [Timer-0] tudelft.utilities.logging.ReportToLogger.log SAOP protocol intercepted error due to party party1_192_168_2_12:geniusweb.runserver.WebSocketProtToPartyConn@33a8f84cProtocol error
+	geniusweb.runserver.RemoteException: Session PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies] closed abnoramlly (see party server for more details) 
+24-Feb-2021 10:48:02.257 INFO [Timer-0] tudelft.utilities.logging.ReportToLogger.log Party close called
+24-Feb-2021 10:48:02.258 INFO [Timer-0] tudelft.utilities.logging.ReportToLogger.log closing websocket PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/conceder-1.5.8]:CloseReason: code [1000], reason []
+24-Feb-2021 10:48:02.258 WARNING [Timer-0] tudelft.utilities.logging.ReportToLogger.log SAOP protocol intercepted error due to party party2_192_168_2_12:geniusweb.runserver.WebSocketProtToPartyConn@462aad91Protocol error
+	geniusweb.runserver.RemoteException: Session PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/conceder-1.5.8] closed abnoramlly (see party server for more details) 
+24-Feb-2021 10:48:02.262 INFO [http-nio-8080-exec-8] tudelft.utilities.logging.ReportToLogger.log Final ourcome:Finished[Agreements{}]
+24-Feb-2021 10:48:02.262 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log Final ourcome:Finished[Agreements{}]
+24-Feb-2021 10:48:02.263 INFO [http-nio-8080-exec-8] tudelft.utilities.logging.ReportToLogger.log socket closed to party1_192_168_2_12
+24-Feb-2021 10:48:02.264 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log socket closed to party2_192_168_2_12
+24-Feb-2021 10:48:02.264 INFO [http-nio-8080-exec-8] tudelft.utilities.logging.ReportToLogger.log Party party1_192_168_2_12 was terminated 
+24-Feb-2021 10:48:02.264 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log Party party1_192_168_2_12 was terminated 
+24-Feb-2021 10:48:02.265 INFO [http-nio-8080-exec-8] tudelft.utilities.logging.ReportToLogger.log Party party2_192_168_2_12 was terminated 
+24-Feb-2021 10:48:02.265 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log Party party2_192_168_2_12 was terminated 
+24-Feb-2021 10:51:07.146 INFO [http-nio-8080-exec-2] tudelft.utilities.logging.ReportToLogger.log New connection ws://localhost:8080/profilesserver-1.5.8/websocket/liststream
+24-Feb-2021 10:54:47.911 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log request to run Nego: SAOPSettings[PartyWithProfile[PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies],ProfileRef[ws://192.168.2.12:8080/profilesserver-1.5.8/websocket/get/party/party1]], PartyWithProfile[PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/boulware-1.5.8],ProfileRef[ws://192.168.2.12:8080/profilesserver-1.5.8/websocket/get/party/party1]]],DeadlineRounds[200,10000]]
+24-Feb-2021 10:54:47.912 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log SAOP connect [PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies], PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/boulware-1.5.8]]
+24-Feb-2021 10:54:47.913 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log attempting to connect [PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies], PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/boulware-1.5.8]]
+24-Feb-2021 10:54:47.913 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log Trying to start up party PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies]
+24-Feb-2021 10:54:47.915 INFO [http-nio-8080-exec-9] tudelft.utilities.logging.ReportToLogger.log request to run group19party-1.5.8-jar-with-dependencies
+24-Feb-2021 10:54:47.915 INFO [http-nio-8080-exec-9] tudelft.utilities.logging.ReportToLogger.log started group19party-1.5.8-jar-with-dependencies
+24-Feb-2021 10:54:47.934 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log startparty returned ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party3_192_168_2_12
+24-Feb-2021 10:54:47.948 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log Trying to make websocket connection to running party ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party3_192_168_2_12
+24-Feb-2021 10:54:47.956 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log Party is being connected: org.apache.tomcat.websocket.WsSession@270be0b0
+24-Feb-2021 10:54:47.956 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log Created websocket connection at  ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party3_192_168_2_12
+24-Feb-2021 10:54:47.956 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log Trying to start up party PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/boulware-1.5.8]
+24-Feb-2021 10:54:47.958 INFO [http-nio-8080-exec-10] tudelft.utilities.logging.ReportToLogger.log request to run boulware-1.5.8
+24-Feb-2021 10:54:47.959 INFO [http-nio-8080-exec-10] tudelft.utilities.logging.ReportToLogger.log started boulware-1.5.8
+24-Feb-2021 10:54:47.963 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log startparty returned ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party4_192_168_2_12
+24-Feb-2021 10:54:47.963 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log Trying to make websocket connection to running party ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party4_192_168_2_12
+24-Feb-2021 10:54:47.969 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log Party is being connected: org.apache.tomcat.websocket.WsSession@37e31346
+24-Feb-2021 10:54:47.969 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log Created websocket connection at  ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party4_192_168_2_12
+24-Feb-2021 10:54:47.969 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log succesfully connected [PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies], PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/boulware-1.5.8]]
+24-Feb-2021 10:54:47.970 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log SAOP deadline set to 2021/02/24 10:54:57
+24-Feb-2021 10:54:48.246 INFO [WebSocketClient-AsyncIO-1] tudelft.utilities.logging.ReportToLogger.log Party close called
+24-Feb-2021 10:54:48.247 INFO [http-nio-8080-exec-10] tudelft.utilities.logging.ReportToLogger.log Final ourcome:Finished[Agreements{party3_192_168_2_12=Bid{Invitations="Custom, Handmade", Music="DJ", Drinks="Beer Only", Cleanup="Specialized Materials", Food="Chips and Nuts", Location="Party Room"}, party4_192_168_2_12=Bid{Invitations="Custom, Handmade", Music="DJ", Drinks="Beer Only", Cleanup="Specialized Materials", Food="Chips and Nuts", Location="Party Room"}}]
+24-Feb-2021 10:54:48.248 INFO [WebSocketClient-AsyncIO-1] tudelft.utilities.logging.ReportToLogger.log closing websocket PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies]:CloseReason: code [1000], reason []
+24-Feb-2021 10:54:48.248 INFO [http-nio-8080-exec-10] tudelft.utilities.logging.ReportToLogger.log socket closed to party3_192_168_2_12
+24-Feb-2021 10:54:48.249 INFO [http-nio-8080-exec-10] tudelft.utilities.logging.ReportToLogger.log Party party3_192_168_2_12 was terminated 
+24-Feb-2021 10:54:48.249 WARNING [WebSocketClient-AsyncIO-1] tudelft.utilities.logging.ReportToLogger.log SAOP protocol intercepted error due to party party3_192_168_2_12:geniusweb.runserver.WebSocketProtToPartyConn@2886e82Protocol error
+	geniusweb.runserver.RemoteException: Session PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies] closed abnoramlly (see party server for more details) 
+24-Feb-2021 10:54:48.250 INFO [WebSocketClient-AsyncIO-1] tudelft.utilities.logging.ReportToLogger.log Party close called
+24-Feb-2021 10:54:48.250 INFO [WebSocketClient-AsyncIO-1] tudelft.utilities.logging.ReportToLogger.log closing websocket PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/boulware-1.5.8]:CloseReason: code [1000], reason []
+24-Feb-2021 10:54:48.250 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log Final ourcome:Finished[Agreements{party3_192_168_2_12=Bid{Invitations="Custom, Handmade", Music="DJ", Drinks="Beer Only", Cleanup="Specialized Materials", Food="Chips and Nuts", Location="Party Room"}, party4_192_168_2_12=Bid{Invitations="Custom, Handmade", Music="DJ", Drinks="Beer Only", Cleanup="Specialized Materials", Food="Chips and Nuts", Location="Party Room"}}]
+24-Feb-2021 10:54:48.250 WARNING [WebSocketClient-AsyncIO-1] tudelft.utilities.logging.ReportToLogger.log SAOP protocol intercepted error due to party party4_192_168_2_12:geniusweb.runserver.WebSocketProtToPartyConn@2288eac9Protocol error
+	geniusweb.runserver.RemoteException: Session PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/boulware-1.5.8] closed abnoramlly (see party server for more details) 
+24-Feb-2021 10:54:48.251 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log socket closed to party4_192_168_2_12
+24-Feb-2021 10:54:48.251 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log Party party4_192_168_2_12 was terminated 
+24-Feb-2021 10:56:00.941 INFO [http-nio-8080-exec-2] tudelft.utilities.logging.ReportToLogger.log New connection ws://localhost:8080/profilesserver-1.5.8/websocket/liststream
+24-Feb-2021 10:56:14.123 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log request to run Nego: SAOPSettings[PartyWithProfile[PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies],ProfileRef[ws://192.168.2.12:8080/profilesserver-1.5.8/websocket/get/jobs/jobs1]], PartyWithProfile[PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/boulware-1.5.8],ProfileRef[ws://192.168.2.12:8080/profilesserver-1.5.8/websocket/get/jobs/jobs2]]],DeadlineRounds[200,10000]]
+24-Feb-2021 10:56:14.126 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log SAOP connect [PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies], PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/boulware-1.5.8]]
+24-Feb-2021 10:56:14.126 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log attempting to connect [PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies], PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/boulware-1.5.8]]
+24-Feb-2021 10:56:14.126 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log Trying to start up party PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies]
+24-Feb-2021 10:56:14.128 INFO [http-nio-8080-exec-9] tudelft.utilities.logging.ReportToLogger.log request to run group19party-1.5.8-jar-with-dependencies
+24-Feb-2021 10:56:14.129 INFO [http-nio-8080-exec-9] tudelft.utilities.logging.ReportToLogger.log started group19party-1.5.8-jar-with-dependencies
+24-Feb-2021 10:56:14.159 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log startparty returned ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party5_192_168_2_12
+24-Feb-2021 10:56:14.164 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log Trying to make websocket connection to running party ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party5_192_168_2_12
+24-Feb-2021 10:56:14.169 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log Party is being connected: org.apache.tomcat.websocket.WsSession@694faeac
+24-Feb-2021 10:56:14.169 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log Created websocket connection at  ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party5_192_168_2_12
+24-Feb-2021 10:56:14.170 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log Trying to start up party PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/boulware-1.5.8]
+24-Feb-2021 10:56:14.171 INFO [http-nio-8080-exec-1] tudelft.utilities.logging.ReportToLogger.log request to run boulware-1.5.8
+24-Feb-2021 10:56:14.171 INFO [http-nio-8080-exec-1] tudelft.utilities.logging.ReportToLogger.log started boulware-1.5.8
+24-Feb-2021 10:56:14.175 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log startparty returned ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party6_192_168_2_12
+24-Feb-2021 10:56:14.176 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log Trying to make websocket connection to running party ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party6_192_168_2_12
+24-Feb-2021 10:56:14.181 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log Party is being connected: org.apache.tomcat.websocket.WsSession@163fa47b
+24-Feb-2021 10:56:14.181 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log Created websocket connection at  ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party6_192_168_2_12
+24-Feb-2021 10:56:14.181 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log succesfully connected [PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies], PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/boulware-1.5.8]]
+24-Feb-2021 10:56:14.182 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log SAOP deadline set to 2021/02/24 10:56:24
+24-Feb-2021 10:56:14.460 WARNING [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log Party failed on inform.
+	java.lang.RuntimeException: Failed to handle info
+		at cai.group19.Group19Party.notifyChange(Group19Party.java:153)
+		at cai.group19.Group19Party.notifyChange(Group19Party.java:70)
+		at geniusweb.partiesserver.websocket.PartySocket.notifyListeners(PartySocket.java:281)
+		at geniusweb.partiesserver.repository.RunningParty.inform(RunningParty.java:221)
+		at geniusweb.partiesserver.websocket.PartySocket.onMessage(PartySocket.java:143)
+		at jdk.internal.reflect.GeneratedMethodAccessor51.invoke(Unknown Source)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+		at org.apache.tomcat.websocket.pojo.PojoMessageHandlerWholeBase.onMessage(PojoMessageHandlerWholeBase.java:80)
+		at org.apache.tomcat.websocket.WsFrameBase.sendMessageText(WsFrameBase.java:414)
+		at org.apache.tomcat.websocket.server.WsFrameServer.sendMessageText(WsFrameServer.java:129)
+		at org.apache.tomcat.websocket.WsFrameBase.processDataText(WsFrameBase.java:515)
+		at org.apache.tomcat.websocket.WsFrameBase.processData(WsFrameBase.java:301)
+		at org.apache.tomcat.websocket.WsFrameBase.processInputBuffer(WsFrameBase.java:133)
+		at org.apache.tomcat.websocket.server.WsFrameServer.onDataAvailable(WsFrameServer.java:85)
+		at org.apache.tomcat.websocket.server.WsFrameServer.doOnDataAvailable(WsFrameServer.java:183)
+		at org.apache.tomcat.websocket.server.WsFrameServer.notifyDataAvailable(WsFrameServer.java:162)
+		at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:156)
+		at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:831)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1629)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+		at java.base/java.lang.Thread.run(Thread.java:835)
+	Caused by: java.lang.ArithmeticException: Non-terminating decimal expansion; no exact representable decimal result.
+		at java.base/java.math.BigDecimal.divide(BigDecimal.java:1722)
+		at cai.group19.Group19Party.getRelativeTitForTat(Group19Party.java:402)
+		at cai.group19.Group19Party.makeOffer(Group19Party.java:208)
+		at cai.group19.Group19Party.notifyChange(Group19Party.java:142)
+		... 26 more
+24-Feb-2021 10:56:14.462 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log socket closed to party5_192_168_2_12
+24-Feb-2021 10:56:14.463 INFO [WebSocketClient-AsyncIO-1] tudelft.utilities.logging.ReportToLogger.log closing websocket PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies]:CloseReason: code [1002], reason [party threw exception:  : RuntimeException:Failed to handle info : ArithmeticException:Non-terminating decimal expansion…]
+24-Feb-2021 10:56:14.465 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log Party party5_192_168_2_12 was terminated 
+24-Feb-2021 10:56:14.469 INFO [WebSocketClient-AsyncIO-1] tudelft.utilities.logging.ReportToLogger.log Failed to send Finished to geniusweb.runserver.WebSocketProtToPartyConn@3d8596e0
+	java.lang.IllegalStateException: Message will not be sent because the WebSocket session has been closed
+		at org.apache.tomcat.websocket.WsRemoteEndpointImplBase.writeMessagePart(WsRemoteEndpointImplBase.java:438)
+		at org.apache.tomcat.websocket.WsRemoteEndpointImplBase.sendMessageBlock(WsRemoteEndpointImplBase.java:311)
+		at org.apache.tomcat.websocket.WsRemoteEndpointImplBase.sendMessageBlock(WsRemoteEndpointImplBase.java:251)
+		at org.apache.tomcat.websocket.WsRemoteEndpointImplBase.sendString(WsRemoteEndpointImplBase.java:192)
+		at org.apache.tomcat.websocket.WsRemoteEndpointBasic.sendText(WsRemoteEndpointBasic.java:37)
+		at geniusweb.runserver.WebSocketProtToPartyConn.send(WebSocketProtToPartyConn.java:150)
+		at geniusweb.runserver.WebSocketProtToPartyConn.send(WebSocketProtToPartyConn.java:42)
+		at geniusweb.protocol.session.saop.SAOP.sendFinish(SAOP.java:366)
+		at geniusweb.protocol.session.saop.SAOP.finish(SAOP.java:359)
+		at geniusweb.protocol.session.saop.SAOP.setState(SAOP.java:341)
+		at geniusweb.protocol.session.saop.SAOP.handleError(SAOP.java:321)
+		at geniusweb.protocol.session.saop.SAOP.actionRequest(SAOP.java:271)
+		at geniusweb.protocol.session.saop.SAOP.lambda$setupParties$1(SAOP.java:222)
+		at tudelft.utilities.listener.DefaultListenable.notifyListeners(DefaultListenable.java:38)
+		at geniusweb.runserver.WebSocketProtToPartyConn.setError(WebSocketProtToPartyConn.java:245)
+		at geniusweb.runserver.WebSocketProtToPartyConn.onClose(WebSocketProtToPartyConn.java:191)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+		at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:103)
+		at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:556)
+		at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:534)
+		at org.apache.tomcat.websocket.WsFrameBase.processDataControl(WsFrameBase.java:367)
+		at org.apache.tomcat.websocket.WsFrameBase.processData(WsFrameBase.java:296)
+		at org.apache.tomcat.websocket.WsFrameBase.processInputBuffer(WsFrameBase.java:133)
+		at org.apache.tomcat.websocket.WsFrameClient.processSocketRead(WsFrameClient.java:95)
+		at org.apache.tomcat.websocket.WsFrameClient.resumeProcessing(WsFrameClient.java:212)
+		at org.apache.tomcat.websocket.WsFrameClient.access$500(WsFrameClient.java:31)
+		at org.apache.tomcat.websocket.WsFrameClient$WsFrameClientCompletionHandler.doResumeProcessing(WsFrameClient.java:189)
+		at org.apache.tomcat.websocket.WsFrameClient$WsFrameClientCompletionHandler.completed(WsFrameClient.java:163)
+		at org.apache.tomcat.websocket.WsFrameClient$WsFrameClientCompletionHandler.completed(WsFrameClient.java:148)
+		at java.base/sun.nio.ch.Invoker.invokeUnchecked(Invoker.java:127)
+		at java.base/sun.nio.ch.Invoker$2.run(Invoker.java:219)
+		at java.base/sun.nio.ch.AsynchronousChannelGroupImpl$1.run(AsynchronousChannelGroupImpl.java:112)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+		at java.base/java.lang.Thread.run(Thread.java:835)
+24-Feb-2021 10:56:14.470 INFO [WebSocketClient-AsyncIO-1] tudelft.utilities.logging.ReportToLogger.log Party close called
+24-Feb-2021 10:56:14.471 INFO [http-nio-8080-exec-3] tudelft.utilities.logging.ReportToLogger.log Final ourcome:Finished[Agreements{}]
+24-Feb-2021 10:56:14.471 INFO [WebSocketClient-AsyncIO-1] tudelft.utilities.logging.ReportToLogger.log closing websocket PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/boulware-1.5.8]:CloseReason: code [1000], reason []
+24-Feb-2021 10:56:14.471 INFO [http-nio-8080-exec-3] tudelft.utilities.logging.ReportToLogger.log socket closed to party6_192_168_2_12
+24-Feb-2021 10:56:14.471 WARNING [WebSocketClient-AsyncIO-1] tudelft.utilities.logging.ReportToLogger.log SAOP protocol intercepted error due to party party6_192_168_2_12:geniusweb.runserver.WebSocketProtToPartyConn@7c3ab6cdProtocol error
+	geniusweb.runserver.RemoteException: Session PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/boulware-1.5.8] closed abnoramlly (see party server for more details) 
+24-Feb-2021 10:56:14.472 INFO [http-nio-8080-exec-3] tudelft.utilities.logging.ReportToLogger.log Party party6_192_168_2_12 was terminated 
+24-Feb-2021 10:56:14.481 WARNING [WebSocketClient-AsyncIO-1] tudelft.utilities.logging.ReportToLogger.log SAOP protocol intercepted error due to party party5_192_168_2_12:geniusweb.runserver.WebSocketProtToPartyConn@3d8596e0Protocol error
+	geniusweb.runserver.RemoteException: Session PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies] closed abnoramlly (see party server for more details) party threw exception:  : RuntimeException:Failed to handle info : ArithmeticException:Non-terminating decimal expansion…
+24-Feb-2021 11:04:24.661 INFO [http-nio-8080-exec-9] tudelft.utilities.logging.ReportToLogger.log New connection ws://localhost:8080/profilesserver-1.5.8/websocket/liststream
+24-Feb-2021 11:04:34.895 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log request to run Nego: SAOPSettings[PartyWithProfile[PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/conceder-1.5.8],ProfileRef[ws://192.168.2.12:8080/profilesserver-1.5.8/websocket/get/jobs/jobs1]], PartyWithProfile[PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/timedependentparty-1.5.8],ProfileRef[ws://192.168.2.12:8080/profilesserver-1.5.8/websocket/get/jobs/jobs2]]],DeadlineRounds[200,10000]]
+24-Feb-2021 11:04:34.896 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log SAOP connect [PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/conceder-1.5.8], PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/timedependentparty-1.5.8]]
+24-Feb-2021 11:04:34.897 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log attempting to connect [PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/conceder-1.5.8], PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/timedependentparty-1.5.8]]
+24-Feb-2021 11:04:34.897 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log Trying to start up party PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/conceder-1.5.8]
+24-Feb-2021 11:04:34.899 INFO [http-nio-8080-exec-10] tudelft.utilities.logging.ReportToLogger.log request to run conceder-1.5.8
+24-Feb-2021 11:04:34.900 INFO [http-nio-8080-exec-10] tudelft.utilities.logging.ReportToLogger.log started conceder-1.5.8
+24-Feb-2021 11:04:34.918 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log startparty returned ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party7_192_168_2_12
+24-Feb-2021 11:04:34.923 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log Trying to make websocket connection to running party ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party7_192_168_2_12
+24-Feb-2021 11:04:34.931 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log Party is being connected: org.apache.tomcat.websocket.WsSession@6b96af21
+24-Feb-2021 11:04:34.931 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log Created websocket connection at  ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party7_192_168_2_12
+24-Feb-2021 11:04:34.933 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log Trying to start up party PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/timedependentparty-1.5.8]
+24-Feb-2021 11:04:34.935 INFO [http-nio-8080-exec-6] tudelft.utilities.logging.ReportToLogger.log request to run timedependentparty-1.5.8
+24-Feb-2021 11:04:34.935 INFO [http-nio-8080-exec-6] tudelft.utilities.logging.ReportToLogger.log started timedependentparty-1.5.8
+24-Feb-2021 11:04:34.940 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log startparty returned ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party8_192_168_2_12
+24-Feb-2021 11:04:34.941 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log Trying to make websocket connection to running party ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party8_192_168_2_12
+24-Feb-2021 11:04:34.945 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log Party is being connected: org.apache.tomcat.websocket.WsSession@42484eb2
+24-Feb-2021 11:04:34.945 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log Created websocket connection at  ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party8_192_168_2_12
+24-Feb-2021 11:04:34.946 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log succesfully connected [PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/conceder-1.5.8], PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/timedependentparty-1.5.8]]
+24-Feb-2021 11:04:34.948 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log SAOP deadline set to 2021/02/24 11:04:44
+24-Feb-2021 11:04:35.630 INFO [WebSocketClient-AsyncIO-3] tudelft.utilities.logging.ReportToLogger.log Party close called
+24-Feb-2021 11:04:35.630 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log Final ourcome:Finished[Agreements{}]
+24-Feb-2021 11:04:35.631 INFO [WebSocketClient-AsyncIO-3] tudelft.utilities.logging.ReportToLogger.log closing websocket PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/conceder-1.5.8]:CloseReason: code [1000], reason []
+24-Feb-2021 11:04:35.632 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log socket closed to party7_192_168_2_12
+24-Feb-2021 11:04:35.632 WARNING [WebSocketClient-AsyncIO-3] tudelft.utilities.logging.ReportToLogger.log SAOP protocol intercepted error due to party party7_192_168_2_12:geniusweb.runserver.WebSocketProtToPartyConn@9cfb559Protocol error
+	geniusweb.runserver.RemoteException: Session PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/conceder-1.5.8] closed abnoramlly (see party server for more details) 
+24-Feb-2021 11:04:35.633 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log Party party7_192_168_2_12 was terminated 
+24-Feb-2021 11:04:35.633 INFO [WebSocketClient-AsyncIO-3] tudelft.utilities.logging.ReportToLogger.log Party close called
+24-Feb-2021 11:04:35.634 INFO [http-nio-8080-exec-1] tudelft.utilities.logging.ReportToLogger.log Final ourcome:Finished[Agreements{}]
+24-Feb-2021 11:04:35.635 INFO [WebSocketClient-AsyncIO-3] tudelft.utilities.logging.ReportToLogger.log closing websocket PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/timedependentparty-1.5.8]:CloseReason: code [1000], reason []
+24-Feb-2021 11:04:35.635 INFO [http-nio-8080-exec-2] tudelft.utilities.logging.ReportToLogger.log socket closed to party8_192_168_2_12
+24-Feb-2021 11:04:35.636 WARNING [WebSocketClient-AsyncIO-3] tudelft.utilities.logging.ReportToLogger.log SAOP protocol intercepted error due to party party8_192_168_2_12:geniusweb.runserver.WebSocketProtToPartyConn@337de29Protocol error
+	geniusweb.runserver.RemoteException: Session PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/timedependentparty-1.5.8] closed abnoramlly (see party server for more details) 
+24-Feb-2021 11:04:35.636 INFO [http-nio-8080-exec-2] tudelft.utilities.logging.ReportToLogger.log Party party8_192_168_2_12 was terminated 
+24-Feb-2021 11:19:04.219 INFO [http-nio-8080-exec-10] tudelft.utilities.logging.ReportToLogger.log New connection ws://localhost:8080/profilesserver-1.5.8/websocket/liststream
+24-Feb-2021 12:08:45.418 INFO [http-nio-8080-exec-2] tudelft.utilities.logging.ReportToLogger.log New connection ws://localhost:8080/profilesserver-1.5.8/websocket/liststream
+24-Feb-2021 12:09:06.911 INFO [http-nio-8080-exec-3] tudelft.utilities.logging.ReportToLogger.log request to run Nego: AllPermutationsSettings[[[PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies]], [PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/conceder-1.5.8]]],false,[[ProfileRef[ws://192.168.2.12:8080/profilesserver-1.5.8/websocket/get/jobs/jobs1]], [ProfileRef[ws://192.168.2.12:8080/profilesserver-1.5.8/websocket/get/jobs/jobs2]]],2,SAOPSettings[],DeadlineRounds[10,10000]],1]
+24-Feb-2021 12:09:06.921 INFO [Thread-29] tudelft.utilities.logging.ReportToLogger.log Tournament geniusweb.protocol.tournament.allpermutations.AllPermutationsProtocol$1@66bf47d starting next session 
+24-Feb-2021 12:09:06.925 INFO [Thread-29] tudelft.utilities.logging.ReportToLogger.log SAOP connect [PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies], PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/conceder-1.5.8]]
+24-Feb-2021 12:09:06.925 INFO [Thread-29] tudelft.utilities.logging.ReportToLogger.log attempting to connect [PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies], PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/conceder-1.5.8]]
+24-Feb-2021 12:09:06.926 INFO [Thread-29] tudelft.utilities.logging.ReportToLogger.log Trying to start up party PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies]
+24-Feb-2021 12:09:06.929 INFO [http-nio-8080-exec-10] tudelft.utilities.logging.ReportToLogger.log request to run group19party-1.5.8-jar-with-dependencies
+24-Feb-2021 12:09:06.929 INFO [http-nio-8080-exec-10] tudelft.utilities.logging.ReportToLogger.log started group19party-1.5.8-jar-with-dependencies
+24-Feb-2021 12:09:06.951 INFO [Thread-29] tudelft.utilities.logging.ReportToLogger.log startparty returned ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party9_192_168_2_12
+24-Feb-2021 12:09:06.954 INFO [Thread-29] tudelft.utilities.logging.ReportToLogger.log Trying to make websocket connection to running party ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party9_192_168_2_12
+24-Feb-2021 12:09:06.958 INFO [Thread-29] tudelft.utilities.logging.ReportToLogger.log Party is being connected: org.apache.tomcat.websocket.WsSession@3fb7f495
+24-Feb-2021 12:09:06.958 INFO [Thread-29] tudelft.utilities.logging.ReportToLogger.log Created websocket connection at  ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party9_192_168_2_12
+24-Feb-2021 12:09:06.959 INFO [Thread-29] tudelft.utilities.logging.ReportToLogger.log Trying to start up party PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/conceder-1.5.8]
+24-Feb-2021 12:09:06.960 INFO [http-nio-8080-exec-9] tudelft.utilities.logging.ReportToLogger.log request to run conceder-1.5.8
+24-Feb-2021 12:09:06.961 INFO [http-nio-8080-exec-9] tudelft.utilities.logging.ReportToLogger.log started conceder-1.5.8
+24-Feb-2021 12:09:06.965 INFO [Thread-29] tudelft.utilities.logging.ReportToLogger.log startparty returned ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party10_192_168_2_12
+24-Feb-2021 12:09:06.965 INFO [Thread-29] tudelft.utilities.logging.ReportToLogger.log Trying to make websocket connection to running party ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party10_192_168_2_12
+24-Feb-2021 12:09:06.970 INFO [Thread-29] tudelft.utilities.logging.ReportToLogger.log Party is being connected: org.apache.tomcat.websocket.WsSession@79e1b857
+24-Feb-2021 12:09:06.970 INFO [Thread-29] tudelft.utilities.logging.ReportToLogger.log Created websocket connection at  ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party10_192_168_2_12
+24-Feb-2021 12:09:06.970 INFO [Thread-29] tudelft.utilities.logging.ReportToLogger.log succesfully connected [PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies], PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/conceder-1.5.8]]
+24-Feb-2021 12:09:06.973 INFO [Thread-29] tudelft.utilities.logging.ReportToLogger.log SAOP deadline set to 2021/02/24 12:09:16
+24-Feb-2021 12:09:07.177 WARNING [http-nio-8080-exec-6] tudelft.utilities.logging.ReportToLogger.log Party failed on inform.
+	java.lang.RuntimeException: Failed to handle info
+		at cai.group19.Group19Party.notifyChange(Group19Party.java:153)
+		at cai.group19.Group19Party.notifyChange(Group19Party.java:70)
+		at geniusweb.partiesserver.websocket.PartySocket.notifyListeners(PartySocket.java:281)
+		at geniusweb.partiesserver.repository.RunningParty.inform(RunningParty.java:221)
+		at geniusweb.partiesserver.websocket.PartySocket.onMessage(PartySocket.java:143)
+		at jdk.internal.reflect.GeneratedMethodAccessor51.invoke(Unknown Source)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+		at org.apache.tomcat.websocket.pojo.PojoMessageHandlerWholeBase.onMessage(PojoMessageHandlerWholeBase.java:80)
+		at org.apache.tomcat.websocket.WsFrameBase.sendMessageText(WsFrameBase.java:414)
+		at org.apache.tomcat.websocket.server.WsFrameServer.sendMessageText(WsFrameServer.java:129)
+		at org.apache.tomcat.websocket.WsFrameBase.processDataText(WsFrameBase.java:515)
+		at org.apache.tomcat.websocket.WsFrameBase.processData(WsFrameBase.java:301)
+		at org.apache.tomcat.websocket.WsFrameBase.processInputBuffer(WsFrameBase.java:133)
+		at org.apache.tomcat.websocket.server.WsFrameServer.onDataAvailable(WsFrameServer.java:85)
+		at org.apache.tomcat.websocket.server.WsFrameServer.doOnDataAvailable(WsFrameServer.java:183)
+		at org.apache.tomcat.websocket.server.WsFrameServer.notifyDataAvailable(WsFrameServer.java:162)
+		at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:156)
+		at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:831)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1629)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+		at java.base/java.lang.Thread.run(Thread.java:835)
+	Caused by: java.lang.IllegalArgumentException: Issues in bid ([lease car, permanent contract, career development opportunities, salary, fte]) do not match issues in domain ([lease car, permanent contract, career development opportunities, fte, salary, work from home])
+		at geniusweb.opponentmodel.FrequencyOpponentModel.getUtility(FrequencyOpponentModel.java:91)
+		at cai.group19.Group19Party.updateTargetUtility(Group19Party.java:347)
+		at cai.group19.Group19Party.notifyChange(Group19Party.java:137)
+		... 26 more
+24-Feb-2021 12:09:07.178 INFO [http-nio-8080-exec-6] tudelft.utilities.logging.ReportToLogger.log socket closed to party9_192_168_2_12
+24-Feb-2021 12:09:07.178 INFO [WebSocketClient-AsyncIO-3] tudelft.utilities.logging.ReportToLogger.log closing websocket PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies]:CloseReason: code [1002], reason [party threw exception:  : RuntimeException:Failed to handle info : IllegalArgumentException:Issues in bid ([lease car, p…]
+24-Feb-2021 12:09:07.179 INFO [http-nio-8080-exec-6] tudelft.utilities.logging.ReportToLogger.log Party party9_192_168_2_12 was terminated 
+24-Feb-2021 12:09:07.181 INFO [WebSocketClient-AsyncIO-3] tudelft.utilities.logging.ReportToLogger.log Failed to send Finished to geniusweb.runserver.WebSocketProtToPartyConn@36a89166
+	java.lang.IllegalStateException: Message will not be sent because the WebSocket session has been closed
+		at org.apache.tomcat.websocket.WsRemoteEndpointImplBase.writeMessagePart(WsRemoteEndpointImplBase.java:438)
+		at org.apache.tomcat.websocket.WsRemoteEndpointImplBase.sendMessageBlock(WsRemoteEndpointImplBase.java:311)
+		at org.apache.tomcat.websocket.WsRemoteEndpointImplBase.sendMessageBlock(WsRemoteEndpointImplBase.java:251)
+		at org.apache.tomcat.websocket.WsRemoteEndpointImplBase.sendString(WsRemoteEndpointImplBase.java:192)
+		at org.apache.tomcat.websocket.WsRemoteEndpointBasic.sendText(WsRemoteEndpointBasic.java:37)
+		at geniusweb.runserver.WebSocketProtToPartyConn.send(WebSocketProtToPartyConn.java:150)
+		at geniusweb.runserver.WebSocketProtToPartyConn.send(WebSocketProtToPartyConn.java:42)
+		at geniusweb.protocol.session.saop.SAOP.sendFinish(SAOP.java:366)
+		at geniusweb.protocol.session.saop.SAOP.finish(SAOP.java:359)
+		at geniusweb.protocol.session.saop.SAOP.setState(SAOP.java:341)
+		at geniusweb.protocol.session.saop.SAOP.handleError(SAOP.java:321)
+		at geniusweb.protocol.session.saop.SAOP.actionRequest(SAOP.java:271)
+		at geniusweb.protocol.session.saop.SAOP.lambda$setupParties$1(SAOP.java:222)
+		at tudelft.utilities.listener.DefaultListenable.notifyListeners(DefaultListenable.java:38)
+		at geniusweb.runserver.WebSocketProtToPartyConn.setError(WebSocketProtToPartyConn.java:245)
+		at geniusweb.runserver.WebSocketProtToPartyConn.onClose(WebSocketProtToPartyConn.java:191)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+		at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:103)
+		at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:556)
+		at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:534)
+		at org.apache.tomcat.websocket.WsFrameBase.processDataControl(WsFrameBase.java:367)
+		at org.apache.tomcat.websocket.WsFrameBase.processData(WsFrameBase.java:296)
+		at org.apache.tomcat.websocket.WsFrameBase.processInputBuffer(WsFrameBase.java:133)
+		at org.apache.tomcat.websocket.WsFrameClient.processSocketRead(WsFrameClient.java:95)
+		at org.apache.tomcat.websocket.WsFrameClient.resumeProcessing(WsFrameClient.java:212)
+		at org.apache.tomcat.websocket.WsFrameClient.access$500(WsFrameClient.java:31)
+		at org.apache.tomcat.websocket.WsFrameClient$WsFrameClientCompletionHandler.doResumeProcessing(WsFrameClient.java:189)
+		at org.apache.tomcat.websocket.WsFrameClient$WsFrameClientCompletionHandler.completed(WsFrameClient.java:163)
+		at org.apache.tomcat.websocket.WsFrameClient$WsFrameClientCompletionHandler.completed(WsFrameClient.java:148)
+		at java.base/sun.nio.ch.Invoker.invokeUnchecked(Invoker.java:127)
+		at java.base/sun.nio.ch.Invoker$2.run(Invoker.java:219)
+		at java.base/sun.nio.ch.AsynchronousChannelGroupImpl$1.run(AsynchronousChannelGroupImpl.java:112)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+		at java.base/java.lang.Thread.run(Thread.java:835)
+24-Feb-2021 12:09:07.182 INFO [WebSocketClient-AsyncIO-3] tudelft.utilities.logging.ReportToLogger.log Party close called
+24-Feb-2021 12:09:07.182 INFO [http-nio-8080-exec-8] tudelft.utilities.logging.ReportToLogger.log Final ourcome:Finished[Agreements{}]
+24-Feb-2021 12:09:07.182 INFO [WebSocketClient-AsyncIO-3] tudelft.utilities.logging.ReportToLogger.log closing websocket PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/conceder-1.5.8]:CloseReason: code [1000], reason []
+24-Feb-2021 12:09:07.183 INFO [http-nio-8080-exec-8] tudelft.utilities.logging.ReportToLogger.log socket closed to party10_192_168_2_12
+24-Feb-2021 12:09:07.183 WARNING [WebSocketClient-AsyncIO-3] tudelft.utilities.logging.ReportToLogger.log SAOP protocol intercepted error due to party party10_192_168_2_12:geniusweb.runserver.WebSocketProtToPartyConn@51469114Protocol error
+	geniusweb.runserver.RemoteException: Session PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/conceder-1.5.8] closed abnoramlly (see party server for more details) 
+24-Feb-2021 12:09:07.183 INFO [http-nio-8080-exec-8] tudelft.utilities.logging.ReportToLogger.log Party party10_192_168_2_12 was terminated 
+24-Feb-2021 12:09:07.192 WARNING [WebSocketClient-AsyncIO-3] tudelft.utilities.logging.ReportToLogger.log SAOP protocol intercepted error due to party party9_192_168_2_12:geniusweb.runserver.WebSocketProtToPartyConn@36a89166Protocol error
+	geniusweb.runserver.RemoteException: Session PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies] closed abnoramlly (see party server for more details) party threw exception:  : RuntimeException:Failed to handle info : IllegalArgumentException:Issues in bid ([lease car, p…
+24-Feb-2021 12:09:07.193 INFO [Thread-33] tudelft.utilities.logging.ReportToLogger.log Tournament geniusweb.protocol.tournament.allpermutations.AllPermutationsProtocol$1@35920b1c starting next session 
+24-Feb-2021 12:09:07.194 INFO [Thread-33] tudelft.utilities.logging.ReportToLogger.log SAOP connect [PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/conceder-1.5.8], PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies]]
+24-Feb-2021 12:09:07.194 INFO [Thread-33] tudelft.utilities.logging.ReportToLogger.log attempting to connect [PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/conceder-1.5.8], PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies]]
+24-Feb-2021 12:09:07.194 INFO [Thread-33] tudelft.utilities.logging.ReportToLogger.log Trying to start up party PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/conceder-1.5.8]
+24-Feb-2021 12:09:07.196 INFO [http-nio-8080-exec-2] tudelft.utilities.logging.ReportToLogger.log request to run conceder-1.5.8
+24-Feb-2021 12:09:07.196 INFO [http-nio-8080-exec-2] tudelft.utilities.logging.ReportToLogger.log started conceder-1.5.8
+24-Feb-2021 12:09:07.201 INFO [Thread-33] tudelft.utilities.logging.ReportToLogger.log startparty returned ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party11_192_168_2_12
+24-Feb-2021 12:09:07.202 INFO [Thread-33] tudelft.utilities.logging.ReportToLogger.log Trying to make websocket connection to running party ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party11_192_168_2_12
+24-Feb-2021 12:09:07.206 INFO [Thread-33] tudelft.utilities.logging.ReportToLogger.log Party is being connected: org.apache.tomcat.websocket.WsSession@7b9b8782
+24-Feb-2021 12:09:07.207 INFO [Thread-33] tudelft.utilities.logging.ReportToLogger.log Created websocket connection at  ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party11_192_168_2_12
+24-Feb-2021 12:09:07.208 INFO [Thread-33] tudelft.utilities.logging.ReportToLogger.log Trying to start up party PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies]
+24-Feb-2021 12:09:07.210 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log request to run group19party-1.5.8-jar-with-dependencies
+24-Feb-2021 12:09:07.210 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log started group19party-1.5.8-jar-with-dependencies
+24-Feb-2021 12:09:07.214 INFO [Thread-33] tudelft.utilities.logging.ReportToLogger.log startparty returned ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party12_192_168_2_12
+24-Feb-2021 12:09:07.215 INFO [Thread-33] tudelft.utilities.logging.ReportToLogger.log Trying to make websocket connection to running party ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party12_192_168_2_12
+24-Feb-2021 12:09:07.219 INFO [Thread-33] tudelft.utilities.logging.ReportToLogger.log Party is being connected: org.apache.tomcat.websocket.WsSession@22805b95
+24-Feb-2021 12:09:07.220 INFO [Thread-33] tudelft.utilities.logging.ReportToLogger.log Created websocket connection at  ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party12_192_168_2_12
+24-Feb-2021 12:09:07.220 INFO [Thread-33] tudelft.utilities.logging.ReportToLogger.log succesfully connected [PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/conceder-1.5.8], PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies]]
+24-Feb-2021 12:09:07.221 INFO [Thread-33] tudelft.utilities.logging.ReportToLogger.log SAOP deadline set to 2021/02/24 12:09:17
+24-Feb-2021 12:09:07.403 WARNING [http-nio-8080-exec-10] tudelft.utilities.logging.ReportToLogger.log Party failed on inform.
+	java.lang.RuntimeException: Failed to handle info
+		at cai.group19.Group19Party.notifyChange(Group19Party.java:153)
+		at cai.group19.Group19Party.notifyChange(Group19Party.java:70)
+		at geniusweb.partiesserver.websocket.PartySocket.notifyListeners(PartySocket.java:281)
+		at geniusweb.partiesserver.repository.RunningParty.inform(RunningParty.java:221)
+		at geniusweb.partiesserver.websocket.PartySocket.onMessage(PartySocket.java:143)
+		at jdk.internal.reflect.GeneratedMethodAccessor51.invoke(Unknown Source)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+		at org.apache.tomcat.websocket.pojo.PojoMessageHandlerWholeBase.onMessage(PojoMessageHandlerWholeBase.java:80)
+		at org.apache.tomcat.websocket.WsFrameBase.sendMessageText(WsFrameBase.java:414)
+		at org.apache.tomcat.websocket.server.WsFrameServer.sendMessageText(WsFrameServer.java:129)
+		at org.apache.tomcat.websocket.WsFrameBase.processDataText(WsFrameBase.java:515)
+		at org.apache.tomcat.websocket.WsFrameBase.processData(WsFrameBase.java:301)
+		at org.apache.tomcat.websocket.WsFrameBase.processInputBuffer(WsFrameBase.java:133)
+		at org.apache.tomcat.websocket.server.WsFrameServer.onDataAvailable(WsFrameServer.java:85)
+		at org.apache.tomcat.websocket.server.WsFrameServer.doOnDataAvailable(WsFrameServer.java:183)
+		at org.apache.tomcat.websocket.server.WsFrameServer.notifyDataAvailable(WsFrameServer.java:162)
+		at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:156)
+		at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:831)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1629)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+		at java.base/java.lang.Thread.run(Thread.java:835)
+	Caused by: java.lang.IllegalArgumentException: Issues in bid ([lease car, permanent contract, career development opportunities, salary, fte]) do not match issues in domain ([lease car, permanent contract, career development opportunities, fte, salary, work from home])
+		at geniusweb.opponentmodel.FrequencyOpponentModel.getUtility(FrequencyOpponentModel.java:91)
+		at cai.group19.Group19Party.updateTargetUtility(Group19Party.java:347)
+		at cai.group19.Group19Party.notifyChange(Group19Party.java:137)
+		... 26 more
+24-Feb-2021 12:09:07.404 INFO [http-nio-8080-exec-10] tudelft.utilities.logging.ReportToLogger.log socket closed to party12_192_168_2_12
+24-Feb-2021 12:09:07.404 INFO [WebSocketClient-AsyncIO-1] tudelft.utilities.logging.ReportToLogger.log closing websocket PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies]:CloseReason: code [1002], reason [party threw exception:  : RuntimeException:Failed to handle info : IllegalArgumentException:Issues in bid ([lease car, p…]
+24-Feb-2021 12:09:07.406 INFO [http-nio-8080-exec-10] tudelft.utilities.logging.ReportToLogger.log Party party12_192_168_2_12 was terminated 
+24-Feb-2021 12:09:07.407 INFO [WebSocketClient-AsyncIO-1] tudelft.utilities.logging.ReportToLogger.log Party close called
+24-Feb-2021 12:09:07.407 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log Final ourcome:Finished[Agreements{}]
+24-Feb-2021 12:09:07.407 INFO [WebSocketClient-AsyncIO-1] tudelft.utilities.logging.ReportToLogger.log closing websocket PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/conceder-1.5.8]:CloseReason: code [1000], reason []
+24-Feb-2021 12:09:07.407 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log socket closed to party11_192_168_2_12
+24-Feb-2021 12:09:07.408 WARNING [WebSocketClient-AsyncIO-1] tudelft.utilities.logging.ReportToLogger.log SAOP protocol intercepted error due to party party11_192_168_2_12:geniusweb.runserver.WebSocketProtToPartyConn@777f326Protocol error
+	geniusweb.runserver.RemoteException: Session PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/conceder-1.5.8] closed abnoramlly (see party server for more details) 
+24-Feb-2021 12:09:07.408 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log Party party11_192_168_2_12 was terminated 
+24-Feb-2021 12:09:07.408 INFO [WebSocketClient-AsyncIO-1] tudelft.utilities.logging.ReportToLogger.log Failed to send Finished to geniusweb.runserver.WebSocketProtToPartyConn@42831cd3
+	java.lang.IllegalStateException: Message will not be sent because the WebSocket session has been closed
+		at org.apache.tomcat.websocket.WsRemoteEndpointImplBase.writeMessagePart(WsRemoteEndpointImplBase.java:438)
+		at org.apache.tomcat.websocket.WsRemoteEndpointImplBase.sendMessageBlock(WsRemoteEndpointImplBase.java:311)
+		at org.apache.tomcat.websocket.WsRemoteEndpointImplBase.sendMessageBlock(WsRemoteEndpointImplBase.java:251)
+		at org.apache.tomcat.websocket.WsRemoteEndpointImplBase.sendString(WsRemoteEndpointImplBase.java:192)
+		at org.apache.tomcat.websocket.WsRemoteEndpointBasic.sendText(WsRemoteEndpointBasic.java:37)
+		at geniusweb.runserver.WebSocketProtToPartyConn.send(WebSocketProtToPartyConn.java:150)
+		at geniusweb.runserver.WebSocketProtToPartyConn.send(WebSocketProtToPartyConn.java:42)
+		at geniusweb.protocol.session.saop.SAOP.sendFinish(SAOP.java:366)
+		at geniusweb.protocol.session.saop.SAOP.finish(SAOP.java:359)
+		at geniusweb.protocol.session.saop.SAOP.setState(SAOP.java:341)
+		at geniusweb.protocol.session.saop.SAOP.handleError(SAOP.java:321)
+		at geniusweb.protocol.session.saop.SAOP.actionRequest(SAOP.java:271)
+		at geniusweb.protocol.session.saop.SAOP.lambda$setupParties$1(SAOP.java:222)
+		at tudelft.utilities.listener.DefaultListenable.notifyListeners(DefaultListenable.java:38)
+		at geniusweb.runserver.WebSocketProtToPartyConn.setError(WebSocketProtToPartyConn.java:245)
+		at geniusweb.runserver.WebSocketProtToPartyConn.onClose(WebSocketProtToPartyConn.java:191)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+		at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:103)
+		at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:556)
+		at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:534)
+		at org.apache.tomcat.websocket.WsFrameBase.processDataControl(WsFrameBase.java:367)
+		at org.apache.tomcat.websocket.WsFrameBase.processData(WsFrameBase.java:296)
+		at org.apache.tomcat.websocket.WsFrameBase.processInputBuffer(WsFrameBase.java:133)
+		at org.apache.tomcat.websocket.WsFrameClient.processSocketRead(WsFrameClient.java:95)
+		at org.apache.tomcat.websocket.WsFrameClient.resumeProcessing(WsFrameClient.java:212)
+		at org.apache.tomcat.websocket.WsFrameClient.access$500(WsFrameClient.java:31)
+		at org.apache.tomcat.websocket.WsFrameClient$WsFrameClientCompletionHandler.doResumeProcessing(WsFrameClient.java:189)
+		at org.apache.tomcat.websocket.WsFrameClient$WsFrameClientCompletionHandler.completed(WsFrameClient.java:163)
+		at org.apache.tomcat.websocket.WsFrameClient$WsFrameClientCompletionHandler.completed(WsFrameClient.java:148)
+		at java.base/sun.nio.ch.Invoker.invokeUnchecked(Invoker.java:127)
+		at java.base/sun.nio.ch.Invoker$2.run(Invoker.java:219)
+		at java.base/sun.nio.ch.AsynchronousChannelGroupImpl$1.run(AsynchronousChannelGroupImpl.java:112)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+		at java.base/java.lang.Thread.run(Thread.java:835)
+24-Feb-2021 12:09:07.411 WARNING [WebSocketClient-AsyncIO-1] tudelft.utilities.logging.ReportToLogger.log SAOP protocol intercepted error due to party party12_192_168_2_12:geniusweb.runserver.WebSocketProtToPartyConn@42831cd3Protocol error
+	geniusweb.runserver.RemoteException: Session PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies] closed abnoramlly (see party server for more details) party threw exception:  : RuntimeException:Failed to handle info : IllegalArgumentException:Issues in bid ([lease car, p…
+24-Feb-2021 12:17:12.135 INFO [http-nio-8080-exec-8] tudelft.utilities.logging.ReportToLogger.log New connection ws://localhost:8080/profilesserver-1.5.8/websocket/liststream
+24-Feb-2021 12:17:23.689 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log request to run Nego: SAOPSettings[PartyWithProfile[PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies],ProfileRef[ws://192.168.2.12:8080/profilesserver-1.5.8/websocket/get/jobs/jobs1]], PartyWithProfile[PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/timedependentparty-1.5.8],ProfileRef[ws://192.168.2.12:8080/profilesserver-1.5.8/websocket/get/jobs/jobs2]]],DeadlineRounds[10,10000]]
+24-Feb-2021 12:17:23.690 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log SAOP connect [PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies], PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/timedependentparty-1.5.8]]
+24-Feb-2021 12:17:23.691 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log attempting to connect [PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies], PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/timedependentparty-1.5.8]]
+24-Feb-2021 12:17:23.691 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log Trying to start up party PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies]
+24-Feb-2021 12:17:23.692 INFO [http-nio-8080-exec-1] tudelft.utilities.logging.ReportToLogger.log request to run group19party-1.5.8-jar-with-dependencies
+24-Feb-2021 12:17:23.693 INFO [http-nio-8080-exec-1] tudelft.utilities.logging.ReportToLogger.log started group19party-1.5.8-jar-with-dependencies
+24-Feb-2021 12:17:23.712 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log startparty returned ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party13_192_168_2_12
+24-Feb-2021 12:17:23.717 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log Trying to make websocket connection to running party ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party13_192_168_2_12
+24-Feb-2021 12:17:23.722 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log Party is being connected: org.apache.tomcat.websocket.WsSession@4d28b27
+24-Feb-2021 12:17:23.722 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log Created websocket connection at  ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party13_192_168_2_12
+24-Feb-2021 12:17:23.723 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log Trying to start up party PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/timedependentparty-1.5.8]
+24-Feb-2021 12:17:23.724 INFO [http-nio-8080-exec-9] tudelft.utilities.logging.ReportToLogger.log request to run timedependentparty-1.5.8
+24-Feb-2021 12:17:23.724 INFO [http-nio-8080-exec-9] tudelft.utilities.logging.ReportToLogger.log started timedependentparty-1.5.8
+24-Feb-2021 12:17:23.729 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log startparty returned ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party14_192_168_2_12
+24-Feb-2021 12:17:23.729 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log Trying to make websocket connection to running party ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party14_192_168_2_12
+24-Feb-2021 12:17:23.734 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log Party is being connected: org.apache.tomcat.websocket.WsSession@542200de
+24-Feb-2021 12:17:23.734 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log Created websocket connection at  ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party14_192_168_2_12
+24-Feb-2021 12:17:23.735 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log succesfully connected [PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies], PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/timedependentparty-1.5.8]]
+24-Feb-2021 12:17:23.736 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log SAOP deadline set to 2021/02/24 12:17:33
+24-Feb-2021 12:17:23.917 WARNING [http-nio-8080-exec-9] tudelft.utilities.logging.ReportToLogger.log Party failed on inform.
+	java.lang.RuntimeException: Failed to handle info
+		at cai.group19.Group19Party.notifyChange(Group19Party.java:153)
+		at cai.group19.Group19Party.notifyChange(Group19Party.java:70)
+		at geniusweb.partiesserver.websocket.PartySocket.notifyListeners(PartySocket.java:281)
+		at geniusweb.partiesserver.repository.RunningParty.inform(RunningParty.java:221)
+		at geniusweb.partiesserver.websocket.PartySocket.onMessage(PartySocket.java:143)
+		at jdk.internal.reflect.GeneratedMethodAccessor51.invoke(Unknown Source)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+		at org.apache.tomcat.websocket.pojo.PojoMessageHandlerWholeBase.onMessage(PojoMessageHandlerWholeBase.java:80)
+		at org.apache.tomcat.websocket.WsFrameBase.sendMessageText(WsFrameBase.java:414)
+		at org.apache.tomcat.websocket.server.WsFrameServer.sendMessageText(WsFrameServer.java:129)
+		at org.apache.tomcat.websocket.WsFrameBase.processDataText(WsFrameBase.java:515)
+		at org.apache.tomcat.websocket.WsFrameBase.processData(WsFrameBase.java:301)
+		at org.apache.tomcat.websocket.WsFrameBase.processInputBuffer(WsFrameBase.java:133)
+		at org.apache.tomcat.websocket.server.WsFrameServer.onDataAvailable(WsFrameServer.java:85)
+		at org.apache.tomcat.websocket.server.WsFrameServer.doOnDataAvailable(WsFrameServer.java:183)
+		at org.apache.tomcat.websocket.server.WsFrameServer.notifyDataAvailable(WsFrameServer.java:162)
+		at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:156)
+		at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:831)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1629)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+		at java.base/java.lang.Thread.run(Thread.java:835)
+	Caused by: java.lang.IllegalArgumentException: Issues in bid ([career development opportunities, work from home, fte]) do not match issues in domain ([lease car, permanent contract, career development opportunities, fte, salary, work from home])
+		at geniusweb.opponentmodel.FrequencyOpponentModel.getUtility(FrequencyOpponentModel.java:91)
+		at cai.group19.Group19Party.updateTargetUtility(Group19Party.java:347)
+		at cai.group19.Group19Party.notifyChange(Group19Party.java:137)
+		... 26 more
+24-Feb-2021 12:17:23.919 INFO [http-nio-8080-exec-9] tudelft.utilities.logging.ReportToLogger.log socket closed to party13_192_168_2_12
+24-Feb-2021 12:17:23.919 INFO [WebSocketClient-AsyncIO-3] tudelft.utilities.logging.ReportToLogger.log closing websocket PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies]:CloseReason: code [1002], reason [party threw exception:  : RuntimeException:Failed to handle info : IllegalArgumentException:Issues in bid ([career devel…]
+24-Feb-2021 12:17:23.921 INFO [http-nio-8080-exec-9] tudelft.utilities.logging.ReportToLogger.log Party party13_192_168_2_12 was terminated 
+24-Feb-2021 12:17:23.921 INFO [WebSocketClient-AsyncIO-3] tudelft.utilities.logging.ReportToLogger.log Failed to send Finished to geniusweb.runserver.WebSocketProtToPartyConn@ecc9b5b
+	java.lang.IllegalStateException: Message will not be sent because the WebSocket session has been closed
+		at org.apache.tomcat.websocket.WsRemoteEndpointImplBase.writeMessagePart(WsRemoteEndpointImplBase.java:438)
+		at org.apache.tomcat.websocket.WsRemoteEndpointImplBase.sendMessageBlock(WsRemoteEndpointImplBase.java:311)
+		at org.apache.tomcat.websocket.WsRemoteEndpointImplBase.sendMessageBlock(WsRemoteEndpointImplBase.java:251)
+		at org.apache.tomcat.websocket.WsRemoteEndpointImplBase.sendString(WsRemoteEndpointImplBase.java:192)
+		at org.apache.tomcat.websocket.WsRemoteEndpointBasic.sendText(WsRemoteEndpointBasic.java:37)
+		at geniusweb.runserver.WebSocketProtToPartyConn.send(WebSocketProtToPartyConn.java:150)
+		at geniusweb.runserver.WebSocketProtToPartyConn.send(WebSocketProtToPartyConn.java:42)
+		at geniusweb.protocol.session.saop.SAOP.sendFinish(SAOP.java:366)
+		at geniusweb.protocol.session.saop.SAOP.finish(SAOP.java:359)
+		at geniusweb.protocol.session.saop.SAOP.setState(SAOP.java:341)
+		at geniusweb.protocol.session.saop.SAOP.handleError(SAOP.java:321)
+		at geniusweb.protocol.session.saop.SAOP.actionRequest(SAOP.java:271)
+		at geniusweb.protocol.session.saop.SAOP.lambda$setupParties$1(SAOP.java:222)
+		at tudelft.utilities.listener.DefaultListenable.notifyListeners(DefaultListenable.java:38)
+		at geniusweb.runserver.WebSocketProtToPartyConn.setError(WebSocketProtToPartyConn.java:245)
+		at geniusweb.runserver.WebSocketProtToPartyConn.onClose(WebSocketProtToPartyConn.java:191)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+		at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:103)
+		at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:556)
+		at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:534)
+		at org.apache.tomcat.websocket.WsFrameBase.processDataControl(WsFrameBase.java:367)
+		at org.apache.tomcat.websocket.WsFrameBase.processData(WsFrameBase.java:296)
+		at org.apache.tomcat.websocket.WsFrameBase.processInputBuffer(WsFrameBase.java:133)
+		at org.apache.tomcat.websocket.WsFrameClient.processSocketRead(WsFrameClient.java:95)
+		at org.apache.tomcat.websocket.WsFrameClient.resumeProcessing(WsFrameClient.java:212)
+		at org.apache.tomcat.websocket.WsFrameClient.access$500(WsFrameClient.java:31)
+		at org.apache.tomcat.websocket.WsFrameClient$WsFrameClientCompletionHandler.doResumeProcessing(WsFrameClient.java:189)
+		at org.apache.tomcat.websocket.WsFrameClient$WsFrameClientCompletionHandler.completed(WsFrameClient.java:163)
+		at org.apache.tomcat.websocket.WsFrameClient$WsFrameClientCompletionHandler.completed(WsFrameClient.java:148)
+		at java.base/sun.nio.ch.Invoker.invokeUnchecked(Invoker.java:127)
+		at java.base/sun.nio.ch.Invoker$2.run(Invoker.java:219)
+		at java.base/sun.nio.ch.AsynchronousChannelGroupImpl$1.run(AsynchronousChannelGroupImpl.java:112)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+		at java.base/java.lang.Thread.run(Thread.java:835)
+24-Feb-2021 12:17:23.923 INFO [WebSocketClient-AsyncIO-3] tudelft.utilities.logging.ReportToLogger.log Party close called
+24-Feb-2021 12:17:23.923 INFO [http-nio-8080-exec-8] tudelft.utilities.logging.ReportToLogger.log Final ourcome:Finished[Agreements{}]
+24-Feb-2021 12:17:23.923 INFO [WebSocketClient-AsyncIO-3] tudelft.utilities.logging.ReportToLogger.log closing websocket PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/timedependentparty-1.5.8]:CloseReason: code [1000], reason []
+24-Feb-2021 12:17:23.923 INFO [http-nio-8080-exec-8] tudelft.utilities.logging.ReportToLogger.log socket closed to party14_192_168_2_12
+24-Feb-2021 12:17:23.923 WARNING [WebSocketClient-AsyncIO-3] tudelft.utilities.logging.ReportToLogger.log SAOP protocol intercepted error due to party party14_192_168_2_12:geniusweb.runserver.WebSocketProtToPartyConn@7eef2b98Protocol error
+	geniusweb.runserver.RemoteException: Session PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/timedependentparty-1.5.8] closed abnoramlly (see party server for more details) 
+24-Feb-2021 12:17:23.924 INFO [http-nio-8080-exec-8] tudelft.utilities.logging.ReportToLogger.log Party party14_192_168_2_12 was terminated 
+24-Feb-2021 12:17:23.925 WARNING [WebSocketClient-AsyncIO-3] tudelft.utilities.logging.ReportToLogger.log SAOP protocol intercepted error due to party party13_192_168_2_12:geniusweb.runserver.WebSocketProtToPartyConn@ecc9b5bProtocol error
+	geniusweb.runserver.RemoteException: Session PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies] closed abnoramlly (see party server for more details) party threw exception:  : RuntimeException:Failed to handle info : IllegalArgumentException:Issues in bid ([career devel…
+24-Feb-2021 12:38:14.489 INFO [Thread-41] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+24-Feb-2021 12:38:14.710 INFO [Thread-41] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+24-Feb-2021 12:38:14.731 WARNING [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [profilesserver-1.5.8] appears to have started a thread named [Thread-8] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@12.0.2/java.lang.Thread.sleep(Native Method)
+ tudelft.utilities.files.FileWatcher.run(FileWatcher.java:82)
+ java.base@12.0.2/java.lang.Thread.run(Thread.java:835)
+24-Feb-2021 12:38:14.735 WARNING [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [partiesserver-1.5.8] appears to have started a thread named [Thread-3] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@12.0.2/java.lang.Thread.sleep(Native Method)
+ tudelft.utilities.files.FileWatcher.run(FileWatcher.java:82)
+ java.base@12.0.2/java.lang.Thread.run(Thread.java:835)
+24-Feb-2021 12:38:14.736 WARNING [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [partiesserver-1.5.8] appears to have started a thread named [Thread-4] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@12.0.2/java.lang.Thread.sleep(Native Method)
+ geniusweb.partiesserver.RunningPartiesUpdater.run(RunningPartiesUpdater.java:52)
+ java.base@12.0.2/java.lang.Thread.run(Thread.java:835)
+24-Feb-2021 12:38:14.743 INFO [Thread-41] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+24-Feb-2021 12:38:14.745 INFO [Thread-41] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+24-Feb-2021 19:50:49.121 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/8.5.63
+24-Feb-2021 19:50:49.126 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Jan 29 2021 11:21:49 UTC
+24-Feb-2021 19:50:49.126 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 8.5.63.0
+24-Feb-2021 19:50:49.126 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 10
+24-Feb-2021 19:50:49.127 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.0
+24-Feb-2021 19:50:49.127 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+24-Feb-2021 19:50:49.127 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jdk-12.0.2
+24-Feb-2021 19:50:49.127 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           12.0.2+10
+24-Feb-2021 19:50:49.128 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+24-Feb-2021 19:50:49.128 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Program Files\Apache Software Foundation\Tomcat 8.5
+24-Feb-2021 19:50:49.128 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\Program Files\Apache Software Foundation\Tomcat 8.5
+24-Feb-2021 19:50:49.130 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\Program Files\Apache Software Foundation\Tomcat 8.5
+24-Feb-2021 19:50:49.130 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Program Files\Apache Software Foundation\Tomcat 8.5
+24-Feb-2021 19:50:49.131 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Program Files\Apache Software Foundation\Tomcat 8.5\temp
+24-Feb-2021 19:50:49.131 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+24-Feb-2021 19:50:49.131 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Program Files\Apache Software Foundation\Tomcat 8.5\conf\logging.properties
+24-Feb-2021 19:50:49.131 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+24-Feb-2021 19:50:49.132 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+24-Feb-2021 19:50:49.133 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+24-Feb-2021 19:50:49.133 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: exit
+24-Feb-2021 19:50:49.134 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: abort
+24-Feb-2021 19:50:49.134 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Xms128m
+24-Feb-2021 19:50:49.135 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Xmx256m
+24-Feb-2021 19:50:49.135 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The Apache Tomcat Native library which allows using OpenSSL was not found on the java.library.path: [C:\Program Files\Apache Software Foundation\Tomcat 8.5\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Java\jdk-12.0.2\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Git LFS;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Users\kevin\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Python 3.8;C:\Users\kevin\AppData\Local\Programs\Python\Python38\python.exe;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Users\kevin\Anaconda3\Scripts;C:\Users\kevin\Anaconda3;C:\Users\kevin\Anaconda3\Library\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Git\cmd;C:\Users\kevin\AppData\Roaming\local\bin;C:\Users\kevin\AppData\Local\Microsoft\WindowsApps;C:\Users\kevin\AppData\Roaming\npm;C:\Program Files\heroku\bin;C:\Program Files\JetBrains\PyCharm 2019.1.3\bin;C:\Users\kevin\AppData\Local\Programs\Microsoft VS Code\bin;.]
+24-Feb-2021 19:50:49.192 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+24-Feb-2021 19:50:49.454 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+24-Feb-2021 19:50:49.470 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 815 ms
+24-Feb-2021 19:50:49.519 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+24-Feb-2021 19:50:49.520 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.63
+24-Feb-2021 19:50:49.561 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\partiesserver-1.5.8.war]
+24-Feb-2021 19:50:52.516 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+24-Feb-2021 19:50:52.805 WARNING [localhost-startStop-1] org.apache.catalina.util.SessionIdGeneratorBase.createSecureRandom Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [233] milliseconds.
+24-Feb-2021 19:50:52.818 INFO [localhost-startStop-1] tudelft.utilities.logging.ReportToLogger.log searching for partiesrepo upwards from C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\partiesserver-1.5.8\WEB-INF
+24-Feb-2021 19:50:52.824 INFO [localhost-startStop-1] tudelft.utilities.logging.ReportToLogger.log Directory did not contain repo:C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\partiesserver-1.5.8\WEB-INF
+24-Feb-2021 19:50:52.825 INFO [localhost-startStop-1] tudelft.utilities.logging.ReportToLogger.log Repository located at C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\partiesserver-1.5.8\partiesrepo
+24-Feb-2021 19:50:52.838 INFO [localhost-startStop-1] tudelft.utilities.logging.ReportToLogger.log change: <null,FileInfo[C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\partiesserver-1.5.8\partiesrepo,0]>
+24-Feb-2021 19:50:58.435 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\partiesserver-1.5.8.war] has finished in [8,874] ms
+24-Feb-2021 19:50:58.438 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\profilesserver-1.5.8.war]
+24-Feb-2021 19:51:00.525 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+24-Feb-2021 19:51:00.550 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\profilesserver-1.5.8.war] has finished in [2,112] ms
+24-Feb-2021 19:51:00.555 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\runserver-1.5.8.war]
+24-Feb-2021 19:51:00.964 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+24-Feb-2021 19:51:00.974 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\runserver-1.5.8.war] has finished in [419] ms
+24-Feb-2021 19:51:00.976 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\docs]
+24-Feb-2021 19:51:01.007 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\docs] has finished in [31] ms
+24-Feb-2021 19:51:01.007 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\examples]
+24-Feb-2021 19:51:02.156 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\examples] has finished in [1,149] ms
+24-Feb-2021 19:51:02.158 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\host-manager]
+24-Feb-2021 19:51:02.201 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\host-manager] has finished in [42] ms
+24-Feb-2021 19:51:02.201 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\manager]
+24-Feb-2021 19:51:02.242 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\manager] has finished in [41] ms
+24-Feb-2021 19:51:02.243 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\ROOT]
+24-Feb-2021 19:51:02.274 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\ROOT] has finished in [30] ms
+24-Feb-2021 19:51:02.279 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+24-Feb-2021 19:51:02.290 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 12820 ms
+24-Feb-2021 19:51:05.895 INFO [http-nio-8080-exec-3] tudelft.utilities.logging.ReportToLogger.log New connection ws://localhost:8080/profilesserver-1.5.8/websocket/liststream
+24-Feb-2021 19:51:06.197 INFO [http-nio-8080-exec-3] tudelft.utilities.logging.ReportToLogger.log change: <null,FileInfo[C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\profilesserver-1.5.8\domainsrepo,0]>
+24-Feb-2021 19:51:10.261 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log New connection ws://localhost:8080/profilesserver-1.5.8/websocket/liststream
+24-Feb-2021 19:52:01.783 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log New connection ws://localhost:8080/profilesserver-1.5.8/websocket/liststream
+24-Feb-2021 19:52:31.285 INFO [http-nio-8080-exec-10] tudelft.utilities.logging.ReportToLogger.log request to run Nego: AllPermutationsSettings[[[PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies]], [PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/conceder-1.5.8]]],false,[[ProfileRef[ws://192.168.2.12:8080/profilesserver-1.5.8/websocket/get/jobs/jobs1]], [ProfileRef[ws://192.168.2.12:8080/profilesserver-1.5.8/websocket/get/jobs/jobs2]]],2,SAOPSettings[],DeadlineRounds[200,10000]],1]
+24-Feb-2021 19:52:31.311 INFO [Thread-13] tudelft.utilities.logging.ReportToLogger.log Tournament geniusweb.protocol.tournament.allpermutations.AllPermutationsProtocol$1@2cacfc13 starting next session 
+24-Feb-2021 19:52:31.334 INFO [Thread-13] tudelft.utilities.logging.ReportToLogger.log SAOP connect [PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies], PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/conceder-1.5.8]]
+24-Feb-2021 19:52:31.335 INFO [Thread-13] tudelft.utilities.logging.ReportToLogger.log attempting to connect [PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies], PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/conceder-1.5.8]]
+24-Feb-2021 19:52:31.339 INFO [Thread-13] tudelft.utilities.logging.ReportToLogger.log Trying to start up party PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies]
+24-Feb-2021 19:52:31.352 INFO [http-nio-8080-exec-9] tudelft.utilities.logging.ReportToLogger.log request to run group19party-1.5.8-jar-with-dependencies
+24-Feb-2021 19:52:31.380 INFO [http-nio-8080-exec-9] tudelft.utilities.logging.ReportToLogger.log started group19party-1.5.8-jar-with-dependencies
+24-Feb-2021 19:52:31.412 INFO [Thread-13] tudelft.utilities.logging.ReportToLogger.log startparty returned ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party1_192_168_2_12
+24-Feb-2021 19:52:31.421 INFO [Thread-13] tudelft.utilities.logging.ReportToLogger.log Trying to make websocket connection to running party ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party1_192_168_2_12
+24-Feb-2021 19:52:31.455 INFO [Thread-13] tudelft.utilities.logging.ReportToLogger.log Party is being connected: org.apache.tomcat.websocket.WsSession@42635a60
+24-Feb-2021 19:52:31.456 INFO [Thread-13] tudelft.utilities.logging.ReportToLogger.log Created websocket connection at  ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party1_192_168_2_12
+24-Feb-2021 19:52:31.457 INFO [Thread-13] tudelft.utilities.logging.ReportToLogger.log Trying to start up party PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/conceder-1.5.8]
+24-Feb-2021 19:52:31.461 INFO [http-nio-8080-exec-2] tudelft.utilities.logging.ReportToLogger.log request to run conceder-1.5.8
+24-Feb-2021 19:52:31.461 INFO [http-nio-8080-exec-2] tudelft.utilities.logging.ReportToLogger.log started conceder-1.5.8
+24-Feb-2021 19:52:31.467 INFO [Thread-13] tudelft.utilities.logging.ReportToLogger.log startparty returned ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party2_192_168_2_12
+24-Feb-2021 19:52:31.469 INFO [Thread-13] tudelft.utilities.logging.ReportToLogger.log Trying to make websocket connection to running party ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party2_192_168_2_12
+24-Feb-2021 19:52:31.475 INFO [Thread-13] tudelft.utilities.logging.ReportToLogger.log Party is being connected: org.apache.tomcat.websocket.WsSession@260a0985
+24-Feb-2021 19:52:31.477 INFO [Thread-13] tudelft.utilities.logging.ReportToLogger.log Created websocket connection at  ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party2_192_168_2_12
+24-Feb-2021 19:52:31.478 INFO [Thread-13] tudelft.utilities.logging.ReportToLogger.log succesfully connected [PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies], PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/conceder-1.5.8]]
+24-Feb-2021 19:52:31.487 INFO [Thread-13] tudelft.utilities.logging.ReportToLogger.log SAOP deadline set to 2021/02/24 19:52:41
+24-Feb-2021 19:52:31.662 SEVERE [http-nio-8080-exec-7] org.apache.tomcat.util.modeler.Registry.registerComponent Error registering Catalina:type=RequestProcessor,worker="http-nio-8080",name=HttpRequest2
+	java.security.AccessControlException: access denied ("javax.management.MBeanTrustPermission" "register")
+		at java.base/java.security.AccessControlContext.checkPermission(AccessControlContext.java:472)
+		at java.base/java.lang.SecurityManager.checkPermission(SecurityManager.java:444)
+		at java.management/com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.checkMBeanTrustPermission(DefaultMBeanServerInterceptor.java:1805)
+		at java.management/com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerMBean(DefaultMBeanServerInterceptor.java:318)
+		at java.management/com.sun.jmx.mbeanserver.JmxMBeanServer.registerMBean(JmxMBeanServer.java:522)
+		at org.apache.tomcat.util.modeler.Registry.registerComponent(Registry.java:634)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.register(AbstractProtocol.java:1075)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:817)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1629)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+		at java.base/java.lang.Thread.run(Thread.java:835)
+24-Feb-2021 19:52:31.664 WARNING [http-nio-8080-exec-7] org.apache.coyote.AbstractProtocol$ConnectionHandler.register Error registering request processor
+	java.security.AccessControlException: access denied ("javax.management.MBeanTrustPermission" "register")
+		at java.base/java.security.AccessControlContext.checkPermission(AccessControlContext.java:472)
+		at java.base/java.lang.SecurityManager.checkPermission(SecurityManager.java:444)
+		at java.management/com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.checkMBeanTrustPermission(DefaultMBeanServerInterceptor.java:1805)
+		at java.management/com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerMBean(DefaultMBeanServerInterceptor.java:318)
+		at java.management/com.sun.jmx.mbeanserver.JmxMBeanServer.registerMBean(JmxMBeanServer.java:522)
+		at org.apache.tomcat.util.modeler.Registry.registerComponent(Registry.java:634)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.register(AbstractProtocol.java:1075)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:817)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1629)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+		at java.base/java.lang.Thread.run(Thread.java:835)
+24-Feb-2021 19:52:32.070 WARNING [http-nio-8080-exec-9] tudelft.utilities.logging.ReportToLogger.log Party failed on inform.
+	java.lang.RuntimeException: Failed to handle info
+		at cai.group19.Group19Party.notifyChange(Group19Party.java:153)
+		at cai.group19.Group19Party.notifyChange(Group19Party.java:70)
+		at geniusweb.partiesserver.websocket.PartySocket.notifyListeners(PartySocket.java:281)
+		at geniusweb.partiesserver.repository.RunningParty.inform(RunningParty.java:221)
+		at geniusweb.partiesserver.websocket.PartySocket.onMessage(PartySocket.java:143)
+		at jdk.internal.reflect.GeneratedMethodAccessor51.invoke(Unknown Source)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+		at org.apache.tomcat.websocket.pojo.PojoMessageHandlerWholeBase.onMessage(PojoMessageHandlerWholeBase.java:80)
+		at org.apache.tomcat.websocket.WsFrameBase.sendMessageText(WsFrameBase.java:414)
+		at org.apache.tomcat.websocket.server.WsFrameServer.sendMessageText(WsFrameServer.java:129)
+		at org.apache.tomcat.websocket.WsFrameBase.processDataText(WsFrameBase.java:515)
+		at org.apache.tomcat.websocket.WsFrameBase.processData(WsFrameBase.java:301)
+		at org.apache.tomcat.websocket.WsFrameBase.processInputBuffer(WsFrameBase.java:133)
+		at org.apache.tomcat.websocket.server.WsFrameServer.onDataAvailable(WsFrameServer.java:85)
+		at org.apache.tomcat.websocket.server.WsFrameServer.doOnDataAvailable(WsFrameServer.java:183)
+		at org.apache.tomcat.websocket.server.WsFrameServer.notifyDataAvailable(WsFrameServer.java:162)
+		at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:156)
+		at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:831)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1629)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+		at java.base/java.lang.Thread.run(Thread.java:835)
+	Caused by: java.lang.ArithmeticException: Non-terminating decimal expansion; no exact representable decimal result.
+		at java.base/java.math.BigDecimal.divide(BigDecimal.java:1722)
+		at cai.group19.Group19Party.getRelativeTitForTat(Group19Party.java:402)
+		at cai.group19.Group19Party.makeOffer(Group19Party.java:208)
+		at cai.group19.Group19Party.notifyChange(Group19Party.java:142)
+		... 26 more
+24-Feb-2021 19:52:32.072 INFO [http-nio-8080-exec-9] tudelft.utilities.logging.ReportToLogger.log socket closed to party1_192_168_2_12
+24-Feb-2021 19:52:32.073 INFO [WebSocketClient-AsyncIO-1] tudelft.utilities.logging.ReportToLogger.log closing websocket PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies]:CloseReason: code [1002], reason [party threw exception:  : RuntimeException:Failed to handle info : ArithmeticException:Non-terminating decimal expansion…]
+24-Feb-2021 19:52:32.076 INFO [http-nio-8080-exec-9] tudelft.utilities.logging.ReportToLogger.log Party party1_192_168_2_12 was terminated 
+24-Feb-2021 19:52:32.081 INFO [WebSocketClient-AsyncIO-1] tudelft.utilities.logging.ReportToLogger.log Failed to send Finished to geniusweb.runserver.WebSocketProtToPartyConn@60144753
+	java.lang.IllegalStateException: Message will not be sent because the WebSocket session has been closed
+		at org.apache.tomcat.websocket.WsRemoteEndpointImplBase.writeMessagePart(WsRemoteEndpointImplBase.java:438)
+		at org.apache.tomcat.websocket.WsRemoteEndpointImplBase.sendMessageBlock(WsRemoteEndpointImplBase.java:311)
+		at org.apache.tomcat.websocket.WsRemoteEndpointImplBase.sendMessageBlock(WsRemoteEndpointImplBase.java:251)
+		at org.apache.tomcat.websocket.WsRemoteEndpointImplBase.sendString(WsRemoteEndpointImplBase.java:192)
+		at org.apache.tomcat.websocket.WsRemoteEndpointBasic.sendText(WsRemoteEndpointBasic.java:37)
+		at geniusweb.runserver.WebSocketProtToPartyConn.send(WebSocketProtToPartyConn.java:150)
+		at geniusweb.runserver.WebSocketProtToPartyConn.send(WebSocketProtToPartyConn.java:42)
+		at geniusweb.protocol.session.saop.SAOP.sendFinish(SAOP.java:366)
+		at geniusweb.protocol.session.saop.SAOP.finish(SAOP.java:359)
+		at geniusweb.protocol.session.saop.SAOP.setState(SAOP.java:341)
+		at geniusweb.protocol.session.saop.SAOP.handleError(SAOP.java:321)
+		at geniusweb.protocol.session.saop.SAOP.actionRequest(SAOP.java:271)
+		at geniusweb.protocol.session.saop.SAOP.lambda$setupParties$1(SAOP.java:222)
+		at tudelft.utilities.listener.DefaultListenable.notifyListeners(DefaultListenable.java:38)
+		at geniusweb.runserver.WebSocketProtToPartyConn.setError(WebSocketProtToPartyConn.java:245)
+		at geniusweb.runserver.WebSocketProtToPartyConn.onClose(WebSocketProtToPartyConn.java:191)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+		at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:103)
+		at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:556)
+		at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:534)
+		at org.apache.tomcat.websocket.WsFrameBase.processDataControl(WsFrameBase.java:367)
+		at org.apache.tomcat.websocket.WsFrameBase.processData(WsFrameBase.java:296)
+		at org.apache.tomcat.websocket.WsFrameBase.processInputBuffer(WsFrameBase.java:133)
+		at org.apache.tomcat.websocket.WsFrameClient.processSocketRead(WsFrameClient.java:95)
+		at org.apache.tomcat.websocket.WsFrameClient.resumeProcessing(WsFrameClient.java:212)
+		at org.apache.tomcat.websocket.WsFrameClient.access$500(WsFrameClient.java:31)
+		at org.apache.tomcat.websocket.WsFrameClient$WsFrameClientCompletionHandler.doResumeProcessing(WsFrameClient.java:189)
+		at org.apache.tomcat.websocket.WsFrameClient$WsFrameClientCompletionHandler.completed(WsFrameClient.java:163)
+		at org.apache.tomcat.websocket.WsFrameClient$WsFrameClientCompletionHandler.completed(WsFrameClient.java:148)
+		at java.base/sun.nio.ch.Invoker.invokeUnchecked(Invoker.java:127)
+		at java.base/sun.nio.ch.Invoker$2.run(Invoker.java:219)
+		at java.base/sun.nio.ch.AsynchronousChannelGroupImpl$1.run(AsynchronousChannelGroupImpl.java:112)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+		at java.base/java.lang.Thread.run(Thread.java:835)
+24-Feb-2021 19:52:32.083 INFO [WebSocketClient-AsyncIO-1] tudelft.utilities.logging.ReportToLogger.log Party close called
+24-Feb-2021 19:52:32.084 INFO [WebSocketClient-AsyncIO-1] tudelft.utilities.logging.ReportToLogger.log closing websocket PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/conceder-1.5.8]:CloseReason: code [1000], reason []
+24-Feb-2021 19:52:32.084 WARNING [WebSocketClient-AsyncIO-1] tudelft.utilities.logging.ReportToLogger.log SAOP protocol intercepted error due to party party2_192_168_2_12:geniusweb.runserver.WebSocketProtToPartyConn@66cc5784Protocol error
+	geniusweb.runserver.RemoteException: Session PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/conceder-1.5.8] closed abnoramlly (see party server for more details) 
+24-Feb-2021 19:52:32.087 INFO [http-nio-8080-exec-8] tudelft.utilities.logging.ReportToLogger.log Final ourcome:Finished[Agreements{}]
+24-Feb-2021 19:52:32.088 INFO [http-nio-8080-exec-8] tudelft.utilities.logging.ReportToLogger.log socket closed to party2_192_168_2_12
+24-Feb-2021 19:52:32.088 INFO [http-nio-8080-exec-8] tudelft.utilities.logging.ReportToLogger.log Party party2_192_168_2_12 was terminated 
+24-Feb-2021 19:52:32.117 WARNING [WebSocketClient-AsyncIO-1] tudelft.utilities.logging.ReportToLogger.log SAOP protocol intercepted error due to party party1_192_168_2_12:geniusweb.runserver.WebSocketProtToPartyConn@60144753Protocol error
+	geniusweb.runserver.RemoteException: Session PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies] closed abnoramlly (see party server for more details) party threw exception:  : RuntimeException:Failed to handle info : ArithmeticException:Non-terminating decimal expansion…
+24-Feb-2021 19:52:32.117 INFO [Thread-19] tudelft.utilities.logging.ReportToLogger.log Tournament geniusweb.protocol.tournament.allpermutations.AllPermutationsProtocol$1@503788b2 starting next session 
+24-Feb-2021 19:52:32.119 INFO [Thread-19] tudelft.utilities.logging.ReportToLogger.log SAOP connect [PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/conceder-1.5.8], PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies]]
+24-Feb-2021 19:52:32.120 INFO [Thread-19] tudelft.utilities.logging.ReportToLogger.log attempting to connect [PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/conceder-1.5.8], PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies]]
+24-Feb-2021 19:52:32.121 INFO [Thread-19] tudelft.utilities.logging.ReportToLogger.log Trying to start up party PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/conceder-1.5.8]
+24-Feb-2021 19:52:32.124 INFO [http-nio-8080-exec-1] tudelft.utilities.logging.ReportToLogger.log request to run conceder-1.5.8
+24-Feb-2021 19:52:32.125 INFO [http-nio-8080-exec-1] tudelft.utilities.logging.ReportToLogger.log started conceder-1.5.8
+24-Feb-2021 19:52:32.130 INFO [Thread-19] tudelft.utilities.logging.ReportToLogger.log startparty returned ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party3_192_168_2_12
+24-Feb-2021 19:52:32.133 INFO [Thread-19] tudelft.utilities.logging.ReportToLogger.log Trying to make websocket connection to running party ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party3_192_168_2_12
+24-Feb-2021 19:52:32.140 INFO [Thread-19] tudelft.utilities.logging.ReportToLogger.log Party is being connected: org.apache.tomcat.websocket.WsSession@1427c78f
+24-Feb-2021 19:52:32.141 INFO [Thread-19] tudelft.utilities.logging.ReportToLogger.log Created websocket connection at  ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party3_192_168_2_12
+24-Feb-2021 19:52:32.141 INFO [Thread-19] tudelft.utilities.logging.ReportToLogger.log Trying to start up party PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies]
+24-Feb-2021 19:52:32.143 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log request to run group19party-1.5.8-jar-with-dependencies
+24-Feb-2021 19:52:32.143 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log started group19party-1.5.8-jar-with-dependencies
+24-Feb-2021 19:52:32.150 INFO [Thread-19] tudelft.utilities.logging.ReportToLogger.log startparty returned ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party4_192_168_2_12
+24-Feb-2021 19:52:32.151 INFO [Thread-19] tudelft.utilities.logging.ReportToLogger.log Trying to make websocket connection to running party ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party4_192_168_2_12
+24-Feb-2021 19:52:32.158 INFO [Thread-19] tudelft.utilities.logging.ReportToLogger.log Party is being connected: org.apache.tomcat.websocket.WsSession@1b4773da
+24-Feb-2021 19:52:32.158 INFO [Thread-19] tudelft.utilities.logging.ReportToLogger.log Created websocket connection at  ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party4_192_168_2_12
+24-Feb-2021 19:52:32.158 INFO [Thread-19] tudelft.utilities.logging.ReportToLogger.log succesfully connected [PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/conceder-1.5.8], PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies]]
+24-Feb-2021 19:52:32.160 INFO [Thread-19] tudelft.utilities.logging.ReportToLogger.log SAOP deadline set to 2021/02/24 19:52:42
+24-Feb-2021 19:52:32.572 WARNING [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log Party failed on inform.
+	java.lang.RuntimeException: Failed to handle info
+		at cai.group19.Group19Party.notifyChange(Group19Party.java:153)
+		at cai.group19.Group19Party.notifyChange(Group19Party.java:70)
+		at geniusweb.partiesserver.websocket.PartySocket.notifyListeners(PartySocket.java:281)
+		at geniusweb.partiesserver.repository.RunningParty.inform(RunningParty.java:221)
+		at geniusweb.partiesserver.websocket.PartySocket.onMessage(PartySocket.java:143)
+		at jdk.internal.reflect.GeneratedMethodAccessor51.invoke(Unknown Source)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+		at org.apache.tomcat.websocket.pojo.PojoMessageHandlerWholeBase.onMessage(PojoMessageHandlerWholeBase.java:80)
+		at org.apache.tomcat.websocket.WsFrameBase.sendMessageText(WsFrameBase.java:414)
+		at org.apache.tomcat.websocket.server.WsFrameServer.sendMessageText(WsFrameServer.java:129)
+		at org.apache.tomcat.websocket.WsFrameBase.processDataText(WsFrameBase.java:515)
+		at org.apache.tomcat.websocket.WsFrameBase.processData(WsFrameBase.java:301)
+		at org.apache.tomcat.websocket.WsFrameBase.processInputBuffer(WsFrameBase.java:133)
+		at org.apache.tomcat.websocket.server.WsFrameServer.onDataAvailable(WsFrameServer.java:85)
+		at org.apache.tomcat.websocket.server.WsFrameServer.doOnDataAvailable(WsFrameServer.java:183)
+		at org.apache.tomcat.websocket.server.WsFrameServer.notifyDataAvailable(WsFrameServer.java:162)
+		at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:156)
+		at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:831)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1629)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+		at java.base/java.lang.Thread.run(Thread.java:835)
+	Caused by: java.lang.ArithmeticException: Non-terminating decimal expansion; no exact representable decimal result.
+		at java.base/java.math.BigDecimal.divide(BigDecimal.java:1722)
+		at cai.group19.Group19Party.getRelativeTitForTat(Group19Party.java:402)
+		at cai.group19.Group19Party.makeOffer(Group19Party.java:208)
+		at cai.group19.Group19Party.notifyChange(Group19Party.java:142)
+		... 26 more
+24-Feb-2021 19:52:32.574 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log socket closed to party4_192_168_2_12
+24-Feb-2021 19:52:32.575 INFO [WebSocketClient-AsyncIO-1] tudelft.utilities.logging.ReportToLogger.log closing websocket PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies]:CloseReason: code [1002], reason [party threw exception:  : RuntimeException:Failed to handle info : ArithmeticException:Non-terminating decimal expansion…]
+24-Feb-2021 19:52:32.577 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log Party party4_192_168_2_12 was terminated 
+24-Feb-2021 19:52:32.578 INFO [WebSocketClient-AsyncIO-1] tudelft.utilities.logging.ReportToLogger.log Party close called
+24-Feb-2021 19:52:32.578 INFO [http-nio-8080-exec-10] tudelft.utilities.logging.ReportToLogger.log Final ourcome:Finished[Agreements{}]
+24-Feb-2021 19:52:32.578 INFO [WebSocketClient-AsyncIO-1] tudelft.utilities.logging.ReportToLogger.log closing websocket PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/conceder-1.5.8]:CloseReason: code [1000], reason []
+24-Feb-2021 19:52:32.579 INFO [http-nio-8080-exec-10] tudelft.utilities.logging.ReportToLogger.log socket closed to party3_192_168_2_12
+24-Feb-2021 19:52:32.579 WARNING [WebSocketClient-AsyncIO-1] tudelft.utilities.logging.ReportToLogger.log SAOP protocol intercepted error due to party party3_192_168_2_12:geniusweb.runserver.WebSocketProtToPartyConn@3ad030d8Protocol error
+	geniusweb.runserver.RemoteException: Session PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/conceder-1.5.8] closed abnoramlly (see party server for more details) 
+24-Feb-2021 19:52:32.580 INFO [http-nio-8080-exec-10] tudelft.utilities.logging.ReportToLogger.log Party party3_192_168_2_12 was terminated 
+24-Feb-2021 19:52:32.581 INFO [WebSocketClient-AsyncIO-1] tudelft.utilities.logging.ReportToLogger.log Failed to send Finished to geniusweb.runserver.WebSocketProtToPartyConn@c569038
+	java.lang.IllegalStateException: Message will not be sent because the WebSocket session has been closed
+		at org.apache.tomcat.websocket.WsRemoteEndpointImplBase.writeMessagePart(WsRemoteEndpointImplBase.java:438)
+		at org.apache.tomcat.websocket.WsRemoteEndpointImplBase.sendMessageBlock(WsRemoteEndpointImplBase.java:311)
+		at org.apache.tomcat.websocket.WsRemoteEndpointImplBase.sendMessageBlock(WsRemoteEndpointImplBase.java:251)
+		at org.apache.tomcat.websocket.WsRemoteEndpointImplBase.sendString(WsRemoteEndpointImplBase.java:192)
+		at org.apache.tomcat.websocket.WsRemoteEndpointBasic.sendText(WsRemoteEndpointBasic.java:37)
+		at geniusweb.runserver.WebSocketProtToPartyConn.send(WebSocketProtToPartyConn.java:150)
+		at geniusweb.runserver.WebSocketProtToPartyConn.send(WebSocketProtToPartyConn.java:42)
+		at geniusweb.protocol.session.saop.SAOP.sendFinish(SAOP.java:366)
+		at geniusweb.protocol.session.saop.SAOP.finish(SAOP.java:359)
+		at geniusweb.protocol.session.saop.SAOP.setState(SAOP.java:341)
+		at geniusweb.protocol.session.saop.SAOP.handleError(SAOP.java:321)
+		at geniusweb.protocol.session.saop.SAOP.actionRequest(SAOP.java:271)
+		at geniusweb.protocol.session.saop.SAOP.lambda$setupParties$1(SAOP.java:222)
+		at tudelft.utilities.listener.DefaultListenable.notifyListeners(DefaultListenable.java:38)
+		at geniusweb.runserver.WebSocketProtToPartyConn.setError(WebSocketProtToPartyConn.java:245)
+		at geniusweb.runserver.WebSocketProtToPartyConn.onClose(WebSocketProtToPartyConn.java:191)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+		at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:103)
+		at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:556)
+		at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:534)
+		at org.apache.tomcat.websocket.WsFrameBase.processDataControl(WsFrameBase.java:367)
+		at org.apache.tomcat.websocket.WsFrameBase.processData(WsFrameBase.java:296)
+		at org.apache.tomcat.websocket.WsFrameBase.processInputBuffer(WsFrameBase.java:133)
+		at org.apache.tomcat.websocket.WsFrameClient.processSocketRead(WsFrameClient.java:95)
+		at org.apache.tomcat.websocket.WsFrameClient.resumeProcessing(WsFrameClient.java:212)
+		at org.apache.tomcat.websocket.WsFrameClient.access$500(WsFrameClient.java:31)
+		at org.apache.tomcat.websocket.WsFrameClient$WsFrameClientCompletionHandler.doResumeProcessing(WsFrameClient.java:189)
+		at org.apache.tomcat.websocket.WsFrameClient$WsFrameClientCompletionHandler.completed(WsFrameClient.java:163)
+		at org.apache.tomcat.websocket.WsFrameClient$WsFrameClientCompletionHandler.completed(WsFrameClient.java:148)
+		at java.base/sun.nio.ch.Invoker.invokeUnchecked(Invoker.java:127)
+		at java.base/sun.nio.ch.Invoker$2.run(Invoker.java:219)
+		at java.base/sun.nio.ch.AsynchronousChannelGroupImpl$1.run(AsynchronousChannelGroupImpl.java:112)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+		at java.base/java.lang.Thread.run(Thread.java:835)
+24-Feb-2021 19:52:32.586 WARNING [WebSocketClient-AsyncIO-1] tudelft.utilities.logging.ReportToLogger.log SAOP protocol intercepted error due to party party4_192_168_2_12:geniusweb.runserver.WebSocketProtToPartyConn@c569038Protocol error
+	geniusweb.runserver.RemoteException: Session PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies] closed abnoramlly (see party server for more details) party threw exception:  : RuntimeException:Failed to handle info : ArithmeticException:Non-terminating decimal expansion…
+24-Feb-2021 19:52:56.954 INFO [Thread-23] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+24-Feb-2021 19:52:57.172 INFO [Thread-23] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+24-Feb-2021 19:52:57.192 WARNING [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [profilesserver-1.5.8] appears to have started a thread named [Thread-8] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@12.0.2/java.lang.Thread.sleep(Native Method)
+ tudelft.utilities.files.FileWatcher.run(FileWatcher.java:82)
+ java.base@12.0.2/java.lang.Thread.run(Thread.java:835)
+24-Feb-2021 19:52:57.203 WARNING [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [partiesserver-1.5.8] appears to have started a thread named [Thread-3] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@12.0.2/java.lang.Thread.sleep(Native Method)
+ tudelft.utilities.files.FileWatcher.run(FileWatcher.java:82)
+ java.base@12.0.2/java.lang.Thread.run(Thread.java:835)
+24-Feb-2021 19:52:57.204 WARNING [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [partiesserver-1.5.8] appears to have started a thread named [Thread-4] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@12.0.2/java.lang.Thread.sleep(Native Method)
+ geniusweb.partiesserver.RunningPartiesUpdater.run(RunningPartiesUpdater.java:52)
+ java.base@12.0.2/java.lang.Thread.run(Thread.java:835)
+24-Feb-2021 19:52:57.211 INFO [Thread-23] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+24-Feb-2021 19:52:57.215 INFO [Thread-23] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+24-Feb-2021 22:31:45.559 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/8.5.63
+24-Feb-2021 22:31:45.562 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Jan 29 2021 11:21:49 UTC
+24-Feb-2021 22:31:45.562 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 8.5.63.0
+24-Feb-2021 22:31:45.563 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 10
+24-Feb-2021 22:31:45.563 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.0
+24-Feb-2021 22:31:45.563 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+24-Feb-2021 22:31:45.563 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jdk-12.0.2
+24-Feb-2021 22:31:45.563 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           12.0.2+10
+24-Feb-2021 22:31:45.563 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+24-Feb-2021 22:31:45.563 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Program Files\Apache Software Foundation\Tomcat 8.5
+24-Feb-2021 22:31:45.563 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\Program Files\Apache Software Foundation\Tomcat 8.5
+24-Feb-2021 22:31:45.564 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\Program Files\Apache Software Foundation\Tomcat 8.5
+24-Feb-2021 22:31:45.564 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Program Files\Apache Software Foundation\Tomcat 8.5
+24-Feb-2021 22:31:45.564 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Program Files\Apache Software Foundation\Tomcat 8.5\temp
+24-Feb-2021 22:31:45.564 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+24-Feb-2021 22:31:45.564 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Program Files\Apache Software Foundation\Tomcat 8.5\conf\logging.properties
+24-Feb-2021 22:31:45.564 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+24-Feb-2021 22:31:45.565 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+24-Feb-2021 22:31:45.565 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+24-Feb-2021 22:31:45.565 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: exit
+24-Feb-2021 22:31:45.566 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: abort
+24-Feb-2021 22:31:45.566 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Xms128m
+24-Feb-2021 22:31:45.566 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Xmx256m
+24-Feb-2021 22:31:45.566 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The Apache Tomcat Native library which allows using OpenSSL was not found on the java.library.path: [C:\Program Files\Apache Software Foundation\Tomcat 8.5\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Java\jdk-12.0.2\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Git LFS;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Users\kevin\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Python 3.8;C:\Users\kevin\AppData\Local\Programs\Python\Python38\python.exe;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Users\kevin\Anaconda3\Scripts;C:\Users\kevin\Anaconda3;C:\Users\kevin\Anaconda3\Library\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Git\cmd;C:\Users\kevin\AppData\Roaming\local\bin;C:\Users\kevin\AppData\Local\Microsoft\WindowsApps;C:\Users\kevin\AppData\Roaming\npm;C:\Program Files\heroku\bin;C:\Program Files\JetBrains\PyCharm 2019.1.3\bin;C:\Users\kevin\AppData\Local\Programs\Microsoft VS Code\bin;.]
+24-Feb-2021 22:31:45.606 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+24-Feb-2021 22:31:45.857 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+24-Feb-2021 22:31:45.868 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 703 ms
+24-Feb-2021 22:31:45.908 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+24-Feb-2021 22:31:45.908 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.63
+24-Feb-2021 22:31:45.935 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\partiesserver-1.5.8.war]
+24-Feb-2021 22:31:46.511 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+24-Feb-2021 22:31:46.753 WARNING [localhost-startStop-1] org.apache.catalina.util.SessionIdGeneratorBase.createSecureRandom Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [203] milliseconds.
+24-Feb-2021 22:31:46.773 INFO [localhost-startStop-1] tudelft.utilities.logging.ReportToLogger.log searching for partiesrepo upwards from C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\partiesserver-1.5.8\WEB-INF
+24-Feb-2021 22:31:46.775 INFO [localhost-startStop-1] tudelft.utilities.logging.ReportToLogger.log Directory did not contain repo:C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\partiesserver-1.5.8\WEB-INF
+24-Feb-2021 22:31:46.775 INFO [localhost-startStop-1] tudelft.utilities.logging.ReportToLogger.log Repository located at C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\partiesserver-1.5.8\partiesrepo
+24-Feb-2021 22:31:46.786 INFO [localhost-startStop-1] tudelft.utilities.logging.ReportToLogger.log change: <null,FileInfo[C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\partiesserver-1.5.8\partiesrepo,0]>
+24-Feb-2021 22:31:50.593 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\partiesserver-1.5.8.war] has finished in [4,658] ms
+24-Feb-2021 22:31:50.595 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\profilesserver-1.5.8.war]
+24-Feb-2021 22:31:50.883 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+24-Feb-2021 22:31:50.890 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\profilesserver-1.5.8.war] has finished in [295] ms
+24-Feb-2021 22:31:50.893 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\runserver-1.5.8.war]
+24-Feb-2021 22:31:51.178 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+24-Feb-2021 22:31:51.196 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\runserver-1.5.8.war] has finished in [303] ms
+24-Feb-2021 22:31:51.197 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\docs]
+24-Feb-2021 22:31:51.218 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\docs] has finished in [21] ms
+24-Feb-2021 22:31:51.219 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\examples]
+24-Feb-2021 22:31:51.563 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\examples] has finished in [345] ms
+24-Feb-2021 22:31:51.564 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\host-manager]
+24-Feb-2021 22:31:51.589 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\host-manager] has finished in [25] ms
+24-Feb-2021 22:31:51.589 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\manager]
+24-Feb-2021 22:31:51.612 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\manager] has finished in [23] ms
+24-Feb-2021 22:31:51.612 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\ROOT]
+24-Feb-2021 22:31:51.632 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\ROOT] has finished in [20] ms
+24-Feb-2021 22:31:51.635 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+24-Feb-2021 22:31:51.643 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 5774 ms
+24-Feb-2021 22:32:15.570 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log New connection ws://localhost:8080/profilesserver-1.5.8/websocket/liststream
+24-Feb-2021 22:32:15.818 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log change: <null,FileInfo[C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\profilesserver-1.5.8\domainsrepo,0]>
+24-Feb-2021 22:32:22.602 INFO [http-nio-8080-exec-2] tudelft.utilities.logging.ReportToLogger.log New connection ws://localhost:8080/profilesserver-1.5.8/websocket/liststream
+24-Feb-2021 22:32:35.904 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log request to run Nego: SAOPSettings[PartyWithProfile[PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies],ProfileRef[ws://192.168.2.12:8080/profilesserver-1.5.8/websocket/get/jobs/jobs1]], PartyWithProfile[PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/timedependentparty-1.5.8],ProfileRef[ws://192.168.2.12:8080/profilesserver-1.5.8/websocket/get/jobs/jobs2]]],DeadlineRounds[10,10000]]
+24-Feb-2021 22:32:35.923 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log SAOP connect [PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies], PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/timedependentparty-1.5.8]]
+24-Feb-2021 22:32:35.923 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log attempting to connect [PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies], PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/timedependentparty-1.5.8]]
+24-Feb-2021 22:32:35.926 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log Trying to start up party PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies]
+24-Feb-2021 22:32:35.938 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log request to run group19party-1.5.8-jar-with-dependencies
+24-Feb-2021 22:32:35.957 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log started group19party-1.5.8-jar-with-dependencies
+24-Feb-2021 22:32:35.978 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log startparty returned ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party1_192_168_2_12
+24-Feb-2021 22:32:35.981 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log Trying to make websocket connection to running party ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party1_192_168_2_12
+24-Feb-2021 22:32:36.001 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log Party is being connected: org.apache.tomcat.websocket.WsSession@5f908afc
+24-Feb-2021 22:32:36.002 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log Created websocket connection at  ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party1_192_168_2_12
+24-Feb-2021 22:32:36.002 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log Trying to start up party PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/timedependentparty-1.5.8]
+24-Feb-2021 22:32:36.005 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log request to run timedependentparty-1.5.8
+24-Feb-2021 22:32:36.005 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log started timedependentparty-1.5.8
+24-Feb-2021 22:32:36.010 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log startparty returned ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party2_192_168_2_12
+24-Feb-2021 22:32:36.011 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log Trying to make websocket connection to running party ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party2_192_168_2_12
+24-Feb-2021 22:32:36.017 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log Party is being connected: org.apache.tomcat.websocket.WsSession@576aad0
+24-Feb-2021 22:32:36.017 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log Created websocket connection at  ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party2_192_168_2_12
+24-Feb-2021 22:32:36.017 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log succesfully connected [PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies], PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/timedependentparty-1.5.8]]
+24-Feb-2021 22:32:36.025 INFO [http-nio-8080-exec-5] tudelft.utilities.logging.ReportToLogger.log SAOP deadline set to 2021/02/24 22:32:46
+24-Feb-2021 22:32:36.429 WARNING [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log Party failed on inform.
+	java.lang.RuntimeException: Failed to handle info
+		at cai.group19.Group19Party.notifyChange(Group19Party.java:153)
+		at cai.group19.Group19Party.notifyChange(Group19Party.java:70)
+		at geniusweb.partiesserver.websocket.PartySocket.notifyListeners(PartySocket.java:281)
+		at geniusweb.partiesserver.repository.RunningParty.inform(RunningParty.java:221)
+		at geniusweb.partiesserver.websocket.PartySocket.onMessage(PartySocket.java:143)
+		at jdk.internal.reflect.GeneratedMethodAccessor51.invoke(Unknown Source)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+		at org.apache.tomcat.websocket.pojo.PojoMessageHandlerWholeBase.onMessage(PojoMessageHandlerWholeBase.java:80)
+		at org.apache.tomcat.websocket.WsFrameBase.sendMessageText(WsFrameBase.java:414)
+		at org.apache.tomcat.websocket.server.WsFrameServer.sendMessageText(WsFrameServer.java:129)
+		at org.apache.tomcat.websocket.WsFrameBase.processDataText(WsFrameBase.java:515)
+		at org.apache.tomcat.websocket.WsFrameBase.processData(WsFrameBase.java:301)
+		at org.apache.tomcat.websocket.WsFrameBase.processInputBuffer(WsFrameBase.java:133)
+		at org.apache.tomcat.websocket.server.WsFrameServer.onDataAvailable(WsFrameServer.java:85)
+		at org.apache.tomcat.websocket.server.WsFrameServer.doOnDataAvailable(WsFrameServer.java:183)
+		at org.apache.tomcat.websocket.server.WsFrameServer.notifyDataAvailable(WsFrameServer.java:162)
+		at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:156)
+		at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:831)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1629)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+		at java.base/java.lang.Thread.run(Thread.java:835)
+	Caused by: java.lang.IllegalArgumentException: Issues in bid ([lease car, career development opportunities, salary, fte]) do not match issues in domain ([lease car, permanent contract, career development opportunities, fte, salary, work from home])
+		at geniusweb.opponentmodel.FrequencyOpponentModel.getUtility(FrequencyOpponentModel.java:91)
+		at cai.group19.Group19Party.updateTargetUtility(Group19Party.java:347)
+		at cai.group19.Group19Party.notifyChange(Group19Party.java:137)
+		... 26 more
+24-Feb-2021 22:32:36.430 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log socket closed to party1_192_168_2_12
+24-Feb-2021 22:32:36.430 INFO [WebSocketClient-AsyncIO-1] tudelft.utilities.logging.ReportToLogger.log closing websocket PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies]:CloseReason: code [1002], reason [party threw exception:  : RuntimeException:Failed to handle info : IllegalArgumentException:Issues in bid ([lease car, c…]
+24-Feb-2021 22:32:36.432 INFO [http-nio-8080-exec-7] tudelft.utilities.logging.ReportToLogger.log Party party1_192_168_2_12 was terminated 
+24-Feb-2021 22:32:36.435 INFO [WebSocketClient-AsyncIO-1] tudelft.utilities.logging.ReportToLogger.log Failed to send Finished to geniusweb.runserver.WebSocketProtToPartyConn@f933ab1
+	java.lang.IllegalStateException: Message will not be sent because the WebSocket session has been closed
+		at org.apache.tomcat.websocket.WsRemoteEndpointImplBase.writeMessagePart(WsRemoteEndpointImplBase.java:438)
+		at org.apache.tomcat.websocket.WsRemoteEndpointImplBase.sendMessageBlock(WsRemoteEndpointImplBase.java:311)
+		at org.apache.tomcat.websocket.WsRemoteEndpointImplBase.sendMessageBlock(WsRemoteEndpointImplBase.java:251)
+		at org.apache.tomcat.websocket.WsRemoteEndpointImplBase.sendString(WsRemoteEndpointImplBase.java:192)
+		at org.apache.tomcat.websocket.WsRemoteEndpointBasic.sendText(WsRemoteEndpointBasic.java:37)
+		at geniusweb.runserver.WebSocketProtToPartyConn.send(WebSocketProtToPartyConn.java:150)
+		at geniusweb.runserver.WebSocketProtToPartyConn.send(WebSocketProtToPartyConn.java:42)
+		at geniusweb.protocol.session.saop.SAOP.sendFinish(SAOP.java:366)
+		at geniusweb.protocol.session.saop.SAOP.finish(SAOP.java:359)
+		at geniusweb.protocol.session.saop.SAOP.setState(SAOP.java:341)
+		at geniusweb.protocol.session.saop.SAOP.handleError(SAOP.java:321)
+		at geniusweb.protocol.session.saop.SAOP.actionRequest(SAOP.java:271)
+		at geniusweb.protocol.session.saop.SAOP.lambda$setupParties$1(SAOP.java:222)
+		at tudelft.utilities.listener.DefaultListenable.notifyListeners(DefaultListenable.java:38)
+		at geniusweb.runserver.WebSocketProtToPartyConn.setError(WebSocketProtToPartyConn.java:245)
+		at geniusweb.runserver.WebSocketProtToPartyConn.onClose(WebSocketProtToPartyConn.java:191)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+		at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:103)
+		at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:556)
+		at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:534)
+		at org.apache.tomcat.websocket.WsFrameBase.processDataControl(WsFrameBase.java:367)
+		at org.apache.tomcat.websocket.WsFrameBase.processData(WsFrameBase.java:296)
+		at org.apache.tomcat.websocket.WsFrameBase.processInputBuffer(WsFrameBase.java:133)
+		at org.apache.tomcat.websocket.WsFrameClient.processSocketRead(WsFrameClient.java:95)
+		at org.apache.tomcat.websocket.WsFrameClient.resumeProcessing(WsFrameClient.java:212)
+		at org.apache.tomcat.websocket.WsFrameClient.access$500(WsFrameClient.java:31)
+		at org.apache.tomcat.websocket.WsFrameClient$WsFrameClientCompletionHandler.doResumeProcessing(WsFrameClient.java:189)
+		at org.apache.tomcat.websocket.WsFrameClient$WsFrameClientCompletionHandler.completed(WsFrameClient.java:163)
+		at org.apache.tomcat.websocket.WsFrameClient$WsFrameClientCompletionHandler.completed(WsFrameClient.java:148)
+		at java.base/sun.nio.ch.Invoker.invokeUnchecked(Invoker.java:127)
+		at java.base/sun.nio.ch.Invoker$2.run(Invoker.java:219)
+		at java.base/sun.nio.ch.AsynchronousChannelGroupImpl$1.run(AsynchronousChannelGroupImpl.java:112)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+		at java.base/java.lang.Thread.run(Thread.java:835)
+24-Feb-2021 22:32:36.437 INFO [WebSocketClient-AsyncIO-1] tudelft.utilities.logging.ReportToLogger.log Party close called
+24-Feb-2021 22:32:36.437 INFO [WebSocketClient-AsyncIO-1] tudelft.utilities.logging.ReportToLogger.log closing websocket PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/timedependentparty-1.5.8]:CloseReason: code [1000], reason []
+24-Feb-2021 22:32:36.438 WARNING [WebSocketClient-AsyncIO-1] tudelft.utilities.logging.ReportToLogger.log SAOP protocol intercepted error due to party party2_192_168_2_12:geniusweb.runserver.WebSocketProtToPartyConn@61fb96d5Protocol error
+	geniusweb.runserver.RemoteException: Session PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/timedependentparty-1.5.8] closed abnoramlly (see party server for more details) 
+24-Feb-2021 22:32:36.440 INFO [http-nio-8080-exec-10] tudelft.utilities.logging.ReportToLogger.log Final ourcome:Finished[Agreements{}]
+24-Feb-2021 22:32:36.442 INFO [http-nio-8080-exec-10] tudelft.utilities.logging.ReportToLogger.log socket closed to party2_192_168_2_12
+24-Feb-2021 22:32:36.442 INFO [http-nio-8080-exec-10] tudelft.utilities.logging.ReportToLogger.log Party party2_192_168_2_12 was terminated 
+24-Feb-2021 22:32:36.458 WARNING [WebSocketClient-AsyncIO-1] tudelft.utilities.logging.ReportToLogger.log SAOP protocol intercepted error due to party party1_192_168_2_12:geniusweb.runserver.WebSocketProtToPartyConn@f933ab1Protocol error
+	geniusweb.runserver.RemoteException: Session PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies] closed abnoramlly (see party server for more details) party threw exception:  : RuntimeException:Failed to handle info : IllegalArgumentException:Issues in bid ([lease car, c…
+24-Feb-2021 22:32:45.239 INFO [http-nio-8080-exec-10] tudelft.utilities.logging.ReportToLogger.log New connection ws://localhost:8080/profilesserver-1.5.8/websocket/liststream
+24-Feb-2021 22:32:57.244 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log request to run Nego: SAOPSettings[PartyWithProfile[PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies],ProfileRef[ws://192.168.2.12:8080/profilesserver-1.5.8/websocket/get/jobs/jobs1]], PartyWithProfile[PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/timedependentparty-1.5.8],ProfileRef[ws://192.168.2.12:8080/profilesserver-1.5.8/websocket/get/jobs/jobs2]]],DeadlineRounds[200,10000]]
+24-Feb-2021 22:32:57.245 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log SAOP connect [PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies], PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/timedependentparty-1.5.8]]
+24-Feb-2021 22:32:57.246 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log attempting to connect [PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies], PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/timedependentparty-1.5.8]]
+24-Feb-2021 22:32:57.246 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log Trying to start up party PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies]
+24-Feb-2021 22:32:57.248 INFO [http-nio-8080-exec-8] tudelft.utilities.logging.ReportToLogger.log request to run group19party-1.5.8-jar-with-dependencies
+24-Feb-2021 22:32:57.249 INFO [http-nio-8080-exec-8] tudelft.utilities.logging.ReportToLogger.log started group19party-1.5.8-jar-with-dependencies
+24-Feb-2021 22:32:57.255 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log startparty returned ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party3_192_168_2_12
+24-Feb-2021 22:32:57.260 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log Trying to make websocket connection to running party ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party3_192_168_2_12
+24-Feb-2021 22:32:57.265 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log Party is being connected: org.apache.tomcat.websocket.WsSession@4f93b0e0
+24-Feb-2021 22:32:57.267 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log Created websocket connection at  ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party3_192_168_2_12
+24-Feb-2021 22:32:57.267 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log Trying to start up party PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/timedependentparty-1.5.8]
+24-Feb-2021 22:32:57.269 INFO [http-nio-8080-exec-6] tudelft.utilities.logging.ReportToLogger.log request to run timedependentparty-1.5.8
+24-Feb-2021 22:32:57.270 INFO [http-nio-8080-exec-6] tudelft.utilities.logging.ReportToLogger.log started timedependentparty-1.5.8
+24-Feb-2021 22:32:57.274 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log startparty returned ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party4_192_168_2_12
+24-Feb-2021 22:32:57.275 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log Trying to make websocket connection to running party ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party4_192_168_2_12
+24-Feb-2021 22:32:57.280 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log Party is being connected: org.apache.tomcat.websocket.WsSession@1e078881
+24-Feb-2021 22:32:57.280 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log Created websocket connection at  ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party4_192_168_2_12
+24-Feb-2021 22:32:57.280 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log succesfully connected [PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies], PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/timedependentparty-1.5.8]]
+24-Feb-2021 22:32:57.282 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log SAOP deadline set to 2021/02/24 22:33:07
+24-Feb-2021 22:32:57.522 WARNING [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log Party failed on inform.
+	java.lang.RuntimeException: Failed to handle info
+		at cai.group19.Group19Party.notifyChange(Group19Party.java:153)
+		at cai.group19.Group19Party.notifyChange(Group19Party.java:70)
+		at geniusweb.partiesserver.websocket.PartySocket.notifyListeners(PartySocket.java:281)
+		at geniusweb.partiesserver.repository.RunningParty.inform(RunningParty.java:221)
+		at geniusweb.partiesserver.websocket.PartySocket.onMessage(PartySocket.java:143)
+		at jdk.internal.reflect.GeneratedMethodAccessor51.invoke(Unknown Source)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+		at org.apache.tomcat.websocket.pojo.PojoMessageHandlerWholeBase.onMessage(PojoMessageHandlerWholeBase.java:80)
+		at org.apache.tomcat.websocket.WsFrameBase.sendMessageText(WsFrameBase.java:414)
+		at org.apache.tomcat.websocket.server.WsFrameServer.sendMessageText(WsFrameServer.java:129)
+		at org.apache.tomcat.websocket.WsFrameBase.processDataText(WsFrameBase.java:515)
+		at org.apache.tomcat.websocket.WsFrameBase.processData(WsFrameBase.java:301)
+		at org.apache.tomcat.websocket.WsFrameBase.processInputBuffer(WsFrameBase.java:133)
+		at org.apache.tomcat.websocket.server.WsFrameServer.onDataAvailable(WsFrameServer.java:85)
+		at org.apache.tomcat.websocket.server.WsFrameServer.doOnDataAvailable(WsFrameServer.java:183)
+		at org.apache.tomcat.websocket.server.WsFrameServer.notifyDataAvailable(WsFrameServer.java:162)
+		at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:156)
+		at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:831)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1629)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+		at java.base/java.lang.Thread.run(Thread.java:835)
+	Caused by: java.lang.ArithmeticException: Non-terminating decimal expansion; no exact representable decimal result.
+		at java.base/java.math.BigDecimal.divide(BigDecimal.java:1722)
+		at cai.group19.Group19Party.getRelativeTitForTat(Group19Party.java:402)
+		at cai.group19.Group19Party.makeOffer(Group19Party.java:208)
+		at cai.group19.Group19Party.notifyChange(Group19Party.java:142)
+		... 26 more
+24-Feb-2021 22:32:57.524 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log socket closed to party3_192_168_2_12
+24-Feb-2021 22:32:57.524 INFO [WebSocketClient-AsyncIO-2] tudelft.utilities.logging.ReportToLogger.log closing websocket PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies]:CloseReason: code [1002], reason [party threw exception:  : RuntimeException:Failed to handle info : ArithmeticException:Non-terminating decimal expansion…]
+24-Feb-2021 22:32:57.525 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log Party party3_192_168_2_12 was terminated 
+24-Feb-2021 22:32:57.527 INFO [WebSocketClient-AsyncIO-2] tudelft.utilities.logging.ReportToLogger.log Failed to send Finished to geniusweb.runserver.WebSocketProtToPartyConn@e950b41
+	java.lang.IllegalStateException: Message will not be sent because the WebSocket session has been closed
+		at org.apache.tomcat.websocket.WsRemoteEndpointImplBase.writeMessagePart(WsRemoteEndpointImplBase.java:438)
+		at org.apache.tomcat.websocket.WsRemoteEndpointImplBase.sendMessageBlock(WsRemoteEndpointImplBase.java:311)
+		at org.apache.tomcat.websocket.WsRemoteEndpointImplBase.sendMessageBlock(WsRemoteEndpointImplBase.java:251)
+		at org.apache.tomcat.websocket.WsRemoteEndpointImplBase.sendString(WsRemoteEndpointImplBase.java:192)
+		at org.apache.tomcat.websocket.WsRemoteEndpointBasic.sendText(WsRemoteEndpointBasic.java:37)
+		at geniusweb.runserver.WebSocketProtToPartyConn.send(WebSocketProtToPartyConn.java:150)
+		at geniusweb.runserver.WebSocketProtToPartyConn.send(WebSocketProtToPartyConn.java:42)
+		at geniusweb.protocol.session.saop.SAOP.sendFinish(SAOP.java:366)
+		at geniusweb.protocol.session.saop.SAOP.finish(SAOP.java:359)
+		at geniusweb.protocol.session.saop.SAOP.setState(SAOP.java:341)
+		at geniusweb.protocol.session.saop.SAOP.handleError(SAOP.java:321)
+		at geniusweb.protocol.session.saop.SAOP.actionRequest(SAOP.java:271)
+		at geniusweb.protocol.session.saop.SAOP.lambda$setupParties$1(SAOP.java:222)
+		at tudelft.utilities.listener.DefaultListenable.notifyListeners(DefaultListenable.java:38)
+		at geniusweb.runserver.WebSocketProtToPartyConn.setError(WebSocketProtToPartyConn.java:245)
+		at geniusweb.runserver.WebSocketProtToPartyConn.onClose(WebSocketProtToPartyConn.java:191)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+		at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:103)
+		at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:556)
+		at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:534)
+		at org.apache.tomcat.websocket.WsFrameBase.processDataControl(WsFrameBase.java:367)
+		at org.apache.tomcat.websocket.WsFrameBase.processData(WsFrameBase.java:296)
+		at org.apache.tomcat.websocket.WsFrameBase.processInputBuffer(WsFrameBase.java:133)
+		at org.apache.tomcat.websocket.WsFrameClient.processSocketRead(WsFrameClient.java:95)
+		at org.apache.tomcat.websocket.WsFrameClient.resumeProcessing(WsFrameClient.java:212)
+		at org.apache.tomcat.websocket.WsFrameClient.access$500(WsFrameClient.java:31)
+		at org.apache.tomcat.websocket.WsFrameClient$WsFrameClientCompletionHandler.doResumeProcessing(WsFrameClient.java:189)
+		at org.apache.tomcat.websocket.WsFrameClient$WsFrameClientCompletionHandler.completed(WsFrameClient.java:163)
+		at org.apache.tomcat.websocket.WsFrameClient$WsFrameClientCompletionHandler.completed(WsFrameClient.java:148)
+		at java.base/sun.nio.ch.Invoker.invokeUnchecked(Invoker.java:127)
+		at java.base/sun.nio.ch.Invoker$2.run(Invoker.java:219)
+		at java.base/sun.nio.ch.AsynchronousChannelGroupImpl$1.run(AsynchronousChannelGroupImpl.java:112)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+		at java.base/java.lang.Thread.run(Thread.java:835)
+24-Feb-2021 22:32:57.528 INFO [WebSocketClient-AsyncIO-2] tudelft.utilities.logging.ReportToLogger.log Party close called
+24-Feb-2021 22:32:57.528 INFO [http-nio-8080-exec-9] tudelft.utilities.logging.ReportToLogger.log Final ourcome:Finished[Agreements{}]
+24-Feb-2021 22:32:57.528 INFO [WebSocketClient-AsyncIO-2] tudelft.utilities.logging.ReportToLogger.log closing websocket PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/timedependentparty-1.5.8]:CloseReason: code [1000], reason []
+24-Feb-2021 22:32:57.528 INFO [http-nio-8080-exec-9] tudelft.utilities.logging.ReportToLogger.log socket closed to party4_192_168_2_12
+24-Feb-2021 22:32:57.529 WARNING [WebSocketClient-AsyncIO-2] tudelft.utilities.logging.ReportToLogger.log SAOP protocol intercepted error due to party party4_192_168_2_12:geniusweb.runserver.WebSocketProtToPartyConn@6b6eb47aProtocol error
+	geniusweb.runserver.RemoteException: Session PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/timedependentparty-1.5.8] closed abnoramlly (see party server for more details) 
+24-Feb-2021 22:32:57.529 INFO [http-nio-8080-exec-9] tudelft.utilities.logging.ReportToLogger.log Party party4_192_168_2_12 was terminated 
+24-Feb-2021 22:32:57.531 WARNING [WebSocketClient-AsyncIO-2] tudelft.utilities.logging.ReportToLogger.log SAOP protocol intercepted error due to party party3_192_168_2_12:geniusweb.runserver.WebSocketProtToPartyConn@e950b41Protocol error
+	geniusweb.runserver.RemoteException: Session PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar-with-dependencies] closed abnoramlly (see party server for more details) party threw exception:  : RuntimeException:Failed to handle info : ArithmeticException:Non-terminating decimal expansion…
+24-Feb-2021 22:39:17.983 INFO [Thread-3] tudelft.utilities.logging.ReportToLogger.log change: <null,FileInfo[C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\partiesserver-1.5.8\partiesrepo\group19party-1.5.8-jar.jar,1614202672645]>
+24-Feb-2021 22:39:24.672 INFO [http-nio-8080-exec-3] tudelft.utilities.logging.ReportToLogger.log New connection ws://localhost:8080/profilesserver-1.5.8/websocket/liststream
+24-Feb-2021 22:39:40.296 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log request to run Nego: SAOPSettings[PartyWithProfile[PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar],ProfileRef[ws://192.168.2.12:8080/profilesserver-1.5.8/websocket/get/jobs/jobs1]], PartyWithProfile[PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/boulware-1.5.8],ProfileRef[ws://192.168.2.12:8080/profilesserver-1.5.8/websocket/get/jobs/jobs2]]],DeadlineRounds[200,10000]]
+24-Feb-2021 22:39:40.298 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log SAOP connect [PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar], PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/boulware-1.5.8]]
+24-Feb-2021 22:39:40.298 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log attempting to connect [PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar], PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/boulware-1.5.8]]
+24-Feb-2021 22:39:40.298 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log Trying to start up party PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar]
+24-Feb-2021 22:39:40.301 INFO [http-nio-8080-exec-9] tudelft.utilities.logging.ReportToLogger.log request to run group19party-1.5.8-jar
+24-Feb-2021 22:39:40.301 INFO [http-nio-8080-exec-9] tudelft.utilities.logging.ReportToLogger.log started group19party-1.5.8-jar
+24-Feb-2021 22:39:40.323 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log startparty returned ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party5_192_168_2_12
+24-Feb-2021 22:39:40.328 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log Trying to make websocket connection to running party ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party5_192_168_2_12
+24-Feb-2021 22:39:40.333 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log Party is being connected: org.apache.tomcat.websocket.WsSession@4e9eb4c2
+24-Feb-2021 22:39:40.334 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log Created websocket connection at  ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party5_192_168_2_12
+24-Feb-2021 22:39:40.334 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log Trying to start up party PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/boulware-1.5.8]
+24-Feb-2021 22:39:40.336 INFO [http-nio-8080-exec-2] tudelft.utilities.logging.ReportToLogger.log request to run boulware-1.5.8
+24-Feb-2021 22:39:40.336 INFO [http-nio-8080-exec-2] tudelft.utilities.logging.ReportToLogger.log started boulware-1.5.8
+24-Feb-2021 22:39:40.341 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log startparty returned ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party6_192_168_2_12
+24-Feb-2021 22:39:40.342 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log Trying to make websocket connection to running party ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party6_192_168_2_12
+24-Feb-2021 22:39:40.347 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log Party is being connected: org.apache.tomcat.websocket.WsSession@5c9fa3d0
+24-Feb-2021 22:39:40.349 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log Created websocket connection at  ws://DESKTOP-VT87QB1.home:8080/partiesserver-1.5.8/party/party6_192_168_2_12
+24-Feb-2021 22:39:40.349 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log succesfully connected [PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar], PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/boulware-1.5.8]]
+24-Feb-2021 22:39:40.350 INFO [http-nio-8080-exec-4] tudelft.utilities.logging.ReportToLogger.log SAOP deadline set to 2021/02/24 22:39:50
+24-Feb-2021 22:39:41.056 INFO [WebSocketClient-AsyncIO-2] tudelft.utilities.logging.ReportToLogger.log Party close called
+24-Feb-2021 22:39:41.058 INFO [WebSocketClient-AsyncIO-2] tudelft.utilities.logging.ReportToLogger.log closing websocket PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar]:CloseReason: code [1000], reason []
+24-Feb-2021 22:39:41.059 INFO [http-nio-8080-exec-9] tudelft.utilities.logging.ReportToLogger.log Final outcome:Finished[Agreements{party5_192_168_2_12=Bid{lease car="no", permanent contract="no", career development opportunities="low", fte="0.6", salary="2000", work from home="1"}, party6_192_168_2_12=Bid{lease car="no", permanent contract="no", career development opportunities="low", fte="0.6", salary="2000", work from home="1"}}]
+ Utilities: 
+party5_192_168_2_12: 0.1700
+party6_192_168_2_12: 0.6819
+
+24-Feb-2021 22:39:41.059 WARNING [WebSocketClient-AsyncIO-2] tudelft.utilities.logging.ReportToLogger.log SAOP protocol intercepted error due to party party5_192_168_2_12:geniusweb.runserver.WebSocketProtToPartyConn@378c6bc5Protocol error
+	geniusweb.runserver.RemoteException: Session PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/group19party-1.5.8-jar] closed abnoramlly (see party server for more details) 
+24-Feb-2021 22:39:41.059 INFO [http-nio-8080-exec-9] tudelft.utilities.logging.ReportToLogger.log socket closed to party5_192_168_2_12
+24-Feb-2021 22:39:41.060 INFO [http-nio-8080-exec-9] tudelft.utilities.logging.ReportToLogger.log Party party5_192_168_2_12 was terminated 
+24-Feb-2021 22:39:41.060 INFO [WebSocketClient-AsyncIO-2] tudelft.utilities.logging.ReportToLogger.log Party close called
+24-Feb-2021 22:39:41.061 INFO [http-nio-8080-exec-8] tudelft.utilities.logging.ReportToLogger.log Final ourcome:Finished[Agreements{party5_192_168_2_12=Bid{lease car="no", permanent contract="no", career development opportunities="low", fte="0.6", salary="2000", work from home="1"}, party6_192_168_2_12=Bid{lease car="no", permanent contract="no", career development opportunities="low", fte="0.6", salary="2000", work from home="1"}}]
+24-Feb-2021 22:39:41.061 INFO [WebSocketClient-AsyncIO-2] tudelft.utilities.logging.ReportToLogger.log closing websocket PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/boulware-1.5.8]:CloseReason: code [1000], reason []
+24-Feb-2021 22:39:41.062 INFO [http-nio-8080-exec-8] tudelft.utilities.logging.ReportToLogger.log socket closed to party6_192_168_2_12
+24-Feb-2021 22:39:41.062 WARNING [WebSocketClient-AsyncIO-2] tudelft.utilities.logging.ReportToLogger.log SAOP protocol intercepted error due to party party6_192_168_2_12:geniusweb.runserver.WebSocketProtToPartyConn@2689584eProtocol error
+	geniusweb.runserver.RemoteException: Session PartyRef[http://192.168.2.12:8080/partiesserver-1.5.8/run/boulware-1.5.8] closed abnoramlly (see party server for more details) 
+24-Feb-2021 22:39:41.062 INFO [http-nio-8080-exec-8] tudelft.utilities.logging.ReportToLogger.log Party party6_192_168_2_12 was terminated 
+24-Feb-2021 22:41:35.783 INFO [Thread-25] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+24-Feb-2021 22:41:35.993 INFO [Thread-25] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+24-Feb-2021 22:41:36.013 WARNING [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [profilesserver-1.5.8] appears to have started a thread named [Thread-8] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@12.0.2/java.lang.Thread.sleep(Native Method)
+ tudelft.utilities.files.FileWatcher.run(FileWatcher.java:82)
+ java.base@12.0.2/java.lang.Thread.run(Thread.java:835)
+24-Feb-2021 22:41:36.021 WARNING [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [partiesserver-1.5.8] appears to have started a thread named [Thread-3] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@12.0.2/java.lang.Thread.sleep(Native Method)
+ tudelft.utilities.files.FileWatcher.run(FileWatcher.java:82)
+ java.base@12.0.2/java.lang.Thread.run(Thread.java:835)
+24-Feb-2021 22:41:36.022 WARNING [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [partiesserver-1.5.8] appears to have started a thread named [Thread-4] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@12.0.2/java.lang.Thread.sleep(Native Method)
+ geniusweb.partiesserver.RunningPartiesUpdater.run(RunningPartiesUpdater.java:52)
+ java.base@12.0.2/java.lang.Thread.run(Thread.java:835)
+24-Feb-2021 22:41:36.027 INFO [Thread-25] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+24-Feb-2021 22:41:36.030 INFO [Thread-25] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]

@@ -1,0 +1,65 @@
+{
+	"LinearAdditiveUtilitySpace": {
+		"issueUtilities": {
+			"Brand": {
+				"discreteutils": {
+					"valueUtilities": {
+						"Dell": 0.34,
+						"Macintosh": 1,
+						"HP": 0.67
+					}
+				}
+			},
+			"Harddisk": {
+				"discreteutils": {
+					"valueUtilities": {
+						"128 GB": 0.65,
+						"512 GB": 0.98,
+						"2 TB": 0.32
+					}
+				}
+			},
+			"External Monitor": {
+				"discreteutils": {
+					"valueUtilities": {
+						"19inch HD": 1,
+						"32inch 4K": 0.68,
+						"55inch 8K": 0.33
+					}
+				}
+			}
+		},
+		"issueWeights": {
+			"Brand": 0.37,
+			"Harddisk": 0.18,
+			"External Monitor": 0.45
+		},
+		"domain": {
+			"name": "laptop",
+			"issuesValues": {
+				"Brand": {
+					"values": [
+						"Dell",
+						"Macintosh",
+						"HP"
+					]
+				},
+				"Harddisk": {
+					"values": [
+						"128 GB",
+						"512 GB",
+						"2 TB"
+					]
+				},
+				"External Monitor": {
+					"values": [
+						"19inch HD",
+						"32inch 4K",
+						"55inch 8K"
+					]
+				}
+			}
+		},
+		"name": "laptopSeller"
+	}
+}

@@ -1,0 +1,154 @@
+{
+	"SumOfGroupsUtilitySpace": {
+		"domain": {
+			"name": "party",
+			"issuesValues": {
+				"Invitations": {
+					"values": ["Plain", "Photo", "Custom, Handmade", "Custom, Printed"]
+				},
+				"Music": {
+					"values": ["MP3", "DJ", "Band"]
+				},
+				"Drinks": {
+					"values": ["Non-Alcoholic", "Beer Only", "Handmade Cocktails", "Catering"]
+				},
+				"Cleanup": {
+					"values": ["Water and Soap", "Specialized Materials", "Special Equiment", "Hired Help"]
+				},
+				"Food": {
+					"values": ["Chips and Nuts", "Finger-Food", "Handmade Food", "Catering"]
+				},
+				"Location": {
+					"values": ["Party Tent", "Your Dorm", "Party Room", "Ballroom"]
+				}
+			}
+		},
+		"name": "party1partial",
+		"partUtilities": {
+			"food&drinks": {
+				"partsutils": {
+					"issues": ["Drinks", "Food"],
+					"utilslist": [{
+						"values": ["Catering", "Chips and Nuts"],
+						"util": 0.13602
+					}, {
+						"values": ["Catering", "Catering"],
+						"util": 0.4169
+					}, {
+						"values": ["Catering", "Finger-Food"],
+						"util": 0.19232
+					}, {
+						"values": ["Handmade Cocktails", "Finger-Food"],
+						"util": 0.28696
+					}, {
+						"values": ["Handmade Cocktails", "Chips and Nuts"],
+						"util": 0.23066
+					}, {
+						"values": ["Handmade Cocktails", "Catering"],
+						"util": 0.38566
+					}, {
+						"values": ["Non-Alcoholic", "Chips and Nuts"],
+						"util": 0.21614
+					}, {
+						"values": ["Beer Only", "Handmade Food"],
+						"util": 0.2713
+					}, {
+						"values": ["Handmade Cocktails", "Handmade Food"],
+						"util": 0.38506
+					}, {
+						"values": ["Beer Only", "Finger-Food"],
+						"util": 0.3732
+					}, {
+						"values": ["Beer Only", "Chips and Nuts"],
+						"util": 0.2169
+					}, {
+						"values": ["Non-Alcoholic", "Handmade Food"],
+						"util": 0.17054
+					}, {
+						"values": ["Beer Only", "Catering"],
+						"util": 0.1219
+					}, {
+						"values": ["Non-Alcoholic", "Catering"],
+						"util": 0.12114
+					}, {
+						"values": ["Non-Alcoholic", "Finger-Food"],
+						"util": 0.17244
+					}, {
+						"values": ["Catering", "Handmade Food"],
+						"util": 0.39042
+					}]
+				}
+			},
+			"Invitations": {
+				"partsutils": {
+					"issues": ["Invitations"],
+					"utilslist": [{
+						"values": ["Custom, Handmade"],
+						"util": 0.05
+					}, {
+						"values": ["Custom, Printed"],
+						"util": 0.0240
+					}, {
+						"values": ["Photo"],
+						"util": 0.0370
+					}, {
+						"values": ["Plain"],
+						"util": 0.0120
+					}]
+				}
+			},
+			"Cleanup": {
+				"partsutils": {
+					"issues": ["Cleanup"],
+					"utilslist": [{
+						"values": ["Hired Help"],
+						"util": 0.0310
+					}, {
+						"values": ["Special Equiment"],
+						"util": 0.0320
+					}, {
+						"values": ["Water and Soap"],
+						"util": 0.0650
+					}, {
+						"values": ["Specialized Materials"],
+						"util": 0.0960
+					}]
+				}
+			},
+			"Music": {
+				"partsutils": {
+					"issues": ["Music"],
+					"utilslist": [{
+						"values": ["DJ"],
+						"util": 0.1881
+					}, {
+						"values": ["MP3"],
+						"util": 0.1235
+					}, {
+						"values": ["Band"],
+						"util": 0.0665
+					}]
+				}
+			},
+			"Location": {
+				"partsutils": {
+					"issues": ["Location"],
+					"utilslist": [{
+						"values": ["Party Tent"],
+						"util": 0.0988
+					}, {
+						"values": ["Your Dorm"],
+						"util": 0.0437
+					}, {
+						"values": ["Ballroom"],
+						"util": 0.1463
+					}, {
+						"values": ["Party Room"],
+						"util": 0.1881
+					}]
+				}
+			}
+		},
+		"reservationbid": null
+	}
+}

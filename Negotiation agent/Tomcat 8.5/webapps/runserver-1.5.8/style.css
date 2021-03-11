@@ -1,0 +1,30 @@
+
+th {
+	padding: 15px;
+}
+
+table {
+	border: 1px solid black;
+	#border-collapse: collapse;
+}
+
+table td, table th {
+	padding: 4px;
+}
+
+tr:nth-child(even) {background: #DDD}
+tr:nth-child(odd) {background: #FFF}
+
+.box {
+	  border: 1px solid black;
+}
+
+/* Used for elements that are visible only if SHAOP protocol selected.
+This css is programmatically changed when protocol changes */
+.onlySHAOP { }
+
+/* substitute for <a> as in <a href-..> */
+aa {
+ 	color: blue;
+	text-decoration: underline;
+}

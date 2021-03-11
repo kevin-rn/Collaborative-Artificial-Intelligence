@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>Plot log results</title>
+<script src="Chart.min_2.8.0.js"></script>
+<script src="utils.js"></script>
+</head>
+<style>
+canvas {
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+</style>
+<body>
+	<div class="noscript">
+		<h2 style="color: #ff0000">Seems your browser doesn't support
+			Javascript! Websockets rely on Javascript being enabled. Please
+			enable Javascript and reload this page!</h2>
+	</div>
+	<h1 id="header">Graph of log results</h1>
+
+	Progress:
+	<div id="progress">Waiting for log file name</div>
+	<br />
+	
+	<div>Graph shows utilities of bids in offers and accepts.
+	Points in the graph indicate the party that placed the offer. 
+	Plotted utilities do not include possible
+		elicitation costs.</div>
+	<div style="width: 100%;">
+		<canvas id="canvas"></canvas>
+	</div>
+
+	Agreement:
+	<div id="agreement" style="display: inline;">?</div>
+</body>
+
+<!-- Script to get/update the SESSIONS list and put it into the table. -->
+<script type="application/javascript">
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	<![CDATA[
+        "use strict";
+
+
+        
+        var ws = null;
+
+        <!-- Most functions are reactive programming written out-->
+
+        function connect() {
+        	var query = new URLSearchParams(location.search);
+        	var id=query.get('id');
+            if (id==undefined) {
+            	alert("missing ?id=<logfile> in URL"); 
+            	return;
+           	}
+            
+            // load the log file with given id
+            document.getElementById('header').innerHTML="Graph of log "+id;
+
+            var url = "log/"+id+".json";
+        	setStatus("Downloading file "+url);
+            var request=new XMLHttpRequest();
+            request.responseType = 'text';
+            request.open('Get', url)
+            request.onload=function() {
+            	if (request.status!=200) {
+            		setStatus("Failed to fetch "+url+":" +request.status+" "+request.statusText)
+            		return;
+            	}
+				processLogFile(JSON.parse(request.response));
+			}
+            request.send();
+ 		}
+        
+        
+        /**
+        Figure out the protocol contents and parse accordingly.
+        */
+        function processLogFile(json) {
+        	
+        	if (json['SAOPState']!=undefined) {
+        		processStandard(json['SAOPState'], 'SAOP');
+        	} else if (json['SHAOPState']!=undefined) {
+        		processSHAOP(json['SHAOPState']);
+        	} else if (json['MOPACState']!=undefined) {
+        		// just use the SAOP processor, which shows the
+        		// utilities of all Offers in sequence.
+        		processStandard(json['MOPACState'], 'MOPAC');
+        	} else{
+            	setStatus("Unknown log file contents "+Object.keys(json));
+            }
+        }
+        
+        /**
+        Handle standard protocol result.
+        @param protocol either SAOP or MOPAC or another SAOP-like protocol
+        */
+        function processStandard(json, protocol) {
+        	var partyprofiles={}
+        	var profs=json['partyprofiles'];
+        	for (var party in profs) {
+        		partyprofiles[party]=withoutPartial(profs[party]['profile']);
+        	}
+        	
+        	getProfiles(json, partyprofiles, protocol);
+        }
+        
+        
+        /**
+        Handle SHAOP protocol result. Get only SHAOP profiles. Remove all 'partial=XX' from relevant profiles.
+        */
+        function processSHAOP(json) {
+        	var partyprofiles={}
+        	var teams=json['settings']['SHAOPSettings']['participants'];
+        	for (var partyid in json['partyNumbers']) {
+        		var nr= json['partyNumbers'][partyid];
+        		if ( (nr & 1 != 0)) continue; // skip COB parties
+        		var shaop=teams[nr/2]['shaop'];
+        		var profile = withoutPartial(shaop['profile']); // hacky, remove complete query.
+        		partyprofiles[partyid]=profile;
+        	}
+			
+        	
+        	getProfiles(json, partyprofiles, "SHAOP");
+        }
+
+
+        /**
+        @param uristr a string with an uri that may have ?partial=XX 
+        @return the given uristr   without the "partia=XXl" value 
+        */
+        function withoutPartial(uristr) {
+    		var profuri=new URL(uristr);
+    		var searchParams = new URLSearchParams(profuri.search);
+    		searchParams.delete("partial");
+    		profuri.search = searchParams.toString();
+    		return profuri.toString();
+
+        } 
+        
+        /**
+        Get the partyprofiles.
+        @param json the json protocol result
+        @param partyprofileURIs dict with the websocket addresses for each party'as profile
+        @param partyprofiles dict with each party's profile. Initially should be {}
+        @param protocol protocolname, eg "SAOP"
+        */
+        function getProfiles(json, partyprofileURIs, protocol, partyprofiles={} ) {
+        	var keys = Object.keys(partyprofileURIs);
+			if (keys.length==0) {
+				plotResults(computeUtils(json, partyprofiles), isAgreement(json, protocol));
+				return;
+			}
+			var party = keys[0];
+			var uri=partyprofileURIs[party];
+			delete partyprofileURIs[party];
+			
+			setStatus("fetching profile "+uri);
+            if ('WebSocket' in window) {
+                ws = new WebSocket(uri);
+            } else if ('MozWebSocket' in window) {
+                ws = new MozWebSocket(uri);
+            } else {
+                setStatus('Fatal: WebSocket is not supported by this browser. Please use a newer browser');
+                return;
+            }
+            ws.onmessage = function (event) {
+            	var profile = JSON.parse(event.data);
+            	if (profile['LinearAdditiveUtilitySpace']==undefined) {
+                    setStatus('Fatal: profile '+uri+" does not contain a LinearAdditiveUtilitySpace.");
+                    return;
+            	}
+            	partyprofiles[party]=profile['LinearAdditiveUtilitySpace'];
+            	getProfiles(json, partyprofileURIs, protocol, partyprofiles);
+            };
+            ws.onerror=function(event) {
+                setStatus('Error fetching profile '+uri+':'+event);
+            }
+        }
+        
+        /**
+        @param logfile the logfile content, but below the protocol header
+        @param protocol the protocol name, eg SAOP, SHAOP, MOPAC
+        @return 'Yes' if there is agreement, 'No' if there is no agreement at all, 
+        or 'Partial'  if part of the parties agreed and part did not.
+        or '?' if unsupported protocol
+        */
+        function isAgreement(logfile, protocol) {
+			switch (protocol) {
+				case "SAOP":
+				case "SHAOP":
+					var actions=logfile['actions'];
+					var lastact = actions[actions.length -1];
+					return 'accept' in lastact ? 'Yes':'No';
+				case "MOPAC":
+					var finalstate=logfile['phase'][Object.keys(logfile['phase'])[0]]['partyStates'];
+					var nagrees=Object.keys(finalstate['agreements']).length;
+					var nparties=Object.keys(finalstate['powers']).length;
+					if (nagrees==nparties) return "Yes";
+					if (nagrees==0) return "No"
+					return "Partial";
+				default:
+					return "?";
+				}
+        }
+        /**
+        @json the log file contents
+        @param partyprofiles a dict with key=party id and value a the (linear additive) profile
+        @return a list [utilities, biddingparties] where utilities is a dict with keys: partyID
+        and value: list of utilities . biddingparties is a list [partyid] which is the 
+        bidding party for each round.
+        */
+        function computeUtils(json, partyprofiles) {
+        	
+        	setStatus("Computing utilities.")
+        	var utilities={};
+        	var biddingparties=[];
+			for (var party in partyprofiles) {
+				utilities[party]=[];
+			}
+        	var actions = json['actions'];
+        	for (var n in actions) {
+        		var action = actions[n];
+        		var item;
+        		if ('offer' in action) 
+        			action= action['offer'];
+        		else if ('accept' in action)
+        			action= action['accept'];
+        		else 
+        			continue;
+        		var issueutilities = action['bid']['issuevalues']
+				for (var party in partyprofiles) {
+					utilities[party].push(utility(partyprofiles[party],issueutilities));
+				}
+        		biddingparties.push(action['actor']);
+        	}
+        	return [utilities, biddingparties];
+        	
+        	
+        }
+
+        var chartColors = [
+      	      'rgb(255, 99, 132)',
+      	      'rgb(3, 192, 12)',
+      	      'rgb(54, 162, 235)',
+      	      'rgb(153, 102, 255)',
+      	      'rgb(201, 203, 207)',
+      	      'rgb(255, 159, 64)',
+      	      'rgb(255, 205, 86)'
+      	    ];
+
+        function color(i) {
+			return chartColors[i % chartColors.length];        	
+        }
+        
+        /**
+        @param [utilities, parties] utilities=the dict with key=party id  of the utilities of all steps for each party )
+        and parties a list of biddingparty for each value in utilities lists.
+        @param isAgreement either Yes, No, Partial or ?
+        */
+        
+        function plotResults( [utilities, biddingparties], isAgreement) {
+        	setStatus("Plotting" )
+        	
+            document.getElementById('agreement').innerHTML=isAgreement;
+
+        	var parties=Object.keys(utilities);
+        	var thelabels=[];
+        	for (var i=1; i<=utilities[parties[0]].length; i++) { thelabels.push(i); }
+        	
+        	var thedatasets=[];
+        	var partynr=0;
+        	for (var party in utilities) {
+        		var pointsizes=[];
+        		for (var p of biddingparties) {
+        			pointsizes.push(p==party ? 4:0); 
+        		}
+        		var dataset={
+   					label: party,
+   					lineTension:0, // straight lines between the points
+   					backgroundColor: color(partynr),
+   					borderColor: color(partynr),
+					data: utilities[party],
+					pointRadius: pointsizes,
+					fill: false
+        		};
+        		thedatasets.push(dataset);
+        		partynr++;
+        	}
+        	
+    		var config = {
+    			type: 'line',
+    		    data: {
+    				labels: thelabels,
+    				datasets: thedatasets
+    			},
+    			options: {
+    				responsive: true,
+    				title: {
+    					display: true,
+    					text: 'Per-turn utility plot'
+    				},
+    				tooltips: {
+    					mode: 'index',
+    					intersect: false,
+    				},
+    				hover: {
+    					mode: 'nearest',
+    					intersect: true
+    				},
+    				scales: {
+     					xAxes: [{
+    						display: true,
+    						scaleLabel: {
+    							display: true,
+    							labelString: 'Offer'
+    						}
+    					}],
+    					yAxes: [{
+    						display: true,
+    						scaleLabel: {
+    							display: true,
+    							labelString: 'Utility'
+    						}
+    					}]
+    				}
+    			}
+    		};
+        	
+			var ctx = document.getElementById('canvas').getContext('2d');
+			window.myLine = new Chart(ctx, config);
+        	
+        	setStatus("Plot ready." )
+
+        	}
+        
+        /**
+        keys are STRING objects 0,1,2... values are utility values (double)
+        */
+        function makeJxPolyline(pointslist) {
+        	var jxpoints = []
+        	for (var i in pointslist) {
+        		jxpoints.push(new jxPoint(20*Number(i), 100*pointslist[i]));
+        	}
+        	return jxpoints;
+        }
+        
+        /******************* Private support funcs****************/
+        
+        /**
+        Set the progress/status text
+        */
+        function setStatus(text) {
+            document.getElementById('progress').innerHTML=text;
+        }
+
+        /*
+        @param sessions a list of IDs (Strings).
+        */
+        function update(sessions) {
+			var table = document.getElementById("sessionsTable");
+        	table.innerHTML="";
+        	for(var  session of sessions) {
+        		var row = table.insertRow(-1); //-1 = end
+				row.insertCell(0).innerHTML = session;
+        	}
+        	
+        }
+        
+   
+    
+	 	
+	/**
+	 	Compute utilityes
+	 	@param linadditive the linear additive utility space
+	 	@param issueValues the bid containing dict with values for the issues
+	 	@return utility of issueValues
+	 	*/
+	 	function utility(profile, issueValues) {
+			var util=0;
+			var weights = profile['issueWeights'];
+			
+			for (var issue in issueValues) {
+				util = util + weights[issue] * evaluate(profile['issueUtilities'][issue], issueValues[issue] );
+			}
+			return util;
+		}
+	
+	 	/**
+	 	Bit hacky, javascript version of evaluator of utility space. 
+	 	Would be much nicer if we could use java here
+	 	*/
+	 	function evaluate (utilfunc, value) {
+	 		if (utilfunc == undefined) {
+	 			return 0;
+	 		}
+			if (utilfunc['numberutils']!=undefined) {
+				// it's numeric issue. Compute
+				var minval = utilfunc['numberutils']['lowValue'];
+				var minutil = utilfunc['numberutils']['lowUtility'];
+				var maxval = utilfunc['numberutils']['highValue'];
+				var maxutil = utilfunc['numberutils']['highUtility'];
+				
+				var alfa = (value-minval) / (maxval - minval) ;
+				alfa = Math.max(Math.min(alfa, 1),0);
+				return alfa * maxutil + (1-alfa) * minutil;   
+			}
+			if (utilfunc['discreteutils']!=undefined) {
+				// it's discrete issue. Compute
+				return utilfunc['discreteutils']['valueUtilities'][value];
+			}
+	    	setStatus("Unknown utility function type "+Object.keys(utilfunc));
+	
+	 	}
+ 	
+ 	
+    ]]>
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+<script type="application/javascript">
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<![CDATA[
+        "use strict";
+        /*
+        This is called when the window DOM is loaded. window.onload runs BEFORE the window is loaded
+        and therefore is too early to remove the noscript message.
+        */
+       document.addEventListener("DOMContentLoaded", function() {
+			// Remove elements with "noscript" class - <noscript> is not allowed in XHTML
+			var noscripts = document.getElementsByClassName("noscript");
+			for (var i = 0; i < noscripts.length; i++) {
+			    noscripts[i].parentNode.removeChild(noscripts[i]);
+			}
+       		connect();
+
+         }, false);
+    ]]>
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+</html>

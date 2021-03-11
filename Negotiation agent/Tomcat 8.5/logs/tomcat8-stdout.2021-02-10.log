@@ -1,0 +1,18 @@
+
+2021-02-10 11:44:08 Apache Commons Daemon procrun stdout initialized.
+adding python path C:\Program Files\Apache Software Foundation\Tomcat 8.5//
+code is at /C:/Program%20Files/Apache%20Software%20Foundation/Tomcat%208.5/webapps/partiesserver-1.5.8/partiesrepo/randompyparty-1.5.8.jar
+adding python path C:\Program Files\Apache Software Foundation\Tomcat 8.5//C:/Program%20Files/Apache%20Software%20Foundation/Tomcat%208.5/webapps/partiesserver-1.5.8/partiesrepo/randompyparty-1.5.8.jar/
+adding python path C:\Program Files\Apache Software Foundation\Tomcat 8.5//
+code is at /C:/Program%20Files/Apache%20Software%20Foundation/Tomcat%208.5/webapps/partiesserver-1.5.8/partiesrepo/randompyparty-1.5.8.jar
+adding python path C:\Program Files\Apache Software Foundation\Tomcat 8.5//C:/Program%20Files/Apache%20Software%20Foundation/Tomcat%208.5/webapps/partiesserver-1.5.8/partiesrepo/randompyparty-1.5.8.jar/
+sending updated parties list1
+sending updated parties list1
+sending updated parties list1
+searching from C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\profilesserver-1.5.8\WEB-INF
+Directory did not contain repo:C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\profilesserver-1.5.8\WEB-INF
+sending updated parties list1
+searching from C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\runserver-1.5.8\WEB-INF
+Directory did not contain log:C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\runserver-1.5.8\WEB-INF
+new session. logging to C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\runserver-1.5.8\log
+sending updated parties list1

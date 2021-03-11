@@ -1,0 +1,26 @@
+{
+	"name": "laptop",
+	"issuesValues": {
+		"Brand": {
+			"values": [
+				"Dell",
+				"Macintosh",
+				"HP"
+			]
+		},
+		"Harddisk": {
+			"values": [
+				"128 GB",
+				"512 GB",
+				"2 TB"
+			]
+		},
+		"External Monitor": {
+			"values": [
+				"19inch HD",
+				"32inch 4K",
+				"55inch 8K"
+			]
+		}
+	}
+}

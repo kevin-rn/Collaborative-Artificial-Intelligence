@@ -1,0 +1,63 @@
+{
+	"LinearAdditiveUtilitySpace": {
+		"issueUtilities": {
+			"Price": {
+				"discreteutils": {
+					"valueUtilities": {
+						"1000": 1,
+						"1200": 0.5,
+						"1400": 0
+					}
+				}
+			},
+			"Harddisk": {
+				"discreteutils": {
+					"valueUtilities": {
+						"256GB": 0,
+						"512GB": 0.6,
+						"1TB": 1
+					}
+				}
+			},
+			"Monitor": {
+				"discreteutils": {
+					"valueUtilities": {
+						"15": 0,
+						"17": 1
+					}
+				}
+			}
+		},
+		"issueWeights": {
+			"Price": 0.3,
+			"Harddisk": 0.4,
+			"Monitor": 0.3
+		},
+		"domain": {
+			"name": "laptop1",
+			"issuesValues": {
+				"Price": {
+					"values": [
+						"1000",
+						"1200",
+						"1400"
+					]
+				},
+				"Harddisk": {
+					"values": [
+						"256GB",
+						"512GB",
+						"1TB"
+					]
+				},
+				"Monitor": {
+					"values": [
+						"15",
+						"17"
+					]
+				}
+			}
+		},
+		"name": "laptopBuyer"
+	}
+}

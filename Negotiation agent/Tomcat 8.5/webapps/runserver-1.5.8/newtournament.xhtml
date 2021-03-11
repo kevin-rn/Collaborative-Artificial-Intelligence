@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>Profiles and Domains list</title>
+<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body onload="init()">
+	<h1>Tournament</h1>
+
+	On this page you can configure the settings for running a new
+	tournament and start the tournament.
+	<br />
+	<br />
+
+	<select>
+		<option value="APP">All Permutations Tournament Protocol
+			(APP)</option>
+	</select>
+	<br />
+	<input type="number" id="ntournaments" min="1" max="1000000" value="1" />
+	Number of times to repeat the entire tournament
+	<br />
+
+	<br />
+	<input type="number" id="teamspersession" min="2" max="10" value="2" />
+	Number of teams in each session
+	<br />
+
+	<input type="checkbox" id="reuseteams" /> Pick teams with return when
+	creating sessions
+	<br />
+
+	<br />
+	<div id="box" class="box">
+		Session Protocol settings <br /> Session Protocol: <select
+			id="protocolselection" onchange="selectProtocol()">
+			<option value="SAOP">SAOP</option>
+			<option value="MOPAC">MOPAC</option>
+			<option value="AMOP">AMOP</option>
+			<option value="SHAOP">SHAOP</option>
+
+
+		</select> 
+		
+		<div id="votingevaluator">
+			<br /> Voting Evaluator: <select id="selectedevaluator">
+				<option value="LargestAgreement">Largest Agreement</option>
+				<option value="LargestAgreementsLoop">Largest Agreements
+					and Repeat</option>
+			</select>
+		</div>
+
+
+		<br /> Deadline: <input type="number" id="deadlinevalue"
+			name="deadline" min="1" max="10000" value="10" /> <select
+			id="deadlinetype">
+			<option value="ROUNDS">rounds</option>
+			<option value="TIME">seconds</option>
+		</select>
+	</div>
+	<br />
+
+	<div id="box" class="box">
+		<h3>Profiles</h3>
+		Domain/Profile Server: <input type="url" name="url"
+			id="profilesserverurl" value="localhost:8080/profilesserver-1.3.1"
+			pattern=".*:[0-9]+/profilesserver.*" size="30"
+			onchange="connectDomain()"> </input> <br /> Domain: <select
+			id="domainselection" onchange="selectDomain()">
+			<!-- <option>Waiting for profiles server</option> -->
+		</select> <br /> <br />
+		<!--  first selected profile -->
+		Profile: <select id="profileselection1">
+		</select> Filter: <input type="text" id="filter1" value="" maxlength="40" /> <br />
+		<!--  second selected profile -->
+		<div class="onlySHAOP">
+			COB: <select id="profileselection2">
+			</select> Filter: <input type="text" id="filter2" value="" maxlength="40" />
+			<br />
+		</div>
+		<button onclick="addProfiles()">Add</button>
+		<br /> <br />
+		<table id="profiles">
+			<thead>
+				<th align="left">Selected Profiles</th>
+			</thead>
+			<tbody id="profilesList">
+				<tr>
+				</tr>
+
+			</tbody>
+		</table>
+		<br />
+	</div>
+	<br />
+	<div id="box" class="box">
+		<h3>Teams</h3>
+		<br /> Parties Server: <input type="url" name="url"
+			id="partiesserverurl" value="localhost:8080/partiesserver-1.3.1"
+			pattern=".*:[0-9]+/partiesserver.*" size="30"
+			onchange="connectParties()"> </input> <br /> <br />
+		<!-- party  1 selection -->
+		Party: <select id="partyselection">
+		</select> <br /> Parameters: {
+		<textarea id="parameters" rows="2" cols="70"
+			onchange="getParameters('parameters')" value="" />
+		} <br />
+		<!-- party 2 selection -->
+		<div class="onlySHAOP">
+			COB: <select id="partyselection2">
+			</select> <br /> Parameters: {
+			<textarea id="parameters2" rows="2" cols="70"
+				onchange="getParameters('parameters2')" value="" />
+			}
+		</div>
+		<br />
+
+
+		<button onclick="addTeam()">Add</button>
+
+		<br /> <br />
+		<table>
+			<thead>
+				<th align="left">Party</th>
+				<th align="left">Parameters</th>
+				<th align="left"><div class="onlySHAOP">Compare Bids
+						Party</div></th>
+				<th align="left"><div class="onlySHAOP">Compare Bids
+						Parameters</div></th>
+			</thead>
+			<tbody id="teamList">
+				<tr id="FIXME REMOVE">
+				</tr>
+
+			</tbody>
+		</table>
+
+	</div>
+	<br />
+	<form>
+		<input id="startbutton" type="button" value="Start Tournament"
+			onclick="start()" />
+	</form>
+	<div id="started" style="visibility: hidden">
+		Your tournament started. Click <a href="" id="logref">here</a> to view
+		the log file. <br /> <a href="" id="plotref">show results table.</a>.
+	</div>
+
+</body>
+
+<script type="application/javascript">
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	// FIXME quick and dirty code. No clean MVC
+	
+	
+	<![CDATA[
+        "use strict";	
+        
+        var domainwebsocket = null;
+        var partieswebsocket=null;
+        // currently known domains (and profiles) as coming from domainwebsocket.
+        // keys are domain names, values are list of profile names
+        var knowndomains={};
+        
+        var teamslist=[];
+        var profiles=[]
+
+ 	/**
+ 	called when user changes the protocol.
+ 	With SHAOP we show COB selectors and COB columns in the tables.
+    */
+    function selectProtocol() {
+            const protocol = document.getElementById("protocolselection").value;
+        	setStyleSheet('.onlySHAOP','{ display: '+(protocol=="SHAOP"? '?':'none')+'; }')
+        	
+        	document.getElementById("votingevaluator").style.display=(protocol=="MOPAC" ? 'block': 'none');
+    }
+    
+    /**
+    Change style sheet to new value. Nothing happens if there is
+    no style sheet with given classname.
+    @param classname the name of the style definition, eg '.onlySHAOP'
+    @param style the new style for the class. eg  '{ max-width: 100px; }'
+    */
+    function setStyleSheet(classname, style) {
+    	for (var cssRulenr=0; cssRulenr< document.styleSheets.length; cssRulenr++) {
+    		var cssRule = document.styleSheets[cssRulenr];
+    		// there may be multple CSS definitions, check each.
+        	var rules = cssRule.cssRules;
+        	for (var rulenr=0;  rulenr<rules.length; rulenr++) {
+        		var rule = rules[rulenr];
+        		if ('selectorText' in rule && rule.selectorText==classname) {
+        			cssRule.deleteRule(rulenr);
+        			cssRule.insertRule(classname+ " "+style, rulenr);
+        		}
+        	}
+    	}
+    }
+        
+	/**
+	Refresh known domains using given profilesserver URL. 
+	Called when user enters URL for domain server.
+	*/
+    function connectDomain() {
+    	if (domainwebsocket!=null) {
+    		domainwebsocket.close();
+    		domainwebsocket=null;
+    	}
+		var url=document.getElementById("profilesserverurl").value;
+        var target = "ws://"+url+"/websocket/liststream";
+        if ('WebSocket' in window) {
+        	domainwebsocket = new WebSocket(target);
+        } else if ('MozWebSocket' in window) {
+        	domainwebsocket = new MozWebSocket(target);
+        } else {
+            alert('WebSocket is not supported by this browser. Please use a newer browser');
+            return;
+        }
+        domainwebsocket.onopen = function () {
+        	// whatever.
+        };
+        domainwebsocket.onmessage = function (event) {
+        	updateDomainComboBox(JSON.parse(event.data));
+        };
+        domainwebsocket.onclose = function (event) {
+            alert('Info: Server closed connection. Code: ' + event.code + 
+            		(event.reason == "" ? "" : ", Reason: " + event.reason));
+            domainwebsocket=null;
+            updateDomainComboBox({});
+        };
+    }
+
+    /**
+    Sets a new knowndomains value and Updates the contents of the domain selector combobox.
+    @param the known domains, a map of the form {"jobs":["jobs1","jobs2"]}
+        where the keys are the names of the available domains nd the values a list of the available profiles in that domain.
+
+    */
+    function updateDomainComboBox(newdomains) {
+        knowndomains=newdomains
+		var combobox = document.getElementById("domainselection");
+		combobox.options.length=0;
+    	for (var domain in knowndomains) {
+            var option = document.createElement('option');
+            option.text = option.value = domain;
+            combobox.add(option, 0);
+    	}
+    	selectDomain();
+    }
+	/**
+	Refresh known parties using given partiesserver URL. 
+	Called when user enters URL for parties server.
+	*/
+    function connectParties() {
+    	if (partieswebsocket!=null) {
+    		partieswebsocket.close();
+    		partieswebsocket=null;
+    	}
+		var url=document.getElementById("partiesserverurl").value;
+        var target = "ws://"+url+"/available";
+        if ('WebSocket' in window) {
+        	partieswebsocket = new WebSocket(target);
+        } else if ('MozWebSocket' in window) {
+        	partieswebsocket = new MozWebSocket(target);
+        } else {
+            alert('WebSocket is not supported by this browser. Please use a newer browser');
+            return;
+        }
+        partieswebsocket.onopen = function () {
+        	// whatever.
+        };
+        partieswebsocket.onmessage = function (event) {
+        	updateParties(JSON.parse(event.data));
+        };
+        partieswebsocket.onclose = function (event) {
+            alert('Info: Server closed connection. Code: ' + event.code + 
+            		(event.reason == "" ? "" : ", Reason: " + event.reason));
+            partieswebsocket=null;
+        	updateParties({});
+        };
+    }
+
+	/**
+	@param parties a new list of parties available on the parties server
+	*/
+	function updateParties(parties) {
+		updatePartyCombo(document.getElementById("partyselection"), parties, 'shaop');
+		updatePartyCombo(document.getElementById("partyselection2"), parties, 'comparebids');
+	}
+	
+	/**
+	put the available parties in the party comboboxes.
+	@param combobox a document <select> element 
+	@param parties a dict of party information coming from the partiesserver
+	@param select a string that may be a substring of the part names. 
+	@return the combobox value that contains 'select' as substring, or undefined
+	*/
+	function updatePartyCombo(combobox, parties, select) {
+		var selection=undefined;
+		combobox.options.length=0;
+    	for (var party in parties) {
+            var option = document.createElement('option');
+            option.text = option.value = parties[party].uri;
+            if (option.text.includes(select) ) option.selected=true;
+            combobox.add(option, 0);
+    	}
+    	return selection;
+	}
+    
+
+    
+    /**
+    @param elementname eg "parameters", the ID of the element in the <input> element 
+    @return the JSON parsed object, or {} if empty or parsing fails.
+    */
+    function getParameters(elementname) {
+		var text="{"+document.getElementById(elementname).value+"}";
+    	try {
+			return JSON.parse(text);
+    	} catch(e) {
+    		alert("Parameters can not be parsed. Make sure you write correct JSON here."+e);
+    	}
+		return {};
+    }
+
+	/**
+	Called when the selected domain changes. Assumes knowndomains has been set.
+	Updates the available profiles in the profile combobox.
+	@param selection the name of the selected domain. 
+	*/
+	function selectDomain() {
+		// determined current selection
+		var domaincombobox = document.getElementById("domainselection");
+		if (domaincombobox.options.length==0) return; // fixme clean profiles options?
+		var domain = domaincombobox.options[domaincombobox.selectedIndex].value;
+		updateProfiles(knowndomains[domain])
+	}
+	
+	function updateProfiles(profileslist) {
+		updateProfileCombo(document.getElementById("profileselection1"),profileslist);
+		updateProfileCombo(document.getElementById("profileselection2"),profileslist);
+	}
+	
+	/**
+	@param combobox the <select> element that should be udpated
+	@param profileslist the list of profile names to be put in the combbo
+	*/
+	function updateProfileCombo(profilecombo, profileslist) {
+		profilecombo.options.length=0;
+		for (var profile in profileslist) {
+            var option = document.createElement('option');
+            option.text = option.value = profileslist[profile];
+            profilecombo.add(option, 0);
+		}
+	}
+	
+	
+	/**
+	Called when user clicks "Add" 
+	*/
+	function addTeam() {
+		var partycombo = document.getElementById("partyselection");
+		var partycombo2 = document.getElementById("partyselection2");
+		var param = getParameters("parameters");
+		var param2 = getParameters("parameters2");
+		
+		
+		if (partycombo.options.length==0) {
+			alert("Please set partier server and select a party");
+			return;
+		}
+		var team = [];
+		team.push({"partyref":partycombo.options[partycombo.selectedIndex].value, "parameters":param});
+		team.push({"partyref":partycombo2.options[partycombo2.selectedIndex].value, "parameters":param2});
+
+		teamslist.push(team);
+		updateTeamsTable();
+	}
+	
+	/** updates the teams table, to match the #partyprofiles list.	 	*/
+	function updateTeamsTable() {
+		var table = document.getElementById("teamList");
+		table.innerHTML = ""; // clear table
+		for ( const team of teamslist) {
+			var row = table.insertRow(-1);
+			for (const col in team) {
+				const party = team[col]
+				var cell1 = row.insertCell(-1);
+				var cell2 = row.insertCell(-1);
+				cell1.innerHTML = party["partyref"];
+				cell2.innerHTML = JSON.stringify(party["parameters"]).replace(/,/g,", ");;
+				cell2.setAttribute("style","overflow-wrap: anywhere;");
+				if (col>0) {
+					cell1.className = cell2.className = "onlySHAOP";
+				}
+
+			}
+		}
+		
+		selectProtocol(); // HACK we need to KEEP onlySHAOP elements hidden
+	}
+
+	/**
+	@param profilenr the profile nr, 1 for normal , 2 for cob profile
+	*/
+	function getProfile(profilenr) {
+		var profilecombo = document.getElementById("profileselection"+profilenr);
+		if (profilecombo.options.length==0) {
+			alert("Please set domain/profile server and select a domain and a profile");
+			throw "blabla";
+		}
+		var filteroptions = document.getElementById("filter"+profilenr).value;
+		if (filteroptions!="") {
+			filteroptions="?"+filteroptions;
+		}
+
+		//return profilecombo.options[profilecombo.selectedIndex].value + filteroptions
+		return profilecombo.value + filteroptions
+	}
+	
+	/**
+	Called when user clicks "Add" to add a profile set
+	*/
+	function addProfiles() {
+		profiles.push([getProfile(1), getProfile(2)]);
+		updateProfileTable(); // what, MVC?
+	}
+	
+	/** updates the party table, to match the #partyprofiles list.	 	*/
+	function updateProfileTable() {
+		var table = document.getElementById("profilesList");
+		table.innerHTML = ""; // clear table
+		for ( const profileset of profiles) {
+			var row = table.insertRow(-1);
+			for (var col in profileset) {
+				var profile = profileset[col];
+				var cell1 = row.insertCell(-1);
+				cell1.innerHTML = profile;
+				if (col>0) cell1.className = "onlySHAOP"
+			}			
+		}
+		selectProtocol(); // HACK we need to KEEP onlySHAOP elements hidden
+	}
+	
+	/**
+	start the tournament as currently set on this page.
+	We need to send a TournamentSettings object to the server, which typically looks like this with SAOP
+	<code>
+	{"AllPermutationsSettings":{"parties":["party1","party2"],
+		"profiles":["profile1","profile2","profile3"],
+		"reuseParties":false,
+		"partiesPerSession":2,
+		"sessionsettings":{"SAOPSettings":{"participants":[],"deadline":{"deadlinetime":{"durationms":10}}}}}}
+	</code>
+	participants are already in the global partyprofiles dictionary
+	
+	With SHAOP, it looks like this
+	<code>
+	{
+		"AllPermutationsSettings": {
+			"parties": [ { "partyref": "classpath:geniusweb.exampleparties.simpleshaop.ShaopParty", "parameters": { } },
+				{ "partyref": "classpath:geniusweb.exampleparties.randomparty.RandomParty",	"parameters": {	}}
+			],
+			"reuseParties": false,
+			"profiles": [ 	"prof1?partial=10", "prof2?partial=15"],
+			"partiesPerSession": 2,
+			"sessionsettings": { 	"SHAOPSettings": {
+					"participants": [ ], 
+					"deadline": { "deadlinerounds": {	"rounds": 10, "durationms": 10000	} } } } } }
+	</code>
+	*/
+	function start() {
+		const npersession = document.getElementById("teamspersession").value;
+		
+		if (teamslist.length < npersession) {
+			alert("At least "+npersession+" teams are needed.");
+			return;
+		}
+		
+		if (profiles.length < npersession) {
+			alert("At least "+npersession+" profilesets are needed.");
+			return;
+		}
+
+		// see https://www.w3schools.com/xml/dom_httprequest.asp
+	    var xmlHttp = new XMLHttpRequest();
+	    xmlHttp.onreadystatechange = function() { 
+	        if (this.readyState == 4) {
+	        	if (this.status == 200) {
+	        		document.getElementById("startbutton").disabled=true;
+	        		document.getElementById("started").setAttribute("style","");
+    	    		document.getElementById("logref").href="log/"+this.responseText+".json";
+	        		document.getElementById("plotref").href="utilstable.xhtml?"+this.responseText;
+	        	} else 
+	        		alert("request failed:"+this.statusText);
+	        } 
+	    }
+	    xmlHttp.open("POST", "run", true); 
+	    xmlHttp.send(makeRequest());
+	}
+	
+	/**
+	@return a json request package containing a AllPermutationsSettings.
+	It assumes that global vars parties and sessionSettings have been set properly.
+	*/
+	function makeRequest() {
+		const npersession = document.getElementById("teamspersession").value;
+		const ntournaments = document.getElementById("ntournaments").value;
+		const reuseTeams  = document.getElementById("reuseteams").checked;
+		const protocolcombobox = document.getElementById("protocolselection");
+		const protocol = protocolcombobox.options[protocolcombobox.selectedIndex].value;
+		const header=protocol+"Settings";
+
+		var deadline={};
+		const value = document.getElementById("deadlinevalue").value;
+		const dtypecombo  = document.getElementById("deadlinetype");
+		if (dtypecombo.options[dtypecombo.selectedIndex].value=="TIME") {
+			deadline["deadlinetime"] = { "durationms": 1000*value};
+		} else {
+			// ROUNDS
+			deadline["deadlinerounds"] = {"rounds": value, "durationms": 10000};
+		}
+		
+		// create S(H)AOPSettings. [header] is a weird ECMA script workaround for javascript issue.
+		var settingvalues={"participants":[],"deadline":deadline};
+		if (protocol=="MOPAC") {
+			var combo = document.getElementById("selectedevaluator");
+			var evaluator = combo.options[combo.selectedIndex].value;
+			settingvalues['votingevaluator'] = { [evaluator]: {} };
+		} 
+			
+		const sessionSettings = { [header]:settingvalues};
+
+		var teamsFull = [];
+		for (const team of teamslist) {
+			if (protocol=="SHAOP") 
+				teamsFull.push({"Team":team});
+			else
+				teamsFull.push({"Team":[team[0]]}); // most protocols have just 1 member per team
+		}
+		var profilesFull = [] ;
+		for (const profileset of profiles) {
+			if (protocol=="SHAOP") // only first member of team is used.
+				profilesFull.push({"ProfileList":profileset});
+			else
+				profilesFull.push({"ProfileList":[profileset[0]]});
+		}
+		
+		return JSON.stringify({"AllPermutationsSettings":{"teams":teamsFull,"profileslists":profilesFull,
+			"reuseTeams":reuseTeams,"teamsPerSession":npersession,"sessionsettings":sessionSettings,
+			"numberTournaments":ntournaments}});
+	}
+	
+	/**
+	Initialize the page after html is loaded. 
+	*/
+	function init() {
+		document.getElementById("partiesserverurl").value =window.location.hostname+":8080/partiesserver-1.5.8";
+		document.getElementById("profilesserverurl").value =window.location.hostname+":8080/profilesserver-1.5.8";
+
+		selectProtocol();
+		connectDomain();
+		connectParties();
+	}
+
+	
+	]]>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

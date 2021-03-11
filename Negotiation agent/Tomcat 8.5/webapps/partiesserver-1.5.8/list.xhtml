@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>Profiles and Domains list</title>
+<link rel="stylesheet" type="text/css" href="css/list.css" />
+
+</head>
+<body>
+	<div class="noscript">
+		<h2 style="color: #ff0000">Seems your browser doesn't support
+			Javascript! Websockets rely on Javascript being enabled. Please
+			enable Javascript and reload this page!</h2>
+	</div>
+	<h1>Currently runnable parties</h1>
+	<div>
+		<table id="partiesTable" class="partiesTable">
+			<tr>
+				<th>Name</th>
+				<th>URI</th>
+				<th>Behaviour</th>
+				<th>Profile types</th>
+				<th>Description</th>
+			</tr>
+			<tr>
+				<td>-</td>
+				<td>-</td>
+				<td>-</td>
+			</tr>
+		</table>
+
+	</div>
+</body>
+
+<!-- Script to get/update the list and put it into the table. -->
+<script type="application/javascript">
+	
+	<![CDATA[
+        "use strict";
+
+        var ws = null;
+
+        function connect() {
+            var target = 'ws://'+location.host+"/"+location.pathname.split("/")[1]+'/available';
+            if ('WebSocket' in window) {
+                ws = new WebSocket(target);
+            } else if ('MozWebSocket' in window) {
+                ws = new MozWebSocket(target);
+            } else {
+                alert('WebSocket is not supported by this browser. Please use a newer browser');
+                return;
+            }
+            ws.onopen = function () {
+            	// whatever.
+            };
+            ws.onmessage = function (event) {
+            	//alert(event.data);
+            	update(JSON.parse(event.data));
+            };
+            ws.onclose = function (event) {
+                alert('Info: Server closed connection. Code: ' + event.code + (event.reason == "" ? "" : ", Reason: " + event.reason));
+            };
+        }
+
+        /*
+        @param domains a list of GeneralPartyInfo elements.
+        The name can be used to start new instances.
+        */
+        function update(parties) {
+        	
+        	// Find a <table> element with id="myTable":
+			var table = document.getElementById("partiesTable");
+        	var oldtablerows=document.querySelectorAll("#partiesTable tr:not(:first-child)");
+            for (var i = 0; i < oldtablerows.length; i++) {
+            	oldtablerows[i].parentNode.removeChild(oldtablerows[i]);
+            }
+        	for (i in parties) {
+        		var party=parties[i];
+        		var profiles=[];
+        		for (var prof of party['capabilities']['profiles']) {
+        			if (prof.includes('.')) {
+        				prof=prof.substr(prof.lastIndexOf('.')+1)
+        			}
+        			profiles.push(prof);
+        		}
+        		var row = table.insertRow(-1); //-1 = end
+        		row.insertCell(0).innerHTML = party['uri'].split('/').pop(); // last element of URI
+        		row.insertCell(1).innerHTML = party['uri'];
+        		row.insertCell(2).innerHTML = party['capabilities']['behaviours'];
+        		row.insertCell(3).innerHTML = profiles;
+        		row.insertCell(4).innerHTML = party['description'];
+        		
+        	}
+        	
+        }
+        
+        /*
+        This is called when the window DOM is loaded. window.onload runs BEFORE the window is loaded
+        and therefore is too early to remove the noscript message.
+        */
+       document.addEventListener("DOMContentLoaded", function() {
+             // Remove elements with "noscript" class - <noscript> is not allowed in XHTML
+             var noscripts = document.getElementsByClassName("noscript");
+             for (var i = 0; i < noscripts.length; i++) {
+                 noscripts[i].parentNode.removeChild(noscripts[i]);
+             }
+         	connect();
+
+         }, false);
+    ]]>
+
+</script>
+
+</html>

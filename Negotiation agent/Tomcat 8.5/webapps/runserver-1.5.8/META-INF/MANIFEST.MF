@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: runserver Maven Webapp
+Implementation-Version: 1.5.8
+Archiver-Version: Plexus Archiver
+Built-By: wouter
+Implementation-Vendor-Id: geniusweb
+Created-By: Apache Maven 3.6.2
+Build-Jdk: 1.8.0_221
+

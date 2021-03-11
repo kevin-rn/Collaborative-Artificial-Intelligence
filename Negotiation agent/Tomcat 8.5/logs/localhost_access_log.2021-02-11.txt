@@ -1,0 +1,14 @@
+127.0.0.1 - - [11/Feb/2021:16:17:13 +0100] "GET /runserver-1.5.8/ HTTP/1.1" 200 713
+127.0.0.1 - - [11/Feb/2021:16:17:14 +0100] "GET /favicon.ico HTTP/1.1" 200 21630
+127.0.0.1 - - [11/Feb/2021:16:17:17 +0100] "GET /partiesserver-1.5.8/ HTTP/1.1" 200 919
+127.0.0.1 - - [11/Feb/2021:16:17:23 +0100] "GET /profilesserver-1.5.8/ HTTP/1.1" 200 748
+127.0.0.1 - - [11/Feb/2021:16:17:23 +0100] "GET /profilesserver-1.5.8/css/list.css HTTP/1.1" 200 294
+127.0.0.1 - - [11/Feb/2021:16:17:25 +0100] "GET /profilesserver-1.5.8/list.xhtml HTTP/1.1" 200 3284
+127.0.0.1 - - [11/Feb/2021:16:17:25 +0100] "GET /profilesserver-1.5.8/websocket/liststream HTTP/1.1" 101 -
+127.0.0.1 - - [11/Feb/2021:17:03:12 +0100] "GET /partiesserver-1.5.8/ HTTP/1.1" 200 919
+127.0.0.1 - - [11/Feb/2021:17:03:12 +0100] "GET /favicon.ico HTTP/1.1" 200 21630
+127.0.0.1 - - [11/Feb/2021:17:03:13 +0100] "GET /partiesserver-1.5.8/runlist.xhtml HTTP/1.1" 200 3310
+127.0.0.1 - - [11/Feb/2021:17:03:13 +0100] "GET /partiesserver-1.5.8/css/list.css HTTP/1.1" 200 297
+127.0.0.1 - - [11/Feb/2021:17:03:13 +0100] "GET /partiesserver-1.5.8/running HTTP/1.1" 101 -
+127.0.0.1 - - [11/Feb/2021:17:03:17 +0100] "GET /partiesserver-1.5.8/list.xhtml HTTP/1.1" 200 3697
+127.0.0.1 - - [11/Feb/2021:17:03:17 +0100] "GET /partiesserver-1.5.8/available HTTP/1.1" 101 -

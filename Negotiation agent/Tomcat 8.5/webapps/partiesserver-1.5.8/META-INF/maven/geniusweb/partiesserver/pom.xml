@@ -1,0 +1,455 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>geniusweb</groupId>
+	<artifactId>partiesserver</artifactId>
+	<packaging>war</packaging>
+	<version>1.5.8</version> <!-- must equal ${geniusweb.version} -->
+	<name>partiesserver Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<basedir>.</basedir>
+		<passwd>${env.ARTIFACTORY_PASS}</passwd>
+		<jackson-2-version>2.9.10</jackson-2-version>
+		<!-- <tomcat.version>8.0.53</tomcat.version> -->
+		<tomcat.version>8.5.20</tomcat.version>
+		<geniusweb.version>1.5.8</geniusweb.version>
+	</properties>
+
+	<distributionManagement>
+		<repository>
+			<id>artifactory.ewi.tudelft.nl</id>
+			<url>http://artifactory.ewi.tudelft.nl/artifactory/libs-release</url>
+		</repository>
+	</distributionManagement>
+
+
+	<repositories>
+		<repository>
+			<id>artifactory.ewi.tudelft.nl</id>
+			<url>http://artifactory.ewi.tudelft.nl/artifactory/libs-release</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>jcenter</id>
+			<url>https://jcenter.bintray.com</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<dependencies>
+
+
+		<dependency>
+			<groupId>geniusweb</groupId>
+			<artifactId>party</artifactId>
+			<version>${geniusweb.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>geniusweb</groupId>
+			<artifactId>profile</artifactId>
+			<version>${geniusweb.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>geniusweb</groupId>
+			<artifactId>references</artifactId>
+			<version>${geniusweb.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>geniusweb.exampleparties</groupId>
+			<artifactId>randomparty</artifactId>
+			<version>${geniusweb.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>tudelft.utilities</groupId>
+			<artifactId>listener</artifactId>
+			<version>1.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>tudelft.utilities</groupId>
+			<artifactId>logging</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>tudelft.utilities</groupId>
+			<artifactId>tree</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>tudelft.utilities</groupId>
+			<artifactId>files</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>tudelft.utilities</groupId>
+			<artifactId>repository</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>tudelft.utilities</groupId>
+			<artifactId>immutablelist</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>javax.websocket</groupId>
+			<artifactId>javax.websocket-api</artifactId>
+			<version>1.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+		</dependency>
+
+		<!-- the core, which includes Streaming API, shared low-level abstractions 
+			(but NOT data-binding) -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${jackson-2-version}</version>
+		</dependency>
+
+		<!-- Just the annotations; use this dependency if you want to attach annotations 
+			to classes without connecting them to the code. -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${jackson-2-version}</version>
+		</dependency>
+
+		<!-- databinding; ObjectMapper, JsonNode and related classes are here -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson-2-version}</version>
+		</dependency>
+
+		<!-- smile (binary JSON). Other artifacts in this group do other formats. -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-smile</artifactId>
+			<version>${jackson-2-version}</version>
+		</dependency>
+		<!-- JAX-RS provider -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.jaxrs</groupId>
+			<artifactId>jackson-jaxrs-json-provider</artifactId>
+			<version>${jackson-2-version}</version>
+		</dependency>
+		<!-- Support for JAX-B annotations as additional configuration -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.module</groupId>
+			<artifactId>jackson-module-jaxb-annotations</artifactId>
+			<version>${jackson-2-version}</version>
+		</dependency>
+
+		<!-- embedded-tomcat for testing the server -->
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-core</artifactId>
+			<version>${tomcat.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<version>${tomcat.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-jasper</artifactId>
+			<version>${tomcat.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-jasper-el</artifactId>
+			<version>${tomcat.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-jsp-api</artifactId>
+			<version>${tomcat.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-core</artifactId>
+			<version>${tomcat.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-websocket</artifactId>
+			<version>${tomcat.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.9.5</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>tudelft.utilities</groupId>
+			<artifactId>junit</artifactId>
+			<version>1.0.2</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+
+	<build>
+		<!-- Don't specify finalName as the war number would mismatch the pom version -->
+
+		<resources>
+			<resource>
+				<directory>src/main/webapp/partiesrepo</directory>
+			</resource>
+		</resources>
+
+
+		<plugins>
+			<!-- Copy the partiesrepo for testing purposes, otherwise the server can't 
+				find the repo -->
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/target/partiesrepo</outputDirectory>
+							<resources>
+								<resource>
+									<directory>src/main/webapp/partiesrepo</directory>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.2.3</version>
+				<configuration>
+					<attachClasses>true</attachClasses>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<version>3.0.0-M2</version>
+				<executions>
+					<execution>
+						<id>enforce</id>
+						<configuration>
+							<rules>
+								<dependencyConvergence />
+							</rules>
+						</configuration>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<!-- leave out version to help Eclipse workaround -->
+				<executions>
+					<execution>
+						<id>resource-dependencies</id>
+						<phase>process-test-resources</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<outputDirectory>${project.build.directory}/jars</outputDirectory>
+					<overWriteReleases>false</overWriteReleases>
+					<overWriteSnapshots>true</overWriteSnapshots>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.2.0</version>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.jfrog.buildinfo</groupId>
+				<artifactId>artifactory-maven-plugin</artifactId>
+				<version>2.6.1</version>
+				<executions>
+					<execution>
+						<id>build-info</id>
+						<goals>
+							<goal>publish</goal>
+						</goals>
+						<configuration>
+							<publisher>
+								<contextUrl>http://artifactory.ewi.tudelft.nl/artifactory</contextUrl>
+								<repoKey>libs-release</repoKey>
+								<username>wouter</username>
+								<password>${passwd}</password>
+							</publisher>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<!-- leave out version to help Eclipse workaround -->
+				<configuration>
+					<!-- get all project dependencies -->
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					<archive>
+						<manifest>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+						</manifest>
+					</archive>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<!-- bind to the packaging phase -->
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+
+			<!-- Special plugin for the tomcat embedded stuff? -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>appassembler-maven-plugin</artifactId>
+				<version>2.0.0</version>
+				<configuration>
+					<assembleDirectory>target</assembleDirectory>
+					<programs>
+						<program>
+							<mainClass>launch.Main</mainClass>
+							<name>webapp</name>
+						</program>
+					</programs>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>assemble</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.jfrog.buildinfo</groupId>
+										<artifactId>artifactory-maven-plugin</artifactId>
+										<versionRange>[1.0.0,)</versionRange>
+										<goals>
+											<goal>publish</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+
+	</build>
+</project>

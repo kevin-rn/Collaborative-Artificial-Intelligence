@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>Show tournament results table</title>
+<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<style>
+canvas {
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+</style>
+<body>
+	<div class="noscript">
+		<h2 style="color: #ff0000">Seems your browser doesn't support
+			Javascript! Websockets rely on Javascript being enabled. Please
+			enable Javascript and reload this page!</h2>
+	</div>
+	<h1 id="header">Tournament results</h1>
+
+	Progress:
+	<div id="progress">Waiting for log file name</div>
+	<br />
+
+	<table id="outcomes">
+		<thead>
+			<tr>
+				<th align="center">sess / agree</th>
+				<th align="center">accepted bid in session</th>
+				<th align="center">party utility - penalty</th>
+			</tr>
+		</thead>
+		<tbody id="outcomeslist">
+			<!--  one row for each session run added by script -->
+		</tbody>
+
+	</table>
+</body>
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+<!-- Script to get/update the  table using the query given in the URL. -->
+<script type="application/javascript">
+	
+	
+	
+	
+	<![CDATA[
+        "use strict";
+
+
+        
+        var ws = null;
+        var SHAOP=false;
+        /* dict with key=profile URL and value = the downloaded (json) profile */
+        var profiles = {};
+
+        <!-- Most functions are reactive programming written out-->
+
+        /**
+        Called when the page opens.
+        */
+        function init() {
+        	
+        	var id=document.location.search;
+            id = location.search.split('?')[1]
+            if (id==undefined) return;
+            
+            // load the log file with given id
+            document.getElementById('header').innerHTML="Tournament results table of "+id;
+
+            var url = "log/"+id+".json";
+        	setStatus("Downloading file "+url);
+            var request=new XMLHttpRequest();
+            request.responseType = 'text';
+            request.open('Get', url)
+            request.onload=function() {
+            	if (request.status!=200) {
+            		setStatus("Failed to fetch "+url+":" +request.status+" "+request.statusText)
+            		return;
+            	}
+				processLogFile(JSON.parse(request.response));
+			}
+            request.send();
+ 		}
+        
+        
+        /**
+        Figure out the protocol contents and parse accordingly.
+        */
+        function processLogFile(json) {
+        	if (json['AllPermutationsState']!=undefined) {
+        		processAPP(json['AllPermutationsState']);
+        	} else {
+            	setStatus("Unknown log file contents "+Object.keys(json));
+            }
+        }
+        
+        /**
+        Handle AllPermutationsState protocol result.
+        */
+        function processAPP(json) {
+        	setStatus("processing the log file");
+        	
+        	if (json['toursettings']['AllPermutationsSettings']['sessionsettings']['SHAOPSettings']!=undefined) {
+        		SHAOP=true;
+        	}
+        	
+        	// collect all profiles from all profileslists
+        	var profiles= [];
+        	for (const profilelist of json['toursettings']['AllPermutationsSettings']['profileslists']) {
+        		profiles = profiles.concat(profilelist['ProfileList']); 
+        	}
+        	getAllProfiles(json, profiles);
+        }
+        
+        /**
+         Step 1, get all profiles. Repeats recursiuvely till profileurls is empty.
+         Note just calling the function again without recurse would be better.
+         Problem is that we call this after we got the profile to ensure we 
+         have all profiles at the end.
+         @param profileurls the list of profile urls that need to be fetched.
+         @param profiles a dictionary of profiles . Key is profileurl, value the profile. Should
+         be initially {}
+         returns only after all profiles have been fetched.
+        */
+        function getAllProfiles(json, profileurls) {
+        	 for (var n in profileurls) {
+        		 getProfile(profileurls[n], function() {fillRows(json)} );
+        	 }
+        }
+         
+        /**
+        This function returns immediately and will add the profile to the profiles dictionary some time later.
+        @param profurl the  profile URL may have ?partial filter.
+        @param callwhendone function is called (without arguments) when profiles contains no pending anymore
+        */
+        function getProfile(profurl, callwhendone) {
+        	profiles[profurl]='pending'; // store ORIGINAL URL 
+    		var	profileurl = profurl.split('?',1)[0]; // hacky, remove complete query.
+
+			setStatus("fetching profile "+profileurl);
+			var ws;
+            if ('WebSocket' in window) {
+                ws = new WebSocket(profileurl);
+            } else if ('MozWebSocket' in window) {
+                ws = new MozWebSocket(profileurl);
+            } else {
+                setStatus('Fatal: WebSocket is not supported by this browser. Please use a newer browser');
+                return;
+            }
+            ws.onmessage = function (event) {
+                ws.close();
+            	var profile = JSON.parse(event.data);
+            	if (profile['LinearAdditiveUtilitySpace']==undefined) {
+                    setStatus('Fatal: profile '+profileurl+" does not contain a LinearAdditiveUtilitySpace.");
+                    return;
+            	}
+
+            	profiles[profurl]=profile['LinearAdditiveUtilitySpace'];
+            	
+            	checkAllProfiles(callwhendone);
+            };
+            ws.onerror=function(event) {
+                ws.close();
+                setStatus('Error fetching profile '+uri+':'+event);
+            } 
+        }
+        
+        /**
+        Check if there are still pending profiles. If not, callwhendone().
+        */
+        function checkAllProfiles(callwhendone) {
+        	for (var key in profiles) {
+        		if (profiles[key] == 'pending') return;
+        	}
+        	callwhendone();
+        }
+        
+        /**
+        Step 2, fill the table with util values
+        @param profiles a dictionary of profiles . Key is profileurl, value the profile. Should
+        be initially {}
+       */
+        function fillRows(json)
+        {
+    	   	setStatus("Computing utilities");
+	       	var table = document.getElementById("outcomeslist");
+	    	table.innerHTML="";
+	    	var results = json['results'];
+	    	
+	    	for (var nr in results) {
+	    		var result = results[nr];
+	        	fillBids(table, nr, result);
+	    	}
+    	   	setStatus("done");
+        }
+
+       /**
+       @param table the table to add the bid results to
+       @param nr the session number
+       @param results the results for this sess
+       Add rows for all the bids 
+       */
+       function fillBids(table, nr, result) {
+			// collect unique bids in agreements.
+			var agreements = result['agreements'];
+			
+			if (Object.keys(agreements).length == 0)  {
+				fillRow(table.insertRow(-1), nr, result, {});
+				return;
+			}
+				
+			var bids = [];
+			for (const pid in agreements)  {
+				bids=addSet(bids, agreements[pid]['issuevalues']);
+			}
+	
+			var dealnr='A'.charCodeAt(0);
+			for (const bid of bids) {
+				fillRow(table.insertRow(-1), nr+String.fromCharCode(dealnr++), result, bid);
+			}
+       }
+       	
+
+      
+
+        /**
+        @param row  the table row object in the document
+        @param nr the row number
+        @param result a single json result from the APP results section. 
+        Contains participants, agreements and error
+        @param agreedbid the bid to show in this row. If {}, no agreement was reached.
+        */
+        function fillRow(row, nr, result, agreedbid) {
+        	row.insertCell(0).innerHTML = nr;
+        	
+        	if (result['error']!=null) {
+        		var errstr="session failed:";
+        		var err=result['error'];
+        		if ("geniusweb.protocol.ProtocolException" in err) {
+        			errstr=errstr+err["geniusweb.protocol.ProtocolException"]['cause']['message'];
+        		}
+        		row.insertCell(-1).innerHTML=errstr;
+        		return;
+        	}
+	
+        	// a dict, keys are party ids. 
+        	row.insertCell(-1).innerHTML = JSON.stringify(agreedbid);
+        	
+        	// fill in the columns. If SHAOP, only the even parties 
+        	// FIXME this can't be with a MAP
+        	const participants = result['participants'];
+        	for (var pid in participants) {
+        		var partyandprofile = result['participants'][pid];
+        		var profile =partyandprofile['profile'];
+            	var penalty=result['penalties'][pid];
+            	if (penalty==undefined) penalty=0;
+        		// make short name for readability
+        		var partyname = partyandprofile['party']['partyref'];
+        		partyname = partyname.split('/');
+        		partyname = partyname[partyname.length-1];
+        		
+        		// we set bid to agreedbid only if party accepted agreedbid.
+         		var bid = {};
+        		if (pid in result['agreements'] && deepEqual(agreedbid, result['agreements'][pid]['issuevalues'] ) )
+        				bid = agreedbid;
+         		addUtilityCell(row.insertCell(-1), bid, partyname, profile, penalty);
+        	}
+        }
+
+        /**
+        @param cell the table cell to put the result in
+        @param agreedbid the bid that was agreed on 
+        @param partyname the short name of the party
+        @param profileurl the profile url to use for the evaluation of the bid
+        @param bid the accepted bid, not null.
+        @param penalty costs made by the party, to be subtracted from total util.
+        	typically these are elicitation costs.
+        */
+        function addUtilityCell(cell, agreedbid, partyname, profileurl, penalty) {
+        	var util = utility(profiles[profileurl],agreedbid);
+        	var rUtil = Math.round(util*1000000)/1000000;
+        	var rPenalty = Math.round( (penalty )*1000000)/1000000 ;
+        	cell.innerHTML = rUtil + "-" + rPenalty + " :"+partyname;
+
+        }
+        
+
+
+
+        
+        /******************* Private support funcs****************/
+        
+        /**
+        Set the progress/status text
+        */
+        function setStatus(text) {
+            document.getElementById('progress').innerHTML=text;
+        }
+
+        /*
+        @param sessions a list of IDs (Strings).
+        */
+        function update(sessions) {
+			var table = document.getElementById("sessionsTable");
+        	table.innerHTML="";
+        	for(var  session of sessions) {
+        		var row = table.insertRow(-1); //-1 = end
+				row.insertCell(0).innerHTML = session;
+        	}
+        	
+        }
+        
+   
+    
+	 	
+		/**
+	 	Compute utilityes
+	 	@param profile the linear additive utility space
+	 	@param issueValues the bid containing dict with values for the issues
+	 	@param isResBidAlternative true if the reservation bid is usable as alternative bid
+	 	  . If true, and the issueValues list is empty/null, this returns the utility
+	 	  of the reservation bid instead.
+	 	@return utility of issueValues. Returns 0 if profile =null or no bid available
+	 	
+	 	*/
+	 	function utility(profile, issueValues, isResBidAlternative) {
+	 		if (profile==null) return 0;
+
+	 		// check if we need the reservationbid.
+			if (issueValues==null || Object.keys(issueValues).length==0) {
+	 			var resBid = profile['reservationBid'];
+	 			if (resBid==null) return 0;
+	 			issueValues = resBid['issuevalues'];
+	 		}
+	 		
+	 		if (issueValues==null) return 0;
+	 		
+			var util=0;
+			var weights = profile['issueWeights'];
+			
+			for (var issue in issueValues) {
+				util = util + weights[issue] * evaluate(profile['issueUtilities'][issue], issueValues[issue] );
+			}
+			return util;
+		}
+	
+	 	/**
+	 	Bit hacky, javascript version of evaluator of utility space. 
+	 	Would be much nicer if we could use java here
+	 	*/
+	 	function evaluate (utilfunc, value) {
+	 		if (utilfunc == undefined) {
+	 			return 0;
+	 		}
+			if (utilfunc['numberutils']!=undefined) {
+				// it's numeric issue. Compute
+				var minval = utilfunc['numberutils']['lowValue'];
+				var minutil = utilfunc['numberutils']['lowUtility'];
+				var maxval = utilfunc['numberutils']['highValue'];
+				var maxutil = utilfunc['numberutils']['highUtility'];
+				
+				var alfa = (value-minval) / (maxval - minval) ;
+				alfa = Math.max(Math.min(alfa, 1),0);
+				return alfa * maxutil + (1-alfa) * minutil;   
+			}
+			if (utilfunc['discreteutils']!=undefined) {
+				// it's discrete issue. Compute
+				if (value in utilfunc['discreteutils']['valueUtilities']) 
+					return utilfunc['discreteutils']['valueUtilities'][value];
+				return 0;
+			}
+	    	setStatus("Unknown utility function type "+Object.keys(utilfunc));
+	
+	 	}
+ 	
+	 	/************ util functions to compare dict objects **************/
+	 	/**
+        @return true if object1, object2 are 'deep equal'. That means,
+        if they are dicts then we check that the keys and their values are equal, 
+        recursively.
+        */
+       function deepEqual(object1, object2) {
+    	   const keys1 = Object.keys(object1);
+    	   const keys2 = Object.keys(object2);
+
+    	   if (keys1.length !== keys2.length) {
+    	     return false;
+    	   }
+
+    	   for (const key of keys1) {
+    	     const val1 = object1[key];
+    	     const val2 = object2[key];
+    	     const areObjects = isObject(val1) && isObject(val2);
+    	     if (
+    	       areObjects && !deepEqual(val1, val2) ||      !areObjects && val1 !== val2
+    	     ) {
+    	       return false;
+    	     }
+    	   }
+
+    	   return true;
+    	 }
+
+    	 function isObject(object) {
+    	   return object != null && typeof object === 'object';
+    	 } 
+    	 
+    	 /**
+    	 @param list the list to add value to
+    	 @param value the value to add
+    	 @return list with the value added, but only if not already in list.
+    	 Uses deepEqual to check equality of list members 
+    	 */
+    	 function addSet(list, value) {
+    		 for (const v of list) {
+    			 if (deepEqual(v, value))
+    				 return list;
+    		 }
+    		 return list.concat(value);
+    	 }
+ 	
+    ]]>
+
+
+
+	
+	<![CDATA[
+        "use strict";
+        /*
+        This is called when the window DOM is loaded. window.onload runs BEFORE the window is loaded
+        and therefore is too early to remove the noscript message.
+        */
+       document.addEventListener("DOMContentLoaded", function() {
+			// Remove elements with "noscript" class - <noscript> is not allowed in XHTML
+			var noscripts = document.getElementsByClassName("noscript");
+			for (var i = 0; i < noscripts.length; i++) {
+			    noscripts[i].parentNode.removeChild(noscripts[i]);
+			}
+       		init();
+
+         }, false);
+    ]]>
+
+
+</script>
+
+
+</html>

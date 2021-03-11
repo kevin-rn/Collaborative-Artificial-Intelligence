@@ -1,0 +1,653 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>Profiles and Domains list</title>
+<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body onload="init()">
+	<h1>Session</h1>
+
+	On this page you can configure the settings for running a new session
+	and start the session.
+
+	<br /> Protocol:
+	<select id="selectedprotocol" onchange="selectProtocol()">
+		<option value="SAOP">SAOP ( Stacked Alternating Offers
+			Protocol )</option>
+		<option value="MOPAC">MOPAC (Multiple Offers Partial
+			Consensus)</option>
+		<option value="AMOP">AMOP (Alternating Multiple Offers
+			Protocol)</option>
+		<option value="SHAOP">SHAOP (Stacked Human Alternating Offers
+			Protocol)</option>
+	</select>
+
+	<div id="votingevaluator">
+		<br /> Voting Evaluator: <select id="selectedevaluator">
+			<option value="LargestAgreement">Largest Agreement</option>
+			<option value="LargestAgreementsLoop">Largest Agreements and Repeat</option>
+		</select>
+	</div>
+	
+	<br /> Deadline:
+	<input type="number" id="deadlinevalue" name="deadline" min="1"
+		max="10000" value="10" />
+	<select id="deadlinetype">
+		<option value="ROUNDS">rounds</option>
+		<option value="TIME">seconds</option>
+	</select>
+
+	<br /> Domain/Profile Server:
+	<input type="url" name="url" id="profilesserverurl"
+		value="localhost:8080/profilesserver-1.5.8"
+		pattern=".*:[0-9]+/profilesserver.*" size="30"
+		onchange="connectDomain()"> </input>
+	<br /> Domain:
+	<select id="domainselection" onchange="selectDomain()">
+		<!-- <option>Waiting for profiles server</option> -->
+	</select>
+
+	<br />
+	<br />
+
+	<div id="box" class="box">
+		<br /> <b>Participants</b> <br /> Parties Server: <input type="url"
+			name="url" id="partiesserverurl"
+			value="localhost:8080/partiesserver-1.5.8"
+			pattern=".*:[0-9]+/partiesserver.*" size="30"
+			onchange="connectParties()"> </input> <br /> <br /> <b>Party
+			settings</b> <br /> Party : <select id="partyselection">
+		</select> <br /> Profile: <select id="profileselection"></select> Filter: <input
+			type="text" id="filter" value="" maxlength="40" /> <br />
+		Parameters: {
+		<textarea id="parameters" rows="2" cols="70"
+			onchange="updateParameters()" value="" />
+		} <br /> <br />
+
+		<div id="cobsetting">
+			<input type="checkbox" id="advancedCobSettings"
+				onchange="advancedCobSet()"></input> Advanced COB settings<br />
+			<div id="advancedsettings" style="display: none">
+				<b>COB party settings</b> <br /> Party : <select
+					id="cobpartyselection">
+				</select> <br /> Profile: <select id="cobprofileselection"></select> Filter:
+				<input type="text" id="cobfilter" value="" maxlength="40" /> <br />
+				<!--  -->
+				Parameters: {
+				<textarea id="cobparameters" rows="2" cols="70"
+					onchange="updateCobParameters()" value="" />
+				} <br /> <br />
+			</div>
+		</div>
+
+		<button onclick="addParty()">Add</button>
+
+
+		<br /> <br /> <b>Selected Profiles, Parties for the session</b>
+		<table id="selectedpartiestable" width="100%">
+			<colgroup>
+				<col />
+				<col />
+				<col />
+				<col />
+				<col />
+				<col />
+			</colgroup>
+			<thead>
+				<tr>
+					<th align="center">Party</th>
+					<th align="center">Parameters</th>
+					<th align="center">Profile</th>
+
+					<th align="center">COB Party</th>
+					<th align="center">COB Parameters</th>
+					<th align="center">COB Profile</th>
+				</tr>
+			</thead>
+			<tbody id="partiesList">
+			</tbody>
+		</table>
+
+	</div>
+
+	<form>
+		<input id="startbutton" type="button" value="Start Session"
+			onclick="start()" />
+	</form>
+
+	<div id="started" style="visibility: hidden">
+		Your session started. Waiting for the results. <br />
+	</div>
+	<div id="results" style="visibility: hidden">
+		Session completed. <a href="" id="logref">view the log file</a> <br />
+		<a href="" id="plotref">render a utilities plot</a>.
+	</div>
+
+</body>
+
+<script type="application/javascript">
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	// FIXME quick and dirty code. No clean MVC
+	
+	
+	<![CDATA[
+        //"use strict";	
+        
+        var domainwebsocket = null;
+        var partieswebsocket=null;
+        // current setting of parameters
+        var parameters = {};
+
+        // currently known domains (and profiles) as coming from domainwebsocket.
+        // keys are domain names, values are list of profile names
+        var knowndomains={};
+        
+        
+        /**
+        List of created participants for the session. Each participant is a dictionary.
+		Each dict element contains keys 
+		"party" and "profile", both containing a String containing
+		a valid IRI to the party resp. the profile to use.
+		The party should contain a IRI that gives a new instance of the required party.
+		The profile should contain an IRI that gives the profile contents.
+		*/
+        var partyprofiles=[];
+        
+        var cobpartyprofiles=[];
+
+	/** from http://fitzgeraldnick.com/2010/08/10/settimeout-patterns.html */
+    
+	function getAdvancedCobSettings() {
+		return document.getElementById('advancedCobSettings').checked;
+	}
+	
+	function advancedCobSet() {
+	    document.getElementById('advancedsettings').style.display=(getAdvancedCobSettings()?'':'none');
+	}
+	
+    function async (fn) {
+        setTimeout(fn, 1000);
+    }
+
+    function sometimeWhen (test, then) {
+        async(function () {
+            if ( test() ) {
+                then();
+            } else {
+                async(arguments.callee);
+            }
+        });
+    }
+
+    /**
+    Called when user changes the protocol */
+    function selectProtocol() {
+    	var visible=getSelectedProtocol() == "SHAOP";
+		
+    	document.getElementById("cobsetting").style.display=(visible ? 'block': 'none');
+	    var tbl = document.getElementById('selectedpartiestable');
+	    tbl.getElementsByTagName('col')[3].style.visibility=(visible?'':'collapse');
+	    tbl.getElementsByTagName('col')[4].style.visibility=(visible?'':'collapse');
+	    tbl.getElementsByTagName('col')[5].style.visibility=(visible?'':'collapse');
+	    
+    	var evaluatorvisible=getSelectedProtocol() == "MOPAC";
+    	document.getElementById("votingevaluator").style.display=(evaluatorvisible ? 'block': 'none');
+		
+    }   
+        
+	/**
+	Refresh known domains using given profilesserver URL. 
+	Called when user enters URL for domain server.
+	*/
+    function connectDomain() {
+    	if (domainwebsocket!=null) {
+    		domainwebsocket.close();
+    		domainwebsocket=null;
+    	}
+		var url=new URL("http:"+document.getElementById("profilesserverurl").value);
+		// insert the liststream to the path
+        var target = "ws://"+url.host+url.pathname+"/websocket/liststream"+window.location.search+url.hash;
+        if ('WebSocket' in window) {
+        	domainwebsocket = new WebSocket(target);
+        } else if ('MozWebSocket' in window) {
+        	domainwebsocket = new MozWebSocket(target);
+        } else {
+            alert('WebSocket is not supported by this browser. Please use a newer browser');
+            return;
+        }
+        domainwebsocket.onopen = function () {
+        	// whatever.
+        };
+        domainwebsocket.onmessage = function (event) {
+        	updateDomainComboBox(JSON.parse(event.data));
+        };
+        domainwebsocket.onclose = function (event) {
+            alert('Info: Server closed connection. Code: ' + event.code + 
+            		(event.reason == "" ? "" : ", Reason: " + event.reason));
+            domainwebsocket=null;
+            updateDomainComboBox({});
+        };
+    }
+
+    /**
+    Sets a new knowndomains value and Updates the contents of the domain selector combobox.
+    @param the known domains, a map of the form {"jobs":["jobs1","jobs2"]}
+        where the keys are the names of the available domains nd the values a list of the available profiles in that domain.
+
+    */
+    function updateDomainComboBox(newdomains) {
+        knowndomains=newdomains
+		var combobox = document.getElementById("domainselection");
+		combobox.options.length=0;
+    	for (var domain in knowndomains) {
+            var option = document.createElement('option');
+            option.text = option.value = domain;
+            combobox.add(option, 0);
+    	}
+    	selectDomain();
+    }
+	/**
+	Refresh known parties using given partiesserver URL. 
+	Called when user enters URL for parties server.
+	*/
+    function connectParties() {
+    	if (partieswebsocket!=null) {
+    		partieswebsocket.close();
+    		partieswebsocket=null;
+    	}
+		var url=document.getElementById("partiesserverurl").value;
+        var target = "ws://"+url+"/available";
+        if ('WebSocket' in window) {
+        	partieswebsocket = new WebSocket(target);
+        } else if ('MozWebSocket' in window) {
+        	partieswebsocket = new MozWebSocket(target);
+        } else {
+            alert('WebSocket is not supported by this browser. Please use a newer browser');
+            return;
+        }
+        partieswebsocket.onopen = function () {
+        	// whatever.
+        };
+        partieswebsocket.onmessage = function (event) {
+        	updateParties(JSON.parse(event.data));
+        };
+        partieswebsocket.onclose = function (event) {
+            alert('Info: Server closed connection. Code: ' + event.code + 
+            		(event.reason == "" ? "" : ", Reason: " + event.reason));
+            partieswebsocket=null;
+        	updateParties({});
+        };
+    }
+
+	
+	/**
+	 refresh table: copy all parties elements in there.
+	 Typically parties is something like
+	 [{"uri":"http:130.161.180.1:8080/partiesserver/run/randomparty-1.5.8",
+		 "capabilities":{"protocols":["SAOP"]},
+		 "description":"places random bids until it can accept an offer with utility >0.6",
+		 "id":"randomparty-1.5.8",
+		 "partyClass":"geniusweb.exampleparties.randomparty.RandomParty"},
+		 		 ...]
+	 */
+	function updateParties(parties) {
+		 updatePartiesCombobox(parties, document.getElementById("partyselection"),['SAOP','AMOP','SHAOP','MOPAC']);
+		 updatePartiesCombobox(parties, document.getElementById("cobpartyselection"),['COB']);
+	}
+    
+    /**
+    @param parties a list of parties r(as received from the server)
+    @param combobox a combobox element to put the party URLs in
+    @param behaviours a list of behaviours for the parties. Only these are put in the combobox.
+    */
+    function updatePartiesCombobox(parties, combobox, behaviours) {
+		combobox.options.length=0;
+    	for (var p in parties) {
+    		var party = parties[p];
+    		if (intersect(party.capabilities.behaviours, behaviours).length==0)  
+    			continue;
+            var option = document.createElement('option');
+            option.text = option.value = party.uri;
+            combobox.add(option, 0);
+    	}
+
+    }
+
+    /**
+    @param a a list
+    @param b another list
+    @return intersection of a and b
+    */
+    function intersect(a, b) {
+        var t;
+        if (b.length > a.length) t = b, b = a, a = t; // indexOf to loop over shorter
+        return a.filter(function (e) {
+            return b.indexOf(e) > -1;
+        });
+    }
+
+
+    /**
+    updates parameters field to match the given text.
+    */
+	function updateParameters() {
+		var text="{"+document.getElementById("parameters").value+"}";
+    	try {
+			parameters=JSON.parse(text);
+    	} catch(e) {
+    		alert("Parameters can not be parsed. "+e);
+    		return;
+    	}
+	}
+
+	/**
+	Called when the selected domain changes. Assumes knowndomains has been set.
+	Updates the available profiles in the profile combobox.
+	@param selection the name of the selected domain. 
+	*/
+	function selectDomain() {
+		// determined current selection
+		var domaincombobox = document.getElementById("domainselection");
+		if (domaincombobox.options.length==0) return; // fixme clean profiles options?
+		var domain = domaincombobox.options[domaincombobox.selectedIndex].value;
+		
+		updateProfileComboBox(document.getElementById("profileselection"), knowndomains[domain]);
+		updateProfileComboBox(document.getElementById("cobprofileselection"), knowndomains[domain]);
+	}
+	
+	function updateProfileComboBox(profilecombo, options) {
+		profilecombo.options.length=0;
+		for (var profile in options) {
+            var option = document.createElement('option');
+            option.text = option.value = options[profile];
+            profilecombo.add(option, 0);
+		}
+
+	}
+	
+	/**
+	Called when user clicks "Add" 
+	*/
+	function addParty() {
+		addNormalParty();
+		addCobParty();
+		updatePartyProfileTable(); // what, MVC?
+	}
+	
+	function addNormalParty() {
+		var partycombo = document.getElementById("partyselection");
+		var profilecombo = document.getElementById("profileselection");
+		var filteroptions = document.getElementById("filter").value;
+		
+		if (partycombo.options.length==0) {
+			alert("Please set partier server and select a party");
+			return;
+		}
+		if (profilecombo.options.length==0) {
+			alert("Please set domain/profile server and select a domain and a profile");
+			return;
+		}
+		
+		if (filteroptions!="") {
+			filteroptions="?"+filteroptions;
+		}
+		var newpartyprof = {};
+		newpartyprof["party"]={"partyref":partycombo.options[partycombo.selectedIndex].value , 
+				"parameters":parameters };
+		newpartyprof["profile"]=profilecombo.options[profilecombo.selectedIndex].value +filteroptions;
+		
+		partyprofiles.push(newpartyprof)
+	}
+	
+	
+	function addCobParty() {
+		// we assume a sensible default has been loaded into the combo and set,
+		// regardless it being invisible
+		var partycombo = document.getElementById("cobpartyselection");
+		if (partycombo.options.length==0) {
+			alert("Please set cpb partier server and select a party");
+			return;
+		}
+
+		var newpartyprof = {};
+		if (getAdvancedCobSettings()) {
+			var profilecombo = document.getElementById("cobprofileselection");
+			var filteroptions = document.getElementById("cobfilter").value;
+
+			if (profilecombo.options.length==0) {
+				alert("Please set a cob profile");
+				return;
+			}
+			if (filteroptions!="") {
+				filteroptions="?"+filteroptions;
+			}
+			newpartyprof["party"]={"partyref":partycombo.options[partycombo.selectedIndex].value , 
+					"parameters":parameters };
+			newpartyprof["profile"]=profilecombo.options[profilecombo.selectedIndex].value +filteroptions;
+		} else {
+			var profilecombo = document.getElementById("profileselection");
+			newpartyprof["party"]={"partyref":partycombo.options[partycombo.selectedIndex].value , 
+					"parameters":{} };
+			newpartyprof["profile"]=profilecombo.options[profilecombo.selectedIndex].value;
+		}
+		cobpartyprofiles.push(newpartyprof)
+	}
+
+	
+	/** updates the party and profiles table, to match the #partyprofiles list.	 	*/
+	function updatePartyProfileTable() {
+		var table = document.getElementById("partiesList");
+		table.innerHTML = ""; // clear table
+		for ( var pp in partyprofiles) {
+			var row = table.insertRow(-1);
+			var cell1 = row.insertCell(-1);
+			var cell2 = row.insertCell(-1);
+			var cell3 = row.insertCell(-1);
+			var cell4 = row.insertCell(-1);
+			var cell5 = row.insertCell(-1);
+			var cell6 = row.insertCell(-1);
+			
+			cell1.innerHTML = partyprofiles[pp]["party"]["partyref"];
+			// help browser breaking too large strings 
+			cell2.innerHTML = JSON.stringify(partyprofiles[pp]["party"]["parameters"]).replace(/,/g,", ");
+			cell2.setAttribute("style","overflow-wrap: anywhere;");
+			cell3.innerHTML = partyprofiles[pp]["profile"];
+			cell4.innerHTML = cobpartyprofiles[pp]["party"]["partyref"];
+			cell5.innerHTML = JSON.stringify(cobpartyprofiles[pp]["party"]["parameters"]).replace(/,/g,", ");
+			cell5.setAttribute("style","overflow-wrap: anywhere;");
+			cell6.innerHTML = cobpartyprofiles[pp]["profile"];
+		}
+
+	}
+
+	var x=1;
+	/**
+	start the session as currently set on this page.
+	We need to send a SessionSettings object to the server, which typically looks like this
+	but is protocol dependent (currently we do SAOP)
+	
+	{"SAOPSettings":
+	  {"participants":[
+		    {"party":{"partyref":"http://party1","parameters":{}},"profile":"ws://profile1"},
+		    {"party":{"partyref",}"http://party2","parameters":{}},"profile":"ws://profile2"}],
+		    "deadline":{"deadlinetime":{"durationms":100}}}}
+	
+	participants are already in the global partyprofiles dictionary
+	*/
+	function start() {
+		if (Object.keys(partyprofiles).length <2) {
+			alert("At least 2 parties are needed to run a session.");
+			return;
+		}
+
+		// see https://www.w3schools.com/xml/dom_httprequest.asp
+  		document.getElementById("startbutton").disabled=true;
+		document.getElementById("started").setAttribute("style","");
+
+		var xmlHttp = new XMLHttpRequest();
+	    xmlHttp.onreadystatechange = function() { 
+	        if (this.readyState == 4) {
+	        	if (this.status == 200) {
+	        		var logurl="log/"+this.responseText+".json";
+	        		document.getElementById("logref").href=logurl;
+	        		document.getElementById("plotref").href="plotlog.xhtml"+
+	        		combineQuery("?id="+this.responseText,window.location.search);
+	        		
+	        		sometimeWhen(function() { return urlExists(logurl) },
+	        				function() { document.getElementById("results").setAttribute("style",""); });
+
+	        	}
+	        	else 
+	        		alert("request failed:"+this.statusText);
+	        } 
+	    }
+	    xmlHttp.open("POST", "run", true); 
+	    xmlHttp.send(makeRequest());
+	    
+	}
+
+
+
+	/**
+	@param query1 a query string like &p=q (part of URL)
+	@param query2 another query string 
+	@return the combined querystring of query1 and query2 
+	*/
+	function combineQuery(query1, query2) {
+		if (query1=="") return query2;
+		if (query2=="") return query1;
+		return query1+"&"+query2.substring(1);
+	}
+
+	
+	/**
+	@return true iff the URL exists.
+	*/
+	function urlExists(urlToFile) {
+		// Warning. Synchronous XMLHttpRequest on the main thread is 
+		// deprecated because of its detrimental effects to the end user’s
+		// experience. For more help http://xhr.spec.whatwg.org/
+	    var xhr = new XMLHttpRequest();
+	    xhr.open('HEAD', urlToFile, false);
+	    xhr.send();
+	     
+		return (xhr.status == "200") 
+	}
+	
+	function getSelectedProtocol() {
+		var protocolcombo = document.getElementById("selectedprotocol");
+		return protocolcombo.options[protocolcombo.selectedIndex].value;
+	}
+	/**
+	@return a json request package for the run server
+	*/
+	function makeRequest() {
+		switch(getSelectedProtocol()) {
+		case "SHAOP":
+			return makeShaopRequest();
+		case"SAOP":
+		case "AMOP":
+			return makeStdRequest(getSelectedProtocol()+"Settings");
+		case "MOPAC":
+			return makeMopacRequest();			
+		} 
+	}
+	
+	/**
+	@return a SAOP/AMOP request
+	The header contains 'SAOSettings' or 'AMOPSettings'
+	*/
+	function makeStdRequest(header) {
+		return JSON.stringify({[header]: standardHeader() });
+	}
+	
+	/**
+	* @ereturn MOPAC request. Almost standard but extra 'votingEvaluator'.
+	*/
+	function makeMopacRequest() {
+		var extended = standardHeader();
+		var combo = document.getElementById("selectedevaluator");
+		var evaluator = combo.options[combo.selectedIndex].value;
+		extended['votingevaluator'] = { [evaluator]: {} };
+		return JSON.stringify({"MOPACSettings": extended });
+	}
+	
+	/**
+	@return standard header with participants and deadline 
+	*/
+	function standardHeader() {
+		var deadline={};
+		var value = document.getElementById("deadlinevalue").value;
+		var dtypecombo  = document.getElementById("deadlinetype");
+		if (dtypecombo.options[dtypecombo.selectedIndex].value=="TIME") {
+			deadline["deadlinetime"] = { "durationms": 1000*value};
+		} else {
+			// ROUNDS
+			deadline["deadlinerounds"] = {"rounds": value, "durationms":10000};
+		}
+		return  { "participants": partyprofiles, "deadline":deadline }
+	}
+	
+	
+
+	/**
+	@return a SHAOP request
+	*/
+	function makeShaopRequest() {
+		var deadline={};
+		var value = document.getElementById("deadlinevalue").value;
+		var dtypecombo  = document.getElementById("deadlinetype");
+		if (dtypecombo.options[dtypecombo.selectedIndex].value=="TIME") {
+			deadline["deadlinetime"] = { "durationms": 1000*value};
+		} else {
+			// ROUNDS
+			deadline["deadlinerounds"] = {"rounds": value, "durationms":10000};
+		}
+		
+		var parties=[];
+		for (let i=0; i< partyprofiles.length; i++) {
+			var group={};
+			group['shaop'] = partyprofiles[i];
+			group['cob'] = cobpartyprofiles[i];
+			
+			parties.push(group);
+		}
+		return JSON.stringify({"SHAOPSettings": { "participants": parties, "deadline":deadline }});
+	}
+
+	
+	/**
+	Initialize the page after html is loaded. 
+	*/
+	function init() {
+		selectProtocol();
+		document.getElementById("partiesserverurl").value =window.location.hostname+":8080/partiesserver-1.5.8"
+		document.getElementById("profilesserverurl").value =window.location.hostname+":8080/profilesserver-1.5.8"
+		connectDomain();
+		connectParties();
+
+	}
+	]]>
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>
