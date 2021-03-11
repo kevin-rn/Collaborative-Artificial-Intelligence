@@ -1,0 +1,967 @@
+[[PageOutline]]
+
+= GeniusWeb =
+''GeniusWeb'' is an open architecture for negotiation via the internet. The core of the architecture is a JSON based communication protocol that standardizes the communication messages comprising a negotiation. 
+
+This project also contains a java-based reference implementation. It provides protocols, data structures and many components needed in negotiation such as isues, values, domain descriptions, preference profiles, timelines, negotiation protocols, json serialization of these items, automatic negotiation software, etc. 
+
+This page contains technical documentation describing the core json structures for describing issues, values, bids, offers, negotiation events etc. 
+
+General info on GeniusWeb, including tutorials, can be found on the [https://ii.tudelft.nl/GeniusWeb/ GeniusWeb main page].
+
+On this page, we take a hands-on, implementation focused approach rather than specifying json structures. The servers (see table below) discuss the structures in more detail. Also for the exact json structures please refer to the examples and the json annotations in the code.
+
+== GeniusWeb overview
+GeniusWeb contains a number of components
+
+||= name =||= description =||= more information =||
+||the core ||the data structures for issues, values, bids, profiles, events and actions, parties etc.||here||
+||profilesserver||a web server that provides profiles and domain descriptions||[https://tracinsy.ewi.tudelft.nl/pubtrac/GeniusWebProfilesServer profiles server]||
+||partiesserver||A web server that provides instances of running parties to use for negotiation||[https://tracinsy.ewi.tudelft.nl/pubtrac/GeniusWebPartiesServer parties server]||
+||runserver||A web server that can run sessions and tournaments||[https://tracinsy.ewi.tudelft.nl/pubtrac/GeniusWebRunServer run server]||
+||stand-alone GUI app||Application that has similar GUI functionality as the servers, but as stand-alone app||[https://tracinsy.ewi.tudelft.nl/pubtrac/GeniusWebApp gui application]||
+
+
+You can either run these servers locally on either your computer or on your web server, or use a public server somewhere else.
+
+For creating your own profile or party, you only need the core. 
+
+If you want to get a quick top-down idea how GeniusWeb works, we suggest to install the servers and contact the runserver to run a session. 
+
+== Installation
+The GeniusWeb core code does not need to be installed. 
+Check the profilesserver, partiesserver and runserver wiki pages (see above) for installation details.
+
+== Server choice, privacy and security 
+You can choose to either run services privately, on your intranet, or completely open on the internet. 
+||= privacy need =||= configuration =||
+||completely private, no sharing with others  ||All services run on tomcat server(s) on your computer or intranet. Outside network access is blocked. You need copies of the profiles and parties (jar files) you want to run.||
+||dedicated business negotiation, competition : share your party with the world, but  not its code ||You host your own partiesserver that is connected to the web*. ||
+||shared profile ||profilesserver on own server or on an existing profilesserver on the web* ||
+||public party with built-in private profile||Hard-code the profile in the party. Party runs as in competition. ||
+||semi-private sessions/tournaments||Run your own runserver, possibly even from behind a firewall or on your local computer. Existing parties- and profilesservers are used in your runs. Negotiation results are handled only on your computer and not visible outside. Others might be able to see parties act on your behalf, but it's not trivial to determine that they are negotiating against each other, especially if these parties are on different partiesservers.|| 
+||run your own protocols||as with running semi-private sessions/tournaments||
+
+
+
+* All firewalls above the server have to be configured appropriately, most corporations have firewalls between your computer and inside the company there is only connection between company computers.
+
+= Core overview
+This section gives an overview of the core functionalties.
+
+The image below gives an overview class diagram with the GeniusWeb core modules and their functionalities. The figure also shows 
+the 3 servers and the functions inside those. Click on the figure to zoom in.
+
+[[Image(source:design/classdiagram.svg, 80%)]]
+
+
+
+All classes are documented in detail in the javadoc with the code. Also the serialization is annotated with the classes. Here we just give a brief overview. Later in this document we explain the serialization of a domain and profile. Also check the examples to see how this works and what typical values look like.
+
+== issuevalue 
+This module contains the basic objects that make up a bid: issues, values, domains, and bids. 
+
+Javadoc is available on the [http://artifactory.ewi.tudelft.nl/artifactory/webapp/#/artifacts/browse/tree/General/libs-release/geniusweb/issuevalue artifactory]. See [wiki:WikiStart#DownloadingJavaDoc downloading javadoc].
+
+=== Issue
+The issues are just String objects. Issue names must be unique
+
+=== Value
+There are two type of values: discrete values and number values. Discrete values are strings eg "low", "yes" or "1". Number values are numbers, eg -1 or 12.423. In GeniusWeb, all number values are processed as BigDecimal to avoid rounding errors.
+
+=== ValueSet
+A ValueSet indicates the possible values for an issue. There are 2 types of valuesets: numeric and discrete. DiscreteValueSet contains the list of DiscreteValue which is a basically a possible (string) values for the issue. NumberValueSet contains a Range which is a set of numbers defined by the minimum, maximum and stepsize (upwards from the minimum). 
+ * a DiscreteValueSet contains a set of possible discrete values. It looks like "values", a column and then a list of discrete values (all strings) Form example,  {{{ "values":["yes","no"] }}}.
+ * a number valueset contains a range of numbers and looks like {{{ {"range":[12.2,12.6,0.3]} }}} so "range:" followed by a list of 3 values. The first value is the minimum value in the range, the second the maximum value in the range, and the third the step value. This example range thus contains 12.2 and 12.5 (the next one would be 12.8 but that is already outside the range). Numbers are without quotes.
+
+=== Domain
+A domain is a description of the allowed issues and values for each issue. To avoid confusion in a negotiation, it's important that all participants are dealing with the same domain. A Domain contains a map, with each key the issue (string) and the value a ValueSet.
+
+
+When describing the domain, the set of allowed values has to be given. A domain looks like this
+{{{
+{"name":"jobs",
+ "issuesValues":{
+  "lease car":{"values":["yes","no"]},
+  "permanent contract":{"values":["yes","no"]},
+  "career development opportunities":{"values":["low","medium","high"]},
+  "fte":{"values":["0.6","0.8","1.0"]},
+  "salary":{"values":["2000","2500","3000","3500","4000"]},
+  "work from home":{"values":["0","1","2"]}
+ }
+}
+}}}
+
+* The name is just a string. Our reference implementation of the profiles server additionally requires that the name must match the filename and directory name when placed on the profiles server. So your directory must be domainsrepo/jobs and the filename must be jobs.json.
+
+* The issueValues contains a dictionary with issues. Each issue is indicated by a name (a string), followed by a column (:) and then a ValueSet  as discussed above.
+
+=== Bid
+Finally, a Bid is a Map where the key is the issue and the value either a DiscreteValue or NumberValue that is valid for that issue. DiscreteValues are serialized to json inside double quotes, NumberValues are just the numbers (no double quotes). 
+
+
+Here is an example of a bid in JSON format. issue 2 and issue 3 are number values, issue 1 is a discrete issue. All values in quotes are discrete values, while values without quotes are number values.  
+
+{{{
+{"issuevalues":{
+  "issue3":9012345678901234567.89,
+  "issue2":1,
+  "issue1":"b"
+}}
+}}}
+
+Your party can create any bid that it likes but the protocol will check if your bid fits in the current negotiation and may kick you out of the negotiation if you don't behave properly.
+
+If you write a java-based party, all these objects may already have been converted to Java objects. Please check [source:issuevalue/src/main/java/geniusweb/issuevalue] for conversion details.
+
+There is not yet a domain editor available so you have to create domains by manually editing a file with JSON code.
+
+== profile
+A profile is a function that can tell if a bid is preferred over another bid. 
+
+Javadoc is available on the [http://artifactory.ewi.tudelft.nl/artifactory/webapp/#/artifacts/browse/tree/General/libs-release/geniusweb/profile artifactory]. See [wiki:WikiStart#DownloadingJavaDoc downloading javadoc].
+
+In the profile module a number of different types of profiles have been defined:
+ * [source:profile/src/main/java/geniusweb/profile/FullOrdering.java FullOrdering]: this provides a function {{{isPreferredOrEqual()}}} that can tell if a bid is preferred over another 
+ * [source:profile/src/main/java/geniusweb/profile/PartialOrdering.java PartialOrdering]: as {{{FullyOrderedSpace}}}, but may not know the answer for part of the bids
+ * [source:profile/src/main/java/geniusweb/profile/utilityspace/UtilitySpace.java UtilitySpace]: as {{{FullOrdering}}}, but additionally this provides a function {{{getUtility(bid)}}} that maps the bid into a {{{BigDecimal}}} in [0,1]. The higher the value, the more preferred is that bid. The [source:profile/src/main/java/geniusweb/profile/utilityspace/LinearAdditiveUtilitySpace.java Linear Additive Space] is the most commonly used UtilitySpace. If the accuracy of {{{BigDecimal}}} is not needed, you can just call {{{BigDecimal#doubleValue()}}} to get a standard double. 
+ * The SumOfGroupsUtilitySpace is a utilityspace where the utilities are not simply linear-additive. It defines the utility of bids as a sum of the utilities of a number of subsets, or groups, of the issue values.
+
+=== Linear Additive
+The most common is the LinearAdditiveUtilitySpace. It contains
+ * the domain description containing the possible issueValues. 
+ * the name of the space
+ * the issueUtilities containing a set of ValueSetUtilities.
+ * The issueWeightsL a dictionary assigning a number to each of the issues. These numbers must add up to 1 and determine how much each ValueSetUtility adds to the total utility.
+ * a reservationBid that contains the bid that is the least preferred. Only bids equal or better than this bid should be accepted.
+
+ To give a full profile example:
+{{{
+{"LinearAdditiveUtilitySpace":
+ {"name":"testprofile",
+  "domain":{"name":"test",
+  "issuesValues":{
+   "issue2":{"values":["issue2value1","issue2value2"]},
+   "issue1":{"values": ["issue1value1","issue1value2"]}}},
+  "issueUtilities":{
+   "issue2":{"numberutils":{"lowValue":12,"lowUtility":0.3,"highValue":18,"highUtility":0.6}},
+   "issue1":{"discreteutils":{"valueUtilities":{"issue1value1":0.2,"issue1value2":0.3}}}},
+  "issueWeights":{"issue2":0.4,"issue1":0.6},
+  "reservationBid":{"issuevalues":{"issue2":"issue2value1","issue1":"issue1value2"}}
+}}
+}}}
+
+
+A party receives a reference to a profile but has to fetch the actual profile. You can defer this task to the ProfileConnectionFactory and in that case you receive a ready-to-use parsed java object. Most likely you get a Linear Additive Utilityspace, please check [source:profile/src/main/java/geniusweb/profile/utilityspace] for conversion details.
+
+This is an "LinearAdditiveYtilitySpace", other utilityspaces would have different contents. It contains a number of components:
+* issueUtilities. Here, each issue value from the domain gets a utility assigned. The two types of issue values each having their matching utility function:
+
+||= Issue Value class =||= Utility class =||= json serialization example =||
+{{{#!td
+DiscreteValue
+}}}
+{{{#!td
+DiscreteValueSetUtilities
+}}}
+{{{#!td
+"discreteutils": {
+	"valueUtilities": {
+		"2000": 0,
+		"2500": 0.25,
+		"3000": 0.3,
+		"3500": 0.75,
+		"4000": 1.0
+	}
+}
+}}}
+|----------------------------
+{{{#!td
+NumberValue
+}}}
+{{{#!td
+NumberValueSetUtilities
+}}}
+{{{#!td
+numberutils": {
+	"lowValue":12,
+	"lowUtility":0.3,
+	"highValue":18,
+	"highUtility":0.6
+}
+}}}
+|----------------------------
+
+* issueWeights: this is a map, for each issue there is a value in [0,1] and the sum of the weights in this map must be exactly 1. 
+
+* domain: identical to above. We replaced some issueValues with "..." in this example . 
+* name: a simple string with the name of the profile. The name must match the filename of the profile.
+
+=== Sum Of Groups
+This is a utility space that defines the utility of bids as a sum of the
+utilities of a number of subsets, or groups, of the issue values.
+
+A group defines the utility of a non-empty subset of the issues in the domain. 
+The parts are non-overlapping. Missing issue values have utility 0.
+
+This space enables handling UtilitySpaces that are not simply linear
+additive, but with interacting issue values. For example, if you would like
+to have a car with good speakers but only if there is also a good hifi set,
+you can make a part that has {@link PartsUtilities} like
+{{{
+{ { speakers:yes, hifi:yes }:1, {speakers, no: hifh:yes}:0.2, ...}
+}}}
+
+
+
+
+=== Partial Ordered
+In an ordered bidspace, only "isPreferredOrEqual" relationships between bids are known. We use the short notation  bid1 >= bid2 to indicate bid1 is preferred or equal to bid2. To test if bid1 and bid2 are exactly equal, you can apply the test bid1 >= bid2 && bid2 >= bid1. In a partial bidspace, only part of the information is available. This means that for some bids you will have neither bid1 >= bid2 nor bid2 >= bid1. 
+
+Here is a part of a example partial profile for the jobs domain in JSON format:
+{{{
+{
+	"DefaultPartialOrdering": {
+		"name": "jobs1_20",
+		"domain": {
+			"name": "jobs",
+			"issuesValues": {
+				"lease car": {
+					"values": ["yes", "no"]
+				}, ...
+			}
+		},
+		"better": [
+			[0, 34],
+			[2, 9],
+			[3, 5],
+			[6, 23],...
+		],
+		"bids": [{
+			"issuevalues": {
+				"lease car": "yes",
+				"permanent contract": "yes",
+				"career development opportunities": "low",
+				"fte": "0.8",
+				"salary": "4000",
+				"work from home": "0"
+			}
+		}, {
+			"issuevalues": {
+				"lease car": "no",
+				"permanent contract": "no", ...
+
+			}
+		}....],
+		"reservationBid": {
+			"issuevalues": {
+				"lease car": "no",
+				"permanent contract": "no",
+				"career development opportunities": "low","fte": "0.6",
+				"salary": "3500",
+				"work from home": "1"
+			}
+		}
+	}
+}
+
+}}}
+
+The name, domain and reservationBid fields are as with the LinearAdditiveProfile.
+* The "bids" field contains a list of the bids that are relevant for this partial profile. Each bid contains (possibly partial) bids in the bid space. 
+* The "better" field contains a list of tuples of numbers. Presence of a tuple (A,B) in this list indicates that bids[A] >= bids[B] where bids[X] means the Xth element in the bids list, 0 being the first element. 
+
+== ProfileConnectionFactory
+Parties receive a ProfileReference which is an URI from which they can fetch the profile.
+In a server configuration this usually will be a websocket, in testing conditions this usually will be a file. 
+The ProfileConnectionFactory handles the burden of decyphering the URI, connecting in the right way, waiting for the response, parsing the JSON code to an object etc. The typical use is
+{{{
+	profileint = ProfileConnectionFactory.create(URI, reporter);
+}}}
+
+This returns a ProfileInterface for further use.
+
+You can now use this profileint in two ways
+1. Listen for updates: {{{profileint.addListener(yourListener) }}}. yourListener will be called every time a new profile is available
+2. Use the latest version of the profile whenever you need it, and wait for it if there is no version available yet. {{{currentProfile=profileint.getProfile()}}}.
+
+There is a limitation on the ProfileConnectionFactory that might become relevant if you handle very large profiles: the websocket handler is currently limited to profiles of at most 200kB in size. This is because websockets use fixed buffer sizes. Let us know if this is an issue, we can change this limit.
+
+== Events
+The events module contains inform objects, action objects and event objects.
+
+=== Inform
+
+Inform objects are used to inform parties about events that happened in a negotiation. We have
+
+||= inform object =||= meaning =||
+||Settings||usually sent as first inform to a party, indicating start of the session and providing the party name, protocol, profile, deadline etc||
+||YourTurn||Indicating that the party receiving this inform now has the turn. Generally indicating that party is expected to make an offer||
+||ActionDone||Informing that some party did an action||
+||Finished||Indicating that a session has been finished||
+||Voting||The party is expected to send in Votes. A map of the powers of all participating parties is provided||
+||OptIn||The party is expected to send in Votes. Usually this is a follow-up for a Voting round||
+
+These objects can be used slightly different, depending on the protocol.
+
+Please check the [source:party/src/main/java/geniusweb/party/inform source code of Inform objects] for all the details especially on the json serialization.
+
+=== Actions
+Actions are objects that are sent by the party, indicating it does a negotiation action. We have
+
+||= action object =||= meaning =||
+||Offer||The party offers some bid to the other parties||
+||Accept||The party informs the protocol that it can accept a specific bid. Usually this bid has to be offered by some other party||
+||Comparison||The party informs that it prefers certain bids over others||
+||ElicitComparison||The party informs that it would like to hear a Comparison||
+||EndNegotiation||The party informs that it is done negotiating and leaves immediately. Possibly without a deal if there was no deal yet for this party. ||
+||Votes||The party informs that it gives specific votes to bids. A vote is a conditional accept, it contains a Bid but an additional 'minPower' indicating the minimum power and maximum power that a deal must have.||
+
+Again, the details of how to use the actions is determined by the protocol. For instance some protocols may accept an Accept with a bid that was not previously made, while other protocols may prohibit such an action.
+
+=== Events
+The events module inside the events package is ment for internal communication. Protocols can generate such events to inform protocol users about the state of the negotiation.
+
+== Voting
+The voting package contains utility functions supporting the voting mechanisms.
+The CollectedVotes object is a utility class, to search potential deals hidden in sets of votes.
+
+=== VotingEvaluator
+The votingevaluator is a function that can, given a set of votes, determine the exact deal(s) from a set of votes. There are different ways to do this. Currently we have 
+
+||= VotingEvaluator =||= Behaviour =||
+||LargestAgreement||Take the first possible agreement, and take the largest possible agreement.  Stop after first agreement.||
+||LargestAgerementsLoop||collects all possible {@link Agreements}. We're finished only when all parties have an agreement, except possibly 1 party.||
+
+== Party
+A party is a program that receives inform messages from the protocol, and can send the actions it wants to take regarding the negotiation back to the protocol. In GeniusWeb these actions are typically sent over a websocket that is created by the partiesserver that created the party, which in turn creates this according to a http GET request that comes from a running protocol. The party can also pro-actively search for information and take other actions as it likes, as long as it adheres to the requirements of the protocol (discussed later in this document).
+
+Javadoc is available on the [http://artifactory.ewi.tudelft.nl/artifactory/webapp/#/artifacts/browse/tree/General/libs-release/geniusweb/party artifactory]. See [wiki:WikiStart#DownloadingJavaDoc downloading javadoc].
+
+
+The party module also contains basic interfaces for implementing your negotiation party. These interfaces are only relevant to create a party compatible with our reference implementation of the [https://tracinsy.ewi.tudelft.nl/pubtrac/GeniusWebPartiesServer partiesserver]. The main class is Party, which defines the basic functionality required for a negotiation party on our server. The heart of the party is that your Party implements Connectable<Inform,Action>. Connectable contains 2 main functions: connect and disconnect.  When connect is called, your party receives a Connection over which it receives Inform objects and can send Action objects. What exactly is sent and received is determined by the protocol (see the protocol section below). For example if the SAOP protocol is used, your party will receive a YourTurn message, after which it decides on its action and sends it into the Connection. See also the example party discussed below. 
+
+
+=== Capabilities
+The party specifies its capabilities. Currently capacilities contains the supported behaviours and profiles.
+
+The 'behaviours'is a list of behaviours that the party can handle. The 'behaviour' is just a string but it refers to a specific behaviour||
+||= behaviour name =||= abbreviation for =||= expected behaviour =||
+|| SAOP ||Stacked alternating offers protocol ||First, this party receives SessionSettings. After that it receives an ActionDone if a party does an action. The party takes an action only after YourTurn is received. It can then either {{{Accept}}}, {{{EndNegotiation}}} or {{{Offer}}}. Accept is possible only after another Offer was received||
+|| MOPAC ||Multiple Offers PArtial Consensus ||First, this party receives SessionSettings. The party waits for a YourTurn. It then sends an Offer. The party now waits for a Voting after which it replies with Votes. The party now waits for OptIn and it again replies with Votes, possible extending the previous Votes. The party now loops, waiting again for YourTurn etc. ||
+|| COB ||compare bids protocol.||This party receives SessionSettings. It also receives ActionDone if a party does an action, containing a ElicitComparison action if its partner SHAOP party requests so. If it receives that, the party responds with Comparison action. || 
+|| SHAOP ||Stacked human alternating offers protocol ||similar to SAOP. A party of this type must receive parameter elicitationcost. If not, the   [source:/protocol/src/main/java/geniusweb/protocol/session/shaop/SHAOPState.java DEFAULT_ELICITATATION_COST] is used. After receiving a YourTurn action, this party can execute the usual SAOP actions ({{{Accept}}}, {{{EndNegotiation}}} or {{{Offer}}}). At any time (also when it does not have the turn) it can do a {{{ElicitComparison}}} action.  The call results in the associated COB party to execute a Comparison action, which is then received in an {{{ActionDone}}}.| Each {{{ElicitComparison}}} call will add elicitationcost to the party's spendings.|
+
+
+The profiles is a list of classes that implement a Profile. The party supports all profile classes in the list (including subclasses).
+
+
+== Timeline
+The timeline module describes the deadline and a progress objects.
+
+Javadoc is available on the [http://artifactory.ewi.tudelft.nl/artifactory/webapp/#/artifacts/browse/tree/General/libs-release/geniusweb/timeline artifactory]. See [wiki:WikiStart#DownloadingJavaDoc downloading javadoc].
+
+The deadline indicates how much time a negotiation session can take and is used to specify the settings for a session or tournament. Two examples:
+
+{{{
+{"deadlinerounds":{"rounds":100,"durationms":999}}
+}}}
+
+and
+{{{
+{"deadlinetime":{"durationms":2000}}
+}}}
+
+ * durationms indicates the maximum run time in milliseconds for the party. The clock starts ticking at the moment the party receives its SessionSettings object.
+ * rounds indicates the maximum number of rounds in the session. The session will end after this number of rounds, deal or no deal.
+
+The progress indicates where currently running session is towards the deadline. Progress is contained in the settings object. Round based progress must be updated by the party after each round. 
+ 
+
+
+
+== References
+The references module contains references to remote parties, domains, profiles and protocols that are stored on remote machines. Additionally it contains the interface specifications for connections to remote objects, and some general server objects. 
+
+Javadoc is available on the [http://artifactory.ewi.tudelft.nl/artifactory/webapp/#/artifacts/browse/tree/General/libs-release/geniusweb/references artifactory]. See [wiki:WikiStart#DownloadingJavaDoc downloading javadoc].
+
+=== References 
+
+We use IRI's (internationalized resource identifier, which looks similar to the well known URLs you use in your web browser) to refer to them. These IRI's are packed inside objects like the PartyRef, ProtocolRef, ProfileRef, DomainRef so that it is clear what type of object the IRI is referring to.
+For example, when your party is initialized, it usually receives a Settings object that contains a ProfileRef. The intention is that the party fetches the actual profile from the web, using the IRI in the ProtocolRef. See the example party below for an example.
+
+There are a number of schemes used for references:
+
+||= scheme =||= used with =||= example =||= comments =||
+||http:||party||http://localhost:8080/partiesserver/run/randompyparty-1.0.0|| ||
+||ws:||profile||ws://localhost:8080/profilesserver/websocket/get/jobs/jobs1.json|| ||
+||file:||profile||file:src/test/settings.json ||gives file relative to local current working dir||
+||classpath:||party||classpath:geniusweb.exampleparties.randomparty.RandomParty||must be in classpath||
+
+=== Connection
+The connection objects are used to describe a general connection with a remote Connectable that can respond to requests or take actions pro-actively. The Connection object defines a connection to a Connectable.  A ConnectionFactory can create a Connection given a Reference. 
+
+=== serverobjects
+Here we store objects that are also used in communication with servers. 
+
+The ServerInfo object contains information about a runserver. Currently it contains the number of free slots and the total number of available slots on the server.
+
+== OpponentModel
+This is a category of classes that can estimate the opponent's profile from the bids that he places.
+The basic interface of OpponentModel is :
+{{{
+public interface OpponentModel extends Profile {
+	OpponentModel with(Domain domain, Bid resBid);
+
+	OpponentModel with(Action action, Progress progress);
+}
+}}}
+
+The implementations are assumed to be immutable. The two with() functions return an updated OpponentModel. The with(domain,resBid) must be called first to initialize the model. After that, the model updates according to actions done by the party that is being modeled.
+
+||= Implementation =||= behaviour =||= parameters =||
+||FrequencyOpponentModel||Counts for each issue the frequency of offered values to estimate opponent UtilitySpace. || - ||
+
+
+== BOA
+Boa (Bidding, Opponent Model, Acceptance Model) is an attempt to split negotiation into three basic components: modeling the opponent's profile, determining a proper next action and determining when to accept [https://homepages.cwi.nl/~baarslag/pub/Decoupling_Negotiating_Agents_to_Explore_the_Space_of_Negotiation_Strategies_ACAN_2012.pdf see paper]. The boa module allows parties to be written with this and provides example implementations of the components.
+
+WARNING: The current design of BOA Components makes it possible to create circular dependencies between the components. This will result in a deadlock of parties using that component. Currently the plan is that the component interface will be changed in the future to prevent this.
+
+
+=== BoaParty, DefaultBoa
+DefaultBoa is an abstract party that takes BOA components and makes it into a runnable Party. How this is done is discussed in [#WritingaBoaParty].
+
+BoaParty is a party that allows you to select the BOA components as needed using the Parameters. This is discussed in more detail in [#BoaParty].
+
+=== BoaState
+The internal state information of DefaultBoa is stored in the BoaState. This allows efficient sharing of these internals with the components of a Boa party and helps improving efficiency of the code.
+
+The BOA model uses three major components: the OpponentModel, the BiddingStrategy and the AcceptanceStrategy. OpponentModel has been discussed already (see [#OpponentModel]). 
+
+All subcomponents may be configurable through the parameters. The DefaultBoa just shares its state, with all parameters with all subcomponents. This means that the names of your parameters should avoid names already in use.
+
+=== Bidding Strategy
+A Bidding Strategy determines what action to take in which state, through this interface function
+{{{
+Action getAction(BoaState state);
+}}} 
+The following implementations are provided with the Boa Framework
+
+||= Implementation =||= behaviour =||= parameters =||
+||TimeDependentBiddingStrategy||Bids according to an exponentially decreasing utility target. See javadoc for details. ||e,k,min,max. See javadoc for details.||
+
+You can create a custom BiddingStrategy by just implementing the BiddingStrategy interface. 
+
+=== Acceptance Strategy
+A Acceptance Strategy determines what action to take in which state, through this interface function
+{{{
+Boolean isAcceptable(Bid bid, BoaState negoState);
+}}} 
+The following implementations are provided with the Boa Framework
+
+||= Implementation =||= behaviour =||= parameters =||
+||TimeDependentAcceptanceStrategy||Accepts according to an exponentially decreasing utility target. See javadoc for details. ||e,k,min,max. See javadoc for details.||
+
+== BidSpace
+The bidspace module contains functionality to support building a negotiation party. Especially for LinearAdditiveSpaces, a number of efficient tools are available that work orders of magnitude faster than brute force algorithms.
+
+||= Class =||= description =||
+||Pareto||a category of classes that can compute the pareto frontier from a set of profiles. Pareto optimality is an important mechanism to place optimal bids. ParetoLinearAdditive can efficiently search LinearAdditiveUtilitySpace||
+||AllBidsList||Creates a list containing all possible bids in any domain. Extremely fast; the list is created in a lazy way, and competely avoids storing anything in memory. Can handle sizes that would never fit in memory.||
+||BidsWithUtility||A tool to efficiently search LinearAdditiveUtilitySpace for bids within a certain range.||
+
+Javadoc is available on the [http://artifactory.ewi.tudelft.nl/artifactory/webapp/#/artifacts/browse/tree/General/libs-release/geniusweb/bidspace artifactory]. See [wiki:WikiStart#DownloadingJavaDoc downloading javadoc].
+
+== Protocol
+The protocol module contains the functionality to define and execute a negotiation protocol. 
+There are session protocols and tournament protocols. The following protocols are available:
+
+||= protocol (abbreviated) =||= full name =||= short description =||
+||SAOP || Stacked Alternating Offers Protocol ||Parties are given turns in a round-robin order. When a party has the turn, it can accept, offer, or end negotiation. A deal is reached if all parties accept an offer. ||
+||SHAOP||Stacked Human Alternating Offers Protocol ||Similar to SAOP. Instead of parties, we now have a list of party-pairs [shaop-party","cob-party"]| These pairs run in round-robin order. The shaop-party is the main party that gets the turn. As with SAOP, it can accept, offer, or end the negotiation. The SHAOP party can also do an ElicitCompare action at any time, also when it does not have the turn. The COB party receives it and can respond with a  Compare action.||
+||AMOP||Alternating Multiple Offers Protocol||All active parties put an offer on the table. Then all parties place a conditional vote on the offers on the table. The largest agreements are determined in these votes, and parties that agreed are done. Remaining active parties repeat teh loop||
+||MOPAC||Multiple Offers Partial Consensus||All active parties receive a YourTurn after which they put an offer on the table. Then everyone receives a Voting message containing all offers on the table. Now all parties place a conditional vote on the offers. All parties receive these conditional votes in the Opt-In message. The parties must now all place their votes again, but they can extend their votes by adding new ones or extending the previous conditions. A [#VotingEvaluator] is now called to determine the agreements from  the last votes, and to determine if the negotiation is complete.||
+||All Permutations||All Permutations||Generates a set of SAOP sessions from a set of parties and profiles.||
+
+
+Above gives a very short description of the protocol. The javadoc of each protocol contains all details. Javadoc is available on the [http://artifactory.ewi.tudelft.nl/artifactory/webapp/#/artifacts/browse/tree/General/libs-release/geniusweb/protocol artifactory]. See [wiki:WikiStart#DownloadingJavaDoc downloading javadoc].
+
+
+The basic classes defining a protocol are:
+* The [source:/protocol/src/main/java/geniusweb/protocol/NegoSettings.java NegoSettings]: these define the settings for the protocol, such as the deadline, the participants and the profile
+* The [source:/protocol/src/main/java/geniusweb/protocol/NegoState.java NegoState]: this contains the current state of execution of the protocol. To give some example states: "waiting for bid from party 2", "ended with agreement", "ended because party 1 broke the protocol". A state also has various {{{with()}}} functions defining the new state from an old state and a party doing an action.
+* The [source:/protocol/src/main/java/geniusweb/protocol/NegoProtocol.java NegoProtocol]: this defines what happens when a negotiation starts, when a participant enters halfway the session, what are the allowed actions, what happens if a participant breaks the protocol, etc.   
+
+=== Protocol Party Parameters
+Some protocols use the party parameters to set some behaviour. This way per-party protocol adjustments can be made. These parameters are also seen by the party so that it can adapt its behaviour accordingly.
+
+||Protocol||parameters||
+||SAOP||-||
+||MOPAC||power: the power of the party. Used to evaluate votings. Default=minimum=1||
+||AMOP||minVotes: the minimum 'power' (in AMOP, power represents number of votes) for votes.
+||SHAOP||-||
+
+More details are in the protocol javadocs.
+
+
+
+=== NegoSettings
+We discuss a few common NegoSettings in more detail, with some examples.
+
+
+Typically the session settings looks like this:
+{{{
+{"SAOPSettings": {
+  "participants":[
+    {"party":{"partyref":"http://party1","parameters":{}},"profile":"ws://profile1"},
+    {"party":{"partyref","http://party2","parameters":{}},"profile":"ws://profile2"}],
+  "deadline":{"deadlinetime":{"durationms":100}}
+}}
+}}}
+
+The "SAOPSettings" indicates that these settings are SAOPSettings and (see Settings.getProtocol) will be interpreted by the SAOP protocol.
+
+The participants is a list with PartyWithProfile items: a "party" field containing a http address on a partiesserver, and a "profile" field containing a websocket address on a profilesserver.
+
+The deadline contains the deadline for the SAOP, which is how long the negotiation can last.
+
+For different protocols, the contents will differ.
+
+For MOPAC, there is an additional field 'votingevaluator' containing the voting evaluator, eg like this
+{{{
+{"MOPACSettings":{
+  "participants":[
+    {"party":{"partyref":"http://party1","parameters":{}},"profile":"http://profile1"},
+    {"party":{"partyref":"http://party2","parameters":{}},"profile":"http://profile2"}],
+  "deadline":{"deadlinetime":{"durationms":100}},
+  "votingevaluator":{"LargestAgreement":{}}}}
+}}}
+
+For a SHAOP configuration, the settings typically look like this
+{{{
+{"SHAOPSettings":{
+  "participants":[
+      { "shaop":{"party":{"partyref":"party1","parameters":{}},"profile":"profile1"},
+        "cob":{"party":{"partyref":"party2","parameters":{}},"profile":"profile1"}
+      },
+      { "shaop":{"party":{"partyref":"party3","parameters":{}},"profile":"profile1"},
+        "cob":{"party":{"partyref":"party4","parameters":{}},"profile":"profile1"}
+      }
+    ],
+  "deadline":{"deadlinerounds":{"rounds":30, "durationms":1000}}
+}}
+}}}
+
+This is similar to SAOP, but instead of just parties we have party tuples "cob","shaop" (see the party behaviours). The party in the "cob" field must follow the cob behaviour, the one with "shaop" a shaop or saop behaviour. The SHAOP party gets the turn first. If it does a normal SAOP action, the turn goes to the next SHAOP party. But if it does a ElicitComparison action, then the turn remains with the SHAOP party (it will not get another YourTurn). The SHAOP party should resume actions when it receives the inform with the Comparison back from the COB party.
+
+We strongly recommend using a ROUNDS deadline and a small number of rounds for two reasons
+* Humans will get tired of comparing bids pretty quickly. There seems no point in using this protocol for large number of comparisons
+* The log files will become huge if you run this a large, say thousands of rounds, because Comparison are all logged and these are large objects. The run server may even run out of memory on writing log file.
+
+The SHAOP protocol can also use parties with the SAOP behaviour. SAOP parties just never call the COB party. The SHAOP protocol still requires you to enter a COB party but this party will never be called. 
+
+For a tournament, the NegoSettings typically look like this:
+{{{
+{"AllPermutationsSettings": {
+	"teams": [
+		{"Team": [{
+			"partyref": "classpath:geniusweb.exampleparties.simpleshaop.ShaopParty",
+			"parameters": {	}
+		},{	"partyref": "classpath:geniusweb.exampleparties.comparebids.CompareBids",
+			"parameters": {	}
+		}]
+		},
+		{"Team": [{
+			"partyref": "classpath:geniusweb.exampleparties.randomparty.RandomParty",
+			"parameters": {	}
+		},{	"partyref": "classpath:geniusweb.exampleparties.comparebids.CompareBids",
+			"parameters": {
+		}}]
+		}
+	],
+	"reuseTeams": false,
+	"profileslists": [
+		{"ProfileList": [
+			"file:src/test/resources/jobs/jobs1partial.json?partial=10",
+			"file:src/test/resources/jobs/jobs1partial.json"
+			]},
+		{ "ProfileList": [
+			"file:src/test/resources/jobs/jobs2.json?partial=15",
+			"file:src/test/resources/jobs/jobs2.json"
+			]
+		}
+	],
+	"teamsPerSession": 2,
+	"sessionsettings": {
+		"SHAOPSettings": {
+			"participants": [ ],
+			"deadline": { "deadlinerounds": { "rounds": 10, "durationms": 10000 }
+	}	}	},
+	"numberTournaments":1
+
+}
+}
+}}}
+
+
+'teams' is a list of Team objects. Must contain at least <teamsPerSession> elements. The teamsize must match the protocol: (SAOP:1, SHAOP:2). A Team is a group of parties, each with their own parameters. Each will be coupled to a {@link ProfileList} in the generation phase of the protocol. The first team member is the team master, only he can do the bidding on the team's behalf. In SAOP, there is only 1 team member, the main party, while in the SHAOP protocol the first element is the SHAOP party and the second team member the COB party.
+
+The profileslist is a list of list of ProfileRefs. Each list of ProfileRefs has exactly 1 profile for each team member, in the same order as the Teams.
+
+If reuseTeams is set to to false, teams are drawn from the list without return. If it is set to true, teams are drawn with return (meaning all teams can occur multiple times in each session)
+
+teamsPerSession sets the number of teams (and matching profiles) for each session. Profiles are always drawn without return (never appear twice in a session)
+
+sessionsettings contains basically all the normal run-sessionsettings. This is used as a "template" for all sessions of the tournament. You can put any use any session setting here, and each session will be run according to the protocol you select here. In the example we use the SAOP protocol which takes participants and deadline as arguments, as discussed above. The participants list this time is empty, the AllPermutationsProtocol adds the the required parties to this list. So if you provide a non-empty list here, then these parties would be present in every session in the tournament.
+
+numberTournaments is the number of times the tournametn is run in its entirity. This must be >0.
+
+
+= Example Parties
+Example parties can be found [source:/exampleparties here]. Many of these are also included with the basic [https://tracinsy.ewi.tudelft.nl/pubtrac/GeniusWebPartiesServer parties server] to provide basic functionality.
+
+Notice, the anac parties are parties originating from [http://ii.tudelft.nl/genius/ Genius] . These are only there to give some inspiration and to allow running of some old Genius parties. We recommend to not use the source code from these.
+
+Below is a table showing the currently available example parties and their properties. Notice, utilityspacetype gives the class names of all supported types, so for instance "PartialOrdcering" means all subclasses of PartialOrdering which also includes all UtilitySpaces.
+
+||= Party =||= Protocol =||= Supported profile types =||= Parameters (default value) =||
+||RandomParty||SAOP, AMOP, MOPAC||Profile||minPower (2), maxPower (infinity). Used to control voting behaviour||
+||RandomPyParty||SAOP||Profile||-||
+||TimeDependentParty||SAOP, MOPAC||LinearAdditive||e (1.2) controls concession speed, minPower (1), maxPower (infinity). Used to control voting behaviour||
+||Boulware||SAOP, MOPAC||LinearAdditive||minPower (1), maxPower (infinity). Used to control voting behaviour||
+||Conceder||SAOP, MOPAC||LinearAdditive||minPower (1), maxPower (infinity). Used to control voting behaviour||
+||Hardliner||SAOP, MOPAC||LinearAdditive||minPower (1), maxPower (infinity). Used to control voting behaviour||
+||Linear||SAOP, MOPAC||LinearAdditive||minPower (1), maxPower (infinity). Used to control voting behaviour||
+||agentgg||SAOP||DefaultPartialOrdering||-||
+||winkyagent||SAOP||DefaultPartialOrdering||-||
+||HumanGUI||SAOP||Profile||
+||CompareBids||COB||PartialOrdering||-||
+||SimpleSHAOP||SHAOP||DefaultPartialOrdering||elicitationcost||
+||Boa||SAOP||LinearAdditive||"as":class.of.AcceptanceStrategy, "bs":class.of.BiddingStrategy, "om":"class.of.OpponentModel plus model-specific parameters||
+||SimpleBoa||SAOP||LinearAdditive||-||
+
+Some parameters are shared with the protocol and thus protocol-dependent. Check the parameters for the protocol that you use.
+
+== HumanGUI party
+The HumanGUI party is a party that shows a GUI to allow the user to manually interact with a negotiation. This GUI is shown on the machine where the partiesserver is running. This is also the reason that this party is not included with the default partiesserver. If you want to use this you need to download the latest version of the jar file from [http://artifactory.ewi.tudelft.nl/artifactory/webapp/#/artifacts/browse/tree/General/libs-release/geniusweb/exampleparties/humangui the artifactory] and install it on your partiesserver.
+
+[[Image(https://tracinsy.ewi.tudelft.nl/pubtrac/GeniusWeb/raw-attachment/wiki/WikiStart/humangui.png)]]
+
+Figure. The HumanGUI interface
+
+== Boa Party
+The BOA party is a special kind of party, with pluggable components that determine the acceptability of a bid (AcceptanceStrategy), the proper next bid (BiddingStrategy) and modelers of the opponents (OpponentModel). The fully specified class path is to be provided as parameters to the BOA party. A minimal example of such a parameter set is this
+{{{
+"as":"geniusweb.boa.acceptancestrategy.TimeDependentAcceptanceStrategy", 
+"bs":"geniusweb.boa.biddingstrategy.TimeDependentBiddingStrategy", 
+"om":"geniusweb.opponentmodel.FrequencyOpponentModel",
+}}}
+
+Each of the components can also be parameterized. You just add their parameters to the list. In this example, the strategies both have parameters k and e and you just add them to the list:
+{{{
+"as":"geniusweb.boa.acceptancestrategy.TimeDependentAcceptanceStrategy", 
+"bs":"geniusweb.boa.biddingstrategy.TimeDependentBiddingStrategy", 
+"om":"geniusweb.opponentmodel.FrequencyOpponentModel",
+"e":0.7, "k":0.3
+}}}
+
+So all parameters are forwarded to all components, these components will figure out themselves which of the provided ones are relevant for them. See the section [#WritingaBoaParty] below for more details on the components.
+
+= Writing a Party
+There are many ways to create a Party: in Java, in Python, extending a Party, extending a DefaultBoa party. The following sections go into more detail.
+== Writing a party in Java
+
+Example parties can be found [source:/exampleparties here]. You can easily clone a party with SVN using {{{svn co https://tracinsy.ewi.tudelft.nl/pub/svn/GeniusWeb/exampleparties/randomparty/}}} (this clones randomparty, use a different name to fetch another example). We recommend cloning RandomParty as a start for your own party because it is a minimal example that supports a lot of protocols.
+
+A party is compiled with maven. After compilation ({{{mvn package}}}) you get a {{{target/yourparty-X.Y.Z-jar-with-dependencies.jar}}} that can be copied into the parties server for deployment.
+
+The basic structure of a party that supports the SAOP behaviour looks like this
+{{{
+public class SaopParty extends DefaultParty {
+	@Override
+	public void notifyChange(Inform info) {
+		if (info instanceof Settings) {
+			Settings settings = (Settings) info;
+			this.profileint = ProfileConnectionFactory
+					.create(settings.getProfile().getURI(), getReporter());
+			this.me = settings.getID();
+			this.progress = settings.getProgress();
+		} else if (info instanceof ActionDone) {
+			Action otheract = ((ActionDone) info).getAction();
+			if (otheract instanceof Offer) {
+				lastReceivedBid = ((Offer) otheract).getBid();
+			}
+		} else if (info instanceof YourTurn) {
+			myTurn();
+			if (progress instanceof ProgressRounds) {
+				progress = ((ProgressRounds) progress).advance();
+			}
+		} else if (info instanceof Finished) {
+			getReporter().log(Level.INFO, "Final ourcome:" + info);
+		}
+	}
+
+
+	private void myTurn() {
+		Action action;
+		if (isGood(lastReceivedBid)) {
+			action = new Accept(me, lastReceivedBid);
+		} else {
+			// for demo. Obviously full bids have higher util in general
+			AllPartialBidsList bidspace = new AllPartialBidsList(
+					profileint.getProfile().getDomain());
+			Bid bid = null;
+			for (int attempt = 0; attempt < 20 && !isGood(bid); attempt++) {
+				long i = random.nextInt(bidspace.size().intValue());
+				bid = bidspace.get(BigInteger.valueOf(i));
+			}
+			action = new Offer(me, bid);
+		}
+		getConnection().send(action);
+	}
+
+	private boolean isGood(Bid bid) {
+		return bid != null
+				&& ((LinearAdditiveUtilitySpace) profileint.getProfile())
+						.getUtility(bid).doubleValue() > 0.6;
+	}
+
+	@Override
+	public Capabilities getCapabilities() {
+		return new Capabilities(new HashSet<>(Arrays.asList("SAOP")));
+	}
+
+
+	@Override
+	public String getDescription() {
+		return "places random bids until it can accept an offer with utility >0.6";
+	}
+
+}
+}}}
+
+The party must follow the behaviours that it promises. The example above folows the SAOP behaviour but other examples like comparebids and simpleshaop are available as example. Check [#ExampleParties] for which parties support which behaviours.  
+
+Notice, above is simplified code supporting, for fully working code check the [source:/exampleparties/randomparty/src/main/java/geniusweb/exampleparties/randomparty/RandomParty.java source code].
+
+=== Preparing the jar file
+In order to put your party on the [https://tracinsy.ewi.tudelft.nl/pubtrac/GeniusWebPartiesServer partiesserver] for running, you need a jar file of your party.
+
+Normally the party includes all dependencies. The jar files are loaded with an isolated jar class loader that should avoid collisions with possibly identically named but possibly different packages in other jar files.
+
+
+Party jar files must have a Main-Class set in the MANIFEST.MF file. This main-class must implement Party and have a no-arg constructor. 
+
+The example randomparty does this from the maven build script.
+
+We recommend to do initialization of the party only in the init() and not in the constructor or static code. 
+This because instances of your class can be made both for extracting general info as getDescription(), or to really run your class. 
+
+
+== Writing a party in Python
+We provide a python-to-java adapter so that you can easily write your party in python instead of Java. You can check the full working example code [source:/exampleparties/randompartypy/src/main/resources/RandomParty.py here]. A python-based party looks like this:
+{{{
+class RandomParty (DefaultParty):
+	def notifyChange(self, info):
+		if isinstance(info, Settings) :
+			self.profile = ProfileConnectionFactory.create(info.getProfile().getURI(), self.getReporter());
+			self.me = info.getID()
+			self.progress = info.getProgress()
+		elif isinstance(info , ActionDone): 
+			self.lastActor = info.getAction().getActor()
+			otheract = info.getAction()
+			if isinstance(otheract, Offer):
+				self.lastReceivedBid = otheract.getBid()
+		elif isinstance(info , YourTurn):
+			self._myTurn()
+			if isinstance(self.progress, ProgressRounds) :
+				self.progress = self.progress.advance();
+
+
+
+	def getCapabilities(self): # -> Capabilities
+		return Capabilities(HashSet([ "SAOP"]))
+
+
+	def getDescription(self):
+		return "places random bids until it can accept an offer with utility >0.6. Python version"
+	
+	def terminate(self):
+		self.profile.disconnect()
+
+	def _myTurn(self):
+		if self.lastReceivedBid != None and self.profile.getProfile().getUtility(self.lastReceivedBid).doubleValue() > 0.6:
+			action = Accept(self.me, self.lastReceivedBid)
+		else:
+			bidspace = AllPartialBidsList(self.profile.getProfile().getDomain())
+			bid = None
+			for attempt in range(20):
+				i = self.random.nextInt(bidspace.size()) # warning: jython implicitly converts BigInteger to long.
+				bid = bidspace.get(BigInteger.valueOf(i))
+				if self._isGood(bid):
+					break
+			action = Offer(self.me, bid);
+			self.getConnection().send(action)
+
+	def _isGood(self, bid):
+		return bid != None and self.profile.getProfile().getUtility(bid).doubleValue() > 0.6;
+
+}}}
+
+The python party must be wrapped into a jar wrapper to get it accepted by the parties server. This is done automatically by the maven build script, again just execute {{{mvn package}}} to build. The javadoc with the [source:/pythonadapter/src/main/java/geniusweb/pythonadapter/PythonPartyAdapter.java PythonPartyAdapter] gives the details about this wrapper. 
+
+
+== Writing a Boa Party
+As discussed, the [#BoaParty] is fully configurable to use BOA components. But this adds some hassle when setting up a negotiation as all the components must be explicitly added in the parameters. Also you can not load just a custom BOA component into the runserver, the runserver only supports ready-to-run Party's so custom BOA components have to be part of a custom party. So we discuss how to create a hard-coded Boa party and how to create custom BOA components.
+
+=== Hard coded Boa
+You can hard code a Boa Party by extending the DefaultBoa class. You can use all the Boa components, you can add your own components, and you wire them hard into your party. An example is proviced in the simpleboa example package. SimpleBoa looks like this
+{{{
+public class SimpleBoa extends DefaultBoa {
+	@Override
+	protected Class<? extends OpponentModel> getOpponentModel(Settings settings)
+			throws InstantiationFailedException {
+		return FrequencyOpponentModel.class;
+	}
+
+	@Override
+	protected BiddingStrategy getBiddingStrategy(Settings settings)
+			throws InstantiationFailedException {
+		return new TimeDependentBiddingStrategy() {
+			...
+		};
+	}
+
+	@Override
+	protected AcceptanceStrategy getAccceptanceStrategy(Settings settings)
+			throws InstantiationFailedException {
+		return new TimeDependentAcceptanceStrategy() {
+			...
+		};
+	}
+
+}
+}}}
+
+So basically you just implement the functions that provide the opponent model, bidding strategy and acceptance strategy into the DefaultBoa party. Your jar file has to be prepared identically as with a normal party. 
+
+=== Custom BOA Component
+To write a custom BOA component, just implement the interface of AcceptanceStrategy, BiddingStrategy or OpponentModel. Examples are available in [source:boa/src/main/java/geniusweb/boa/acceptancestrategy]  [source:boa/src/main/java/geniusweb/boa/biddingstrategy] and [source:opponentmodel/src/main/java/geniusweb/opponentmodel]
+
+
+
+=== Running default BoaParty with custom Components
+If you only wrote custom BOA components and want to use them in the default BoaParty using parameters, proceed as follows
+* Create a maven project containing your custom components
+* Fix the pom references to mainClass to point to the standard BoaParty: {{{<mainClass>geniusweb.boa.BoaParty</mainClass>}}}
+* Plug yourparty.jar file into your partyserver for use.
+* Use yourparty.jar instead of boa.jar to run your components. Remember to set the Boa parameters properly using your component's paths. 
+
+== Writing a party in other languages
+If you want to use another language than java or python2 to write your parties, you have a number of options
+* Make your own adapter that runs your language from Java. Check [source:pythonadapter/src/main/java/geniusweb/pythonadapter/PythonPartyAdapter.java our pythonadapter] for an example how this can be done. 
+* Write your own partiesserver that correctly implements the [https://tracinsy.ewi.tudelft.nl/pubtrac/GeniusWebPartiesServer partiesserver interface]. This boils down to creating a webserver that  correctly can handle calls to a number of prescribed URLs and websockets. 
+
+
+
+= Stand-alone Running =
+For stand-alone running you need to 
+* download the stand-alone runner, eg download from [http://artifactory.ewi.tudelft.nl/artifactory/libs-release/geniusweb/simplerunner/ geniusweb artifactory] select latest version simplerunner-<latestversion>-jar-with-dependencies.jar. Easiest is to clone the project with {{{svn co https://tracinsy.ewi.tudelft.nl/pub/svn/GeniusWeb/simplerunner}}} 
+* The parties you want to run (in compiled form) must be in your classpath. Typically by adding them to the pom of the stand-alone runner.
+* The profiles you want to provide to the parties (alternatively you can refer to a profile on a running profile server)
+* A settings.json file containing the [source:/protocol/src/main/java/geniusweb/protocol/session SessionSettings] eg SAOP Settings. [source:/simplerunner/src/test/resources/settings.json view example file]. 
+
+A complete example is available of [source:/simplerunner simplerunner here]
+
+The simplerunner writes log information, including the final state, to the stdout. The last log line normally is something like {{{INFO:protocol ended normally: {"SAOPState": .....} }}}. You can parse the text starting at the {{{ { }}} using the standard jackson parser.  
+
+== Running ==
+
+
+A stand-alone runner can now be started as follows 
+
+run {{{geniusweb.simplerunner.NegoRunner}}}  in  Eclipse 
+with {{{src/test/resources/settings.json}}} as argument.
+
+or from the command line which is a bit more complicated:
+{{{
+java -jar simplerunner...with-dependencies.jar src/test/resources/settings.json
+}}}
+
+NOTE: because the commandline java command can not combine jar and cp, you need to combine them manually, plus add the correct run path as in
+
+{{{
+ java -cp /blabla/simplerunner-1.4.0-jar-with-dependencies.jar:/blabla/randomparty-1.4.0-jar-with-dependencies.jar geniusweb.simplerunner.NegoRunner src/test/resources/settings.json 
+}}}
+
+Also note that at least on OSX you must NOT wrap the paths to the jars in double quotes, and the separator char between the jars is {{{:}}}. 
+
+When the protocol is completed, the runner prints out the final state which usually contains all actions that were done as well. 
+
+= Debugging =
+Debugging can be done in several ways: in the actual server, or using a stand-alone runner.
+
+== Debugging in the server
+Notice that this method to use the debugger directly on the party as it runs on the server is a bit impractical, because of the time-out mechanisms. Any party running on the partiesserver is automatically removed after a few seconds, to ensure the server is not filling up with dead parties. Because of this, the party would disappear before you could do any debugging work. To work around this, you can halt the entire JVM as soon as possible if you take this approach.
+
+ * Use Eclipse EE  (Enterprise Edition) to run the entire server, or at least the partiesserver
+ * Place your party source code in the Eclipse workspace
+ * Place a breakpoint in your party's code
+ * Run the partiesserver directly from Eclipse EE , in Debug mode. 
+ * Run a session or tournament in which you want to debug your party.
+ * Eclipse will halt server execution and switch to debugging when it hits your breakpoint
+ * Be aware of the automatic time-outs that will still be enforced while you are debugging. This includes tomcat session time-outs. 
+
+== Debugging with stand-alone runner
+This uses the stand-alone runner to avoid negotiation time-out while you are debugging. Therefore it is slightly different from a 'real' negotiation but more convenient if the issue you want to debug is not related to a time-out. 
+ * You can use normal Eclipse for Java developers, no EE needed
+ * Set up a stand-alone run as described in [#Stand-aloneRunning]
+ * Place a breakpoint in your party where you want to debug.
+ * Run the debug configuration 
+ * Eclipse will halt server execution and switch to debugging when it hits your breakpoint
+ * time-outs may still be enforced while you are debugging but you avoid the Tomcat session time-out. 
+ * With stand-alone runner, your parties are run together in a single classloader. This is different from running in the partiesserver. 
+
+= GeniusWeb sources =
+
+== downloading source code
+You can browse the GeniusWeb core sources directly using the browse button at the right top of this page.
+
+You can download the source code of this component using  
+
+{{{svn co https://tracinsy.ewi.tudelft.nl/pub/svn/GeniusWeb/}}}
+
+Normal developers that write new parties do not need to install the GeniusWeb source code. Even if you want to debug/trace into the GeniusWeb code -- for instance for debugging or understanding the inner workings of geniusWeb--, IDEs like Eclipse automatically allow this as they download the source codes automatically from the maven artifactory. 
+
+== Import all sources in Eclipse
+
+
+
+Install Subclipse using "help/Eclipse MarketPlace" and search for subclipse. Disable the JavaHL native DLLs and install. NOTE: due to a bug in Eclipse Photon the marketplace may not work. We suggest to upgrade...
+
+You may get some errors on JavaHL library. To get rid of those, go to preferences/Team/SVN/
+* disable General SVN settings / JavaHL
+* SVN interface/Client: select SVNKit instead of JavaHL.
+
+Right click in Package Explorer in Eclipse, select "Import/SVN/Checkout Projects from SVN". Select the root of the project, finish (selecting sub-projects will result in a stupid loop in the checkout procedure in Eclipse and won't lead anywhere...)
+
+Richt click on the checked-out project that you want eclipse to recognise as Maven project (the project are maven but Eclipse does not recognise this after check-out). Select import/maven/existing maven projects. Finish. 
+
+Note. Eclipse does not automatically recognise this as a maven project because Eclipse supports this only with GIT repositories while we use SVN.
+
+== Downloading JavaDoc
+
+IDE's like Eclipse download the javadocs automatically. But it is also possible to download them manually and browse them with  a web browser. All modules are availabel on the [http://artifactory.ewi.tudelft.nl/artifactory/webapp/#/artifacts/browse/tree/General/libs-release/geniusweb artifactory] ( you need to have cookies enabled).
+
+ * Go to the artifactory
+ * Select the module you need javadoc for
+ * Select the correct (usually the latest) version of the module
+ * download the {{{*.javadoc.jar}}} (right-click on the jar)
+ * unzip it, eg using your favourite archive manager or with {{{jar xf}}}.  Don't double click it
+ * open the index.html
+
+
+[[Image(https://tracinsy.ewi.tudelft.nl/pubtrac/GeniusWeb/raw-attachment/wiki/WikiStart/downloadjavadoc.png, 80%)]]
+Figure. Manually downloading the javadoc from the artifactory
+
