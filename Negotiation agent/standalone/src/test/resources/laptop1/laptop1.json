@@ -1,0 +1,26 @@
+{
+	"name": "laptop1",
+	"issuesValues": {
+		"Price": {
+			"values": [
+				"1000",
+				"1200",
+				"1400"
+			]
+		},
+		"Harddisk": {
+			"values": [
+				"256 GB",
+				"512 GB",
+				"1 TB"
+			]
+		},
+		"Monitor": {
+			"values": [
+				"15",
+				"17"
+			]
+		}
+	}
+}
+

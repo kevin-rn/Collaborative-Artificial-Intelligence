@@ -1,0 +1,17 @@
+{
+	"SAOPSettings": {
+		"participants": [{
+			"party": {"partyref":"classpath:cai.group19.Group19Party", "parameters":{}},
+			"profile": "file:src/test/resources/laptop1/laptopBuyer.json"
+		}, {
+			"party": {"partyref":"classpath:collabai.group16.Group16Party", "parameters":{}},
+			"profile": "file:src/test/resources/laptop1/laptopSeller.json"
+		}],
+		"deadline": {
+			"deadlinerounds": {
+				"rounds" : 200,
+				"durationms": 1000
+		}
+		}
+	}
+}
