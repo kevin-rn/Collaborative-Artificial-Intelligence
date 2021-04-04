@@ -19,8 +19,8 @@ from agents1.human import Human
 #FIMAL, DO NOT MODIFY
 DEFAULT_WORLDSETTINGS: dict={
     'deadline': 2000, # Ticks after which world terminates anyway 
-    'tick_duration': 0.1, # Set to 0 for fastest possible runs.
-    'random_seed': 1,
+    'tick_duration': 0, # Set to 0 for fastest possible runs.
+    'random_seed': 9,
     'verbose': False,
     'matrx_paused':True,
     'run_matrx_api':True, # If you want to allow web connection

@@ -8,7 +8,9 @@ from setuptools.sandbox import save_path  # type: ignore
 
 from agents1.human import Human
 from agents1.randomagent import RandomAgent
-from agents1.group19agent import Group19Agent
+from agents1.Team19Agent import Team19Agent
+from agents1.Team2Agent import Team2Agent
+from agents1.Team45Agent import Team45Agent
 
 """
 This runs a single session. You have to log in on localhost:3000 and 
@@ -16,14 +18,16 @@ press the start button in god mode to start the session.
 """
 
 if __name__ == "__main__":
-    agents = [
-        # {'name':'agent2', 'botclass':RandomAgent, 'settings':{'slowdown':1, 'colorblind':True}},
-        # {'name':'agent3', 'botclass':RandomAgent, 'settings':{'slowdown':1, 'shapeblind':True}}
-        # {'name':'human1', 'botclass':Human, 'settings':{'shapeblind':True}}
-        {'name': 'group19agent1', 'botclass': Group19Agent, 'settings': {'shapeblind':True}},
-        {'name': 'group19agent2', 'botclass': Group19Agent, 'settings': {'colorblind':True}},
-        {'name': 'group19agent3', 'botclass': Group19Agent, 'settings': {}}
+    agents = [ 
+        # {'name': 'Team19agent1', 'botclass': Team19Agent, 'settings': {}},
+        # {'name': 'Team19agent2', 'botclass': Team19Agent, 'settings': {}}
 
+        {'name': 'Team19agent1', 'botclass': Team19Agent, 'settings': {'colorblind':True}},
+        {'name': 'Team45agent2', 'botclass': Team45Agent, 'settings': {'shapeblind':True}},
+        # {'name': 'Team19agent3', 'botclass': Team19Agent, 'settings': {'slowdown':1}}
+
+        # {'name': 'Team19agent1', 'botclass': Team19Agent, 'settings': {'colorblind':True}},
+        # {'name': 'Team19agent2', 'botclass': Team19Agent, 'settings': {'shapeblind':True}}
     ]
     print("Started world...")
     world = BW4TWorld(agents).run()
