@@ -9,4 +9,6 @@ Using eclipse also download the plugin 'Subclipse' in order to do a import with 
 ### 2. Collaborative Agent
 Programming a negotiation agent with the w4bt framework
 
-Use pycharm and when running, open localhost:3000 to start running the agents.
+Use pycharm and when running, open localhost:3000 to start running the agents.  
+
+![](https://github.com/Kevin-RN/Collaborative-Artificial-Intelligence/blob/master/ezgif-2-eb2eaf77869a.gif)
